@@ -28,7 +28,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         #ADMIN
         Route::group(['middleware' => ['admin']], function () {
-			Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admindashboard');
+            Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admindashboard');
+            #Billing
+            Route::get('/admin/manage_billings', [App\Http\Controllers\Admin\BillingsController::class, 'manage_billings'])->name('manage_billings');
+            Route::get('/admin/view_billings', [App\Http\Controllers\Admin\BillingsController::class, 'view_billings'])->name('view_billings');
+			Route::get('/admin/billings', [App\Http\Controllers\Admin\BillingsController::class, 'index'])->name('billings');
+
 		});
 
         #CASHIER
