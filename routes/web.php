@@ -29,10 +29,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         #ADMIN
         Route::group(['middleware' => ['admin']], function () {
             Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admindashboard');
+
             #Billing
             Route::get('/admin/manage_billings', [App\Http\Controllers\Admin\BillingsController::class, 'manage_billings'])->name('manage_billings');
             Route::get('/admin/view_billings', [App\Http\Controllers\Admin\BillingsController::class, 'view_billings'])->name('view_billings');
 			Route::get('/admin/billings', [App\Http\Controllers\Admin\BillingsController::class, 'index'])->name('billings');
+
+            #Category
+            Route::get('/admin/manage_category', [App\Http\Controllers\Admin\CategoryController::class, 'manage_category'])->name('manage_category');
+            Route::get('/admin/view_category', [App\Http\Controllers\Admin\CategoryController::class, 'view_category'])->name('view_category');
+            Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'category'])->name('category');
+
+
 
 		});
 
