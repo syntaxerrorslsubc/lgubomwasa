@@ -20,6 +20,10 @@ class CustomAuthController extends Controller
          dd($role);
         if ($role->roleid==1){
              return '/admin';
+        }elseif ($role->roleid==2) {
+             return '/cashier';
+        }else ($role->roleid==3) {
+             return '/meterreader';
         }
     }
 
@@ -41,6 +45,10 @@ class CustomAuthController extends Controller
              $role = User_role::where('userid',Auth::user()->id)->first();
             if ($role->roleid==1){
                  return redirect('/admin');
+            }elseif($role->roleid==2){
+                 return redirect('/cashier');
+            }else($role->roleid==3){
+                 return redirect('/meterreader');
             }
             // return redirect()->intended('dashboard')
             //             ->withSuccess('Signed in');
