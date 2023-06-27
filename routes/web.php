@@ -38,7 +38,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         #MeterReader
         Route::group(['middleware' => ['meterreader']], function () {
-            Route::get('/MeterReader', [App\Http\Controllers\Cashier\CashierController::class, 'index'])->name('meterreaderdashboard');
+            Route::get('/meterreader', [App\Http\Controllers\Cashier\CashierController::class, 'index'])->name('meterreaderdashboard');
+
+        #Billings
+            Route::get('/MeterReader/manage_billings', [App\Http\Controllers\Cashier\CashierController::class, 'manage_billings'])->name('manage_billings');
+            Route::get('/MeterReader/view_billings', [App\Http\Controllers\Cashier\CashierController::class, 'view_billings'])->name('view_billings');
+            Route::get('/MeterReader/billings', [App\Http\Controllers\Cashier\CashierController::class, 'index'])->name('billings');
+
+        #Clients
+
+            Route::get('/MeterReader/billing_history', [App\Http\Controllers\Cashier\CashierController::class, 'billing_history'])->name('billing_history');
+            Route::get('/MeterReader/manage_client', [App\Http\Controllers\Cashier\CashierController::class, 'manage_client'])->name('manage_client');
+            Route::get('/MeterReader/view_client', [App\Http\Controllers\Cashier\CashierController::class, 'view_client'])->name('view_client');
+            Route::get('/MeterReader/clients', [App\Http\Controllers\Cashier\CashierController::class, 'index'])->name('clients');
         });
 
         #CommonUser
