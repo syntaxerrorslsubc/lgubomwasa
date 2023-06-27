@@ -1,14 +1,14 @@
-<?php
 
-if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT * from `billing_list` where id = '{$_GET['id']}' ");
-    if($qry->num_rows > 0){
-        foreach($qry->fetch_assoc() as $k => $v){
-            $$k=$v;
-        }
-    }
-}
-?>
+
+// if(isset($_GET['id']) && $_GET['id'] > 0){
+//     $qry = $conn->query("SELECT * from `billing_list` where id = '{$_GET['id']}' ");
+//     if($qry->num_rows > 0){
+//         foreach($qry->fetch_assoc() as $k => $v){
+//             $$k=$v;
+//         }
+//     }
+// }
+
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b><?= isset($id) ? "Update Billing Details - ".(isset($code) ? $code : '') : "Create New Billing" ?></b></h3>
 </div>
@@ -30,13 +30,13 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 							<div class="form-group mb-3">
 								<label for="client_id" class="control-label">Client</label>
 								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
-									<option value="" <?= !isset($client_id) ? 'selected' : '' ?> disabled></option>
+									<!-- <option value="" <?= !isset($client_id) ? 'selected' : '' ?> disabled></option>
 									<?php 
 									$client_qry = $conn->query("SELECT *, concat(lastname, ', ', firstname, ' ', coalesce(middlename)) as `name` FROM `client_list` where delete_flag = 0 and `status` = 1 ".(isset($client_id) && is_numeric($client_id) ? " or id != '{$client_id}' " : '')." ");
 									while($row = $client_qry->fetch_assoc()):
 									?>
 									<option value="<?=  $row['id'] ?>" <?= isset($client_id) && $client_id == $row['id'] ? "selected" : '' ?>><?= $row['code']." - ".$row['name'] ?></option>
-									<?php endwhile; ?>
+									<?php endwhile; ?> -->
 								</select>
 							</div>
 							<div class="form-group mb-3">
@@ -81,7 +81,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		</div>
 	</div>
 </div>
-<script>
+<!-- <script>
 	function calc_total(){
 		var current_reading = $('#reading').val()
 		var previous = $('#previous').val()
@@ -165,4 +165,4 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		})
 
 	})
-</script>
+</script> -->

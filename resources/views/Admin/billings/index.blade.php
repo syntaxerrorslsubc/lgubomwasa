@@ -73,7 +73,7 @@
     </div>
   </div>
 </div>
-<script>
+<!-- <script>
   $(document).ready(function(){
     $('.delete_data').click(function(){
       _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('data-id')])
@@ -108,4 +108,4 @@
       }
     })
   }
-</script>
+</script> -->
