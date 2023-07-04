@@ -200,8 +200,7 @@
         <div class="info-box-content">
           <span class="info-box-text">Total Clients</span>
           <span class="info-box-number">
-            @if($clientno=App\)
-            1                      </span>
+                        1                      </span>
         </div>
         <!-- /.info-box-content -->
       </div>

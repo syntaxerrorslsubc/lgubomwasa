@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Billing_list;
 
 class BillingsController extends Controller
 {
@@ -14,6 +15,7 @@ class BillingsController extends Controller
 
 	    public function index()
 	    {
+	    $billing=Billing_list::paginate(10);
 	    	return view('Admin/billings.index');
 	    }
 

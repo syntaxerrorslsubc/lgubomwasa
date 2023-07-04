@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('billing_list', function (Blueprint $table) {
+        Schema::create('billing_lists', function (Blueprint $table) {
             $table->id()->autoincrement();
             $table->integer('clientid')->unique();
             $table->date('reading_date');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('billing_list');
+        Schema::dropIfExists('billing_lists');
     }
 };
