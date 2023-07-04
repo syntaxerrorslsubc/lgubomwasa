@@ -22,7 +22,7 @@ class CustomAuthController extends Controller
              return '/admin';
         }elseif ($role->roleid==2) {
              return '/cashier';
-        }else ($role->roleid==3) {
+        }elseif ($role->roleid==3) {
              return '/meterreader';
         }
     }
@@ -47,8 +47,8 @@ class CustomAuthController extends Controller
                  return redirect('/admin');
             }elseif($role->roleid==2){
                  return redirect('/cashier');
-            }else($role->roleid==3){
-                 return redirect('/meterreader');
+            }elseif($role->roleid==3){
+                 return redirect()->intended('/meterreader');
             }
             // return redirect()->intended('dashboard')
             //             ->withSuccess('Signed in');

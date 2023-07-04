@@ -85,7 +85,7 @@
                 <nav class="mt-4">
                    <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
-                      <a href="./" class="nav-link nav-home">
+                      <a href="{{route('admindashboard')}}" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                           Dashboard
@@ -94,7 +94,7 @@
                     </li> 
                     <li class="nav-header">Main</li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('admindashboard')}}" class="nav-link nav-clients">
+                      <a href="{{route('adminclients')}}" class="nav-link nav-clients">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                           List of Clients
@@ -102,7 +102,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('billings')}}" class="nav-link nav-billings">
+                      <a href="{{route('adminbillings')}}" class="nav-link nav-billings">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p>
                           Billings
@@ -111,7 +111,7 @@
                     </li>
                     <li class="nav-header">Reports</li>
                     <li class="nav-item dropdown">
-                      <a  class="nav-link nav-reports_monthly_billing">
+                      <a  href="{{route('adminmonthly_billing')}}" class="nav-link nav-reports_monthly_billing">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
                           Monthly Report
@@ -120,7 +120,7 @@
                     </li>
                                         <li class="nav-header">Maintenance</li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link nav-category">
+                      <a href="{{route('admincategory')}}" class="nav-link nav-category">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
                           List of Category
@@ -128,7 +128,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="http://localhost/wbms/admin/?page=user/list" class="nav-link nav-user_list">
+                      <a href="{{route('adminuser')}}" class="nav-link nav-user_list">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
                           User List
@@ -136,7 +136,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="http://localhost/wbms/admin/?page=system_info" class="nav-link nav-system_info">
+                      <a href="{{route('adminsystem_info')}}" class="nav-link nav-system_info">
                         <i class="nav-icon fas fa-tools"></i>
                         <p>
                           Settings
@@ -200,6 +200,7 @@
         <div class="info-box-content">
           <span class="info-box-text">Total Clients</span>
           <span class="info-box-number">
+            @if($clientno=App\)
             1                      </span>
         </div>
         <!-- /.info-box-content -->
