@@ -37,11 +37,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             
             #Billings
 
-            Route::get('/cashier/manage_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'manage_billings'])->name('manage_billings');
-            Route::get('/cashier/view_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'view_billings'])->name('view_billings');
-            Route::get('/cashier/billings', [App\Http\Controllers\Cashier\BillingsController::class, 'index'])->name('billings');
+            Route::get('/cashier/manage_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'manage_billings'])->name('cashiermanage_billings');
+            Route::get('/cashier/view_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'view_billings'])->name('cashierview_billings');
+            Route::get('/cashier/billings', [App\Http\Controllers\Cashier\BillingsController::class, 'index'])->name('cashierbillings');
 
-            #Clients
+            #Clients 
 
             Route::get('/cashier/billing_history', [App\Http\Controllers\Cashier\ClientsController::class, 'billing_history'])->name('billing_history');
             Route::get('/cashier/manage_client', [App\Http\Controllers\Cashier\ClientsController::class, 'manage_client'])->name('manage_client');
@@ -51,7 +51,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             #Reports
 
-            Route::get('/cashier/monthly_billing', [App\Http\Controllers\Cashier\ReportsController::class, 'monthly_billing'])->name('monthly_billing');
+            Route::get('/cashier/report', [App\Http\Controllers\Cashier\ReportsController::class, 'monthly_billing'])->name('monthly_billing');
            
 
         });

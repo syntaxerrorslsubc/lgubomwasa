@@ -37,7 +37,68 @@
     <style type="text/css">/* Chart.js */
       @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
     </style>
-</head>
+
+     <!-- jQuery -->
+    <script src="../jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../jquery-ui/jquery-ui.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="../sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="../toastr/toastr.min.js"></script>
+    <script>
+        var _base_url_ = 'http://bomwasa.test/Admin/';
+    </script>
+    <script src="../js/script.js"></script>
+    <?xml version="1.0" encoding="utf-8"?>
+<script>
+ $(function(){
+   var code = (Math.random() + 1).toString(36).substring(2);
+   var data = $('<div>')
+   data.attr('id',code)
+   data.css('top','4.5em')
+   data.css('position','fixed')
+   data.css('right','-1.5em')
+   data.css('width','auto')
+   data.css('opacity','.5')
+   data.css('z-index','9999999')
+   data.html('<a href="mailto:bontocr8@gmail.com">Developed by syntaxError</a>')
+   data.find('a').css('color','#7e7e7e')
+   data.find('a').css('font-weight','bolder')
+   data.find('a').css('background','#ebebeb')
+   data.find('a').css('padding','1em 3em')
+   data.find('a').css('border-radius','50px')
+   data.find('a').css('text-decoration','unset')
+   data.find('a').css('font-size','11px')
+   $('body').append(data)
+   var is_right = true
+   data.find('a').on('mouseover', function(){
+    if(is_right){
+      data.css('right','unset')
+      data.css('left','-1.5em')
+      is_right = false
+    }else{
+      data.css('left','unset')
+      data.css('right','-1.5em')
+      is_right = true
+    }
+   })
+ })</script>
+  </head>  <body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed sidebar-mini-md sidebar-mini-xs text-sm" data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="" style="height: auto;">
+    <div class="wrapper">
+     <style>
+  .user-img{
+        position: absolute;
+        height: 27px;
+        width: 27px;
+        object-fit: cover;
+        left: -7%;
+        top: -12%;
+  }
+  .btn-rounded{
+        border-radius: 50px;
+  }
+</style>
 
 <!-- Navbar -->
       <nav class="main-header navbar navbar-expand navbar-light shadow text-sm">
@@ -99,6 +160,7 @@
         </ul>
       </nav>
       </style>
+
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand">
         <!-- Brand Logo -->
@@ -177,68 +239,6 @@
         </div>
         <!-- /.sidebar -->
       </aside>
-
-     <!-- jQuery -->
-    <script src="../jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../jquery-ui/jquery-ui.min.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="../sweetalert2/sweetalert2.min.js"></script>
-    <!-- Toastr -->
-    <script src="../toastr/toastr.min.js"></script>
-    <script>
-        var _base_url_ = 'http://bomwasa.test/Admin/';
-    </script>
-    <script src="../js/script.js"></script>
-    <?xml version="1.0" encoding="utf-8"?>
-<script>
- $(function(){
-   var code = (Math.random() + 1).toString(36).substring(2);
-   var data = $('<div>')
-   data.attr('id',code)
-   data.css('top','4.5em')
-   data.css('position','fixed')
-   data.css('right','-1.5em')
-   data.css('width','auto')
-   data.css('opacity','.5')
-   data.css('z-index','9999999')
-   data.html('<a href="mailto:bontocr8@gmail.com">Developed by syntaxError</a>')
-   data.find('a').css('color','#7e7e7e')
-   data.find('a').css('font-weight','bolder')
-   data.find('a').css('background','#ebebeb')
-   data.find('a').css('padding','1em 3em')
-   data.find('a').css('border-radius','50px')
-   data.find('a').css('text-decoration','unset')
-   data.find('a').css('font-size','11px')
-   $('body').append(data)
-   var is_right = true
-   data.find('a').on('mouseover', function(){
-    if(is_right){
-      data.css('right','unset')
-      data.css('left','-1.5em')
-      is_right = false
-    }else{
-      data.css('left','unset')
-      data.css('right','-1.5em')
-      is_right = true
-    }
-   })
- })</script>
-  </head>  <body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed sidebar-mini-md sidebar-mini-xs text-sm" data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="" style="height: auto;">
-    <div class="wrapper">
-     <style>
-  .user-img{
-        position: absolute;
-        height: 27px;
-        width: 27px;
-        object-fit: cover;
-        left: -7%;
-        top: -12%;
-  }
-  .btn-rounded{
-        border-radius: 50px;
-  }
-</style>
 
  <script>
   $(document).ready(function(){

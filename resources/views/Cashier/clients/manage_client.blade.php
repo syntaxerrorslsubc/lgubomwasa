@@ -1,14 +1,4 @@
-<?php
-
-if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT * from `client_list` where id = '{$_GET['id']}' ");
-    if($qry->num_rows > 0){
-        foreach($qry->fetch_assoc() as $k => $v){
-            $$k=$v;
-        }
-    }
-}
-?>
+@include('layouts.display')
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b><?= isset($id) ? "Update Client Details - ".(isset($code) ? $code : '') : "Create New Client" ?></b></h3>
 </div>
@@ -85,49 +75,3 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		</div>
 	</div>
 </div>
-<script>
-	$(document).ready(function(){
-		$('#category_id').select2({
-			placeholder:"Please Select Here",
-			containerCssClass:'form-control form-control-sm rounded-0'
-		})
-		$('#client-form').submit(function(e){
-			e.preventDefault();
-            var _this = $(this)
-			 $('.err-msg').remove();
-			start_loader();
-			$.ajax({
-				url:_base_url_+"classes/Master.php?f=save_client",
-				data: new FormData($(this)[0]),
-                cache: false,
-                contentType: false,
-                processData: false,
-                method: 'POST',
-                type: 'POST',
-                dataType: 'json',
-				error:err=>{
-					console.log(err)
-					alert_toast("An error occured",'error');
-					end_loader();
-				},
-				success:function(resp){
-					if(typeof resp =='object' && resp.status == 'success'){
-						location.href = "./?page=clients/view_client&id="+resp.aid
-					}else if(resp.status == 'failed' && !!resp.msg){
-                        var el = $('<div>')
-                            el.addClass("alert alert-danger err-msg").text(resp.msg)
-                            _this.prepend(el)
-                            el.show('slow')
-                            $("html, body, .modal").scrollTop(0)
-                            end_loader()
-                    }else{
-						alert_toast("An error occured",'error');
-						end_loader();
-                        console.log(resp)
-					}
-				}
-			})
-		})
-
-	})
-</script>

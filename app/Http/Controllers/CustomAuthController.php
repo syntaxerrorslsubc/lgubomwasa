@@ -18,8 +18,8 @@ class CustomAuthController extends Controller
     public function redirectTo(){
          $role = User_role::where('userid',Auth::user()->id)->first();
          dd($role);
-        if ($role->roleid==1){
-             return '/admin';
+        if ($role->roleid==2){
+             return '/cashier';
         }
     }
 
@@ -39,8 +39,8 @@ class CustomAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
              $role = User_role::where('userid',Auth::user()->id)->first();
-            if ($role->roleid==1){
-                 return redirect('/admin');
+            if ($role->roleid==2){
+                 return redirect('/cashier');
             }
             // return redirect()->intended('dashboard')
             //             ->withSuccess('Signed in');

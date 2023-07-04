@@ -1,18 +1,4 @@
-<?php
-
-if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT *, concat(lastname, ', ', firstname,' ', coalesce(middlename,'')) as `name` FROM client_list where id = '{$_GET['id']}' and delete_flag = 0");
-    if($qry->num_rows > 0){
-        foreach($qry->fetch_assoc() as $k => $v){
-            $$k=$v;
-        }
-    }else{
-        echo '<script> alert("Client ID is invalid."); location.replace("./?page=clients");</script>';
-    }
-}else{
-    echo '<script> alert("Client ID is required."); location.replace("./?page=clients");</script>';
-}
-?>
+@include('layouts.display')
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b>Client Details</b></h3>
 </div>
@@ -71,33 +57,3 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		</div>
 	</div>
 </div>
-<script>
-	
-	$(document).ready(function(){
-        $('#delete-data').click(function(){
-			_conf("Are you sure to delete this client permanently?","delete_client",['<?= isset($id) ? $id : '' ?>'])
-		})
-	})
-    function delete_client($id){
-		start_loader();
-		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_client",
-			method:"POST",
-			data:{id: $id},
-			dataType:"json",
-			error:err=>{
-				console.log(err)
-				alert_toast("An error occured.",'error');
-				end_loader();
-			},
-			success:function(resp){
-				if(typeof resp== 'object' && resp.status == 'success'){
-					location.replace("./?page=clients");
-				}else{
-					alert_toast("An error occured.",'error');
-					end_loader();
-				}
-			}
-		})
-	}
-</script>
