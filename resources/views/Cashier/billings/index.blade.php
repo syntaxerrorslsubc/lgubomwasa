@@ -1,9 +1,5 @@
 
-<?php if($_settings->chk_flashdata('success')): ?>
-<script>
-	alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
-</script>
-<?php endif;?>
+
 <div class="card card-outline rounded-0 card-navy">
 	<div class="card-header">
 		<h3 class="card-title">List of Bill</h3>
@@ -35,28 +31,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
-					$i = 1;
-						$qry = $conn->query("SELECT b.*, c.code , concat(c.lastname, ', ', c.firstname, ' ', coalesce(c.middlename,'')) as `name` from `billing_list` b inner join client_list c on b.client_id = c.id order by unix_timestamp(`reading_date`) desc, `name` asc ");
-						while($row = $qry->fetch_assoc()):
-					?>
+					
 						<tr>
-							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d",strtotime($row['reading_date'])) ?></td>
-							<td><?php echo $row['code'] ." - ".$row['name'] ?></td>
-							<td><?php echo format_num($row['total']) ?></td>
-							<td><?php echo date("Y-m-d",strtotime($row['due_date'])) ?></td>
+							<td class="text-center"></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td class="text-center">
-								<?php
-								switch($row['status']){
-									case 0:
-										echo '<span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>';
-										break;
-									case 1:
-										echo '<span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>';
-										break;
-								}
-								?>
+								
                             </td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -64,9 +47,9 @@
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item view_data" href="./?page=billings/view_billing&id=<?php echo $row['id'] ?>"><span class="fa fa-eye text-dark"></span> View</a>
+				                    <a class="dropdown-item view_data" href="./?page=billings/view_billing&id="><span class="fa fa-eye text-dark"></span> View</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item edit_data" href="./?page=billings/manage_billing&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
+				                    <a class="dropdown-item edit_data" href="./?page=billings/manage_billing&id="><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>

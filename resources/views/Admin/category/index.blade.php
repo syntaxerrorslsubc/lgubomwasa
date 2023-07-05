@@ -1,5 +1,7 @@
+@extends('layouts.Admin.default')
 
-@include('layouts.display')
+@section('content')
+
 <script>
 	alert_toast("",'success')
 </script>
@@ -59,3 +61,4 @@
 		</div>
 	</div>
 </div>
+@endsection

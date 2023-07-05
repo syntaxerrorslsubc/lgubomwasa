@@ -1,4 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
+
+@section('content')
 
 
 <div class="card card-outline rounded-0 card-navy">
@@ -58,3 +60,4 @@
 		</div>
 	</div>
 </div>
+@endsection
