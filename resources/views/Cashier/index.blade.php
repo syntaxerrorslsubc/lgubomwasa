@@ -110,7 +110,7 @@
                     </li>
                     <li class="nav-header">Reports</li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('monthly_billing')}}" class="nav-link nav-reports_monthly_billing">
+                      <a href="{{route('cashiermonthly_billing')}}" class="nav-link nav-reports_monthly_billing">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
                           Monthly Report
