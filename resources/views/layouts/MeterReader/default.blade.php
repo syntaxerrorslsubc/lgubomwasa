@@ -108,7 +108,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="http://localhost/wbms/" class="nav-link">BOMWASA Water Billing System - Admin</a>
+            <a href="http://localhost/wbms/" class="nav-link">BOMWASA Water Billing System - Meter Reader</a>
           </li>
         </ul>
         <!-- Right navbar links -->

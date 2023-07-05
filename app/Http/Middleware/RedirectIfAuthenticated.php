@@ -28,7 +28,9 @@ class RedirectIfAuthenticated
                      return redirect('/admin');
                 }elseif (Auth::user() && $role->roleid==2){
                      return redirect('/cashier');
-                }
+                }elseif (Auth::user() && $role->roleid==3) {
+                      return redirect()->intended('/meterreader');
+            }
             }
         }
 
