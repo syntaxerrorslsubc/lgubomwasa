@@ -209,40 +209,6 @@
                         </p>
                       </a>
                     </li>
-                    <li class="nav-header">Reports</li>
-                    <li class="nav-item dropdown">
-                      <a  href="{{route('adminmonthly_billing')}}" class="nav-link nav-reports_monthly_billing">
-                        <i class="nav-icon fas fa-circle"></i>
-                        <p>
-                          Monthly Report
-                        </p>
-                      </a>
-                    </li>
-                                        <li class="nav-header">Maintenance</li>
-                    <li class="nav-item dropdown">
-                      <a href="{{route('admincategory')}}" class="nav-link nav-category">
-                        <i class="nav-icon fas fa-th-list"></i>
-                        <p>
-                          List of Category
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a href="{{route('adminuser')}}" class="nav-link nav-user_list">
-                        <i class="nav-icon fas fa-users-cog"></i>
-                        <p>
-                          User List
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a href="{{route('adminsystem_info')}}" class="nav-link nav-system_info">
-                        <i class="nav-icon fas fa-tools"></i>
-                        <p>
-                          Settings
-                        </p>
-                      </a>
-                    </li>
                   </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

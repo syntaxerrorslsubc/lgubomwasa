@@ -24,14 +24,16 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
              $role = User_role::where('userid',Auth::user()->id)->first();
-                if (Auth::user() && $role->roleid==1){
-                     return redirect('/admin');
-                }elseif (Auth::user() && $role->roleid==2){
-                     return redirect('/cashier');
-                }elseif (Auth::user() && $role->roleid==3) {
-                      return redirect()->intended('/meterreader');
-            }
-            }
+                if(isset($role)){
+                    if (Auth::user() && $role->roleid==1){
+                         return redirect('/admin');
+                    }elseif (Auth::user() && $role->roleid==2){
+                         return redirect('/cashier');
+                    }elseif (Auth::user() && $role->roleid==3) {
+                          return redirect()->intended('/meterreader');
+                    }
+                 }
+           }
         }
 
         return $next($request);
