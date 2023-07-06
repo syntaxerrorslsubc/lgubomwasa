@@ -18,8 +18,11 @@
         <span class="info-box-icon bg-gradient-secondary elevation-1"><i class="fas fa-th-list"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Categories</span>
+            @if($nOcategories=App\Models\Category_list::count())
           <span class="info-box-number">
-            2                      </span>
+                {{$nOcategories}}
+          </span>
+          @endif
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -31,8 +34,11 @@
         <span class="info-box-icon bg-gradient-success elevation-1"><i class="fas fa-users"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Total Clients</span>
+          @if($nOclient=App\Models\Client_list::count())
           <span class="info-box-number">
-                        1                      </span>
+              {{$nOcategories}}
+          </span>
+          @endif
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -44,8 +50,11 @@
         <span class="info-box-icon bg-gradient-danger elevation-1"><i class="fas fa-file-invoice"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Pending Bills</span>
+          @if($nObilling=App\Models\Billing_list::count())
           <span class="info-box-number">
-            0                      </span>
+              {{$nOcategories}}
+         </span>
+         @endif
         </div>
         <!-- /.info-box-content -->
       </div>
