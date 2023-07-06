@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_list', function (Blueprint $table) {
+        Schema::create('category_lists', function (Blueprint $table) {
             $table->id()->autoincrement();
             $table->text('name');
             $table->tinyinteger('status');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_list');
+        Schema::dropIfExists('category_lists');
     }
 };

@@ -23,6 +23,7 @@ class BillingsController extends Controller
 	    {
 	    	return view('Admin/billings.manage_billing');
 	    }
+
 	    public function storeBilling(Request $request)
 		 {
 

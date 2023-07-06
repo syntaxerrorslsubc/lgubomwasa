@@ -1,6 +1,6 @@
 @extends('layouts.Admin.default')
 
-@section
+@section('content')
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b>Create New Billing</b></h3>
 </div>

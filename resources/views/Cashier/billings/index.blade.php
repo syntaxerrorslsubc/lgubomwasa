@@ -1,4 +1,4 @@
-@extends('layouts.Admin.default')
+@extends('layouts.Cashier.default')
 
 @section('content')
 <div class="card card-outline rounded-0 card-navy">
