@@ -194,7 +194,7 @@
                     </li> 
                     <li class="nav-header">Main</li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('clients')}}" class="nav-link nav-clients">
+                      <a href="{{route('cashierclients')}}" class="nav-link nav-clients">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                           List of Clients
@@ -202,7 +202,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('billings')}}" class="nav-link nav-billings">
+                      <a href="{{route('cashierbillings')}}" class="nav-link nav-billings">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p>
                           Billings
@@ -211,7 +211,7 @@
                     </li>
                     <li class="nav-header">Reports</li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('monthly_billing')}}" class="nav-link nav-reports_monthly_billing">
+                      <a href="{{route('cashiermonthly_billing')}}" class="nav-link nav-reports_monthly_billing">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
                           Monthly Report

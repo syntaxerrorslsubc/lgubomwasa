@@ -50,7 +50,7 @@ class CustomAuthController extends Controller
             }elseif(Auth::user() && $role->roleid==3){
                  return redirect()->intended('/meterreader');
         }
-   
+    }
         return redirect("/login")->withSuccess('Login details are not valid');
     }
  
