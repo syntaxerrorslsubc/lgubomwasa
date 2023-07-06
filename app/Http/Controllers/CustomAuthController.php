@@ -18,17 +18,12 @@ class CustomAuthController extends Controller
     public function redirectTo(){
          $role = User_role::where('userid',Auth::user()->id)->first();
          dd($role);
-<<<<<<< HEAD
         if ($role->roleid==1){
              return '/admin';
         }elseif ($role->roleid==2) {
              return '/cashier';
         }elseif ($role->roleid==3) {
              return '/meterreader';
-=======
-        if ($role->roleid==2){
-             return '/cashier';
->>>>>>> origin/feature_cashier_navigationbar
         }
     }
 
@@ -48,20 +43,12 @@ class CustomAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
              $role = User_role::where('userid',Auth::user()->id)->first();
-<<<<<<< HEAD
             if (Auth::user() && $role->roleid==1){
                  return redirect('/admin');
             }elseif(Auth::user() && $role->roleid==2){
                  return redirect('/cashier');
             }elseif(Auth::user() && $role->roleid==3){
                  return redirect()->intended('/meterreader');
-=======
-            if ($role->roleid==2){
-                 return redirect('/cashier');
->>>>>>> origin/feature_cashier_navigationbar
-            }
-            // return redirect()->intended('dashboard')
-            //             ->withSuccess('Signed in');
         }
    
         return redirect("/login")->withSuccess('Login details are not valid');
