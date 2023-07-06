@@ -1,5 +1,4 @@
 @extends('layouts.Cashier.default')
-
 @section('content')
 
 <h1>Welcome to Water Billing System - Management Site</h1>

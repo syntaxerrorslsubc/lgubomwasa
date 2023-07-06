@@ -12,10 +12,10 @@ class BillingsController extends Controller
     }
 
     public function manage_billings(){
-        return view('Cashier/billings.manage_billings');
+        return view('Cashier/billings.manage_billing');
     }
 
     public function view_billings(){
-        return view('Cashier/billings.view_billings');
+        return view('Cashier/billings.view_billing');
     }
 }

@@ -1,18 +1,4 @@
-<?php
-
-if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT *, concat(lastname, ', ', firstname,' ', coalesce(middlename,'')) as `name` FROM client_list where id = '{$_GET['id']}' and delete_flag = 0");
-    if($qry->num_rows > 0){
-        foreach($qry->fetch_assoc() as $k => $v){
-            $$k=$v;
-        }
-    }else{
-        echo '<script> alert("Client ID is invalid."); location.replace("./?page=clients");</script>';
-    }
-}else{
-    echo '<script> alert("Client ID is required."); location.replace("./?page=clients");</script>';
-}
-?>
+@include('layouts.display')
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b><?= isset($code) ? $code : '' ?> - <?= isset($name) ? $name : '' ?></b></h3>
 </div>
@@ -96,15 +82,3 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		</div>
 	</div>
 </div>
-<script>
-	
-	$(document).ready(function(){
-        $('.table').dataTable({
-			columnDefs: [
-					{ orderable: false, targets: [4] }
-			],
-			order:[0,'asc']
-		});
-	})
-    
-</script>

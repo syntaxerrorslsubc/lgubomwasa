@@ -19,7 +19,7 @@ class ClientsController extends Controller
         return view('Cashier/clients.manage_client');
     }
 
-    public function view_client(){
+    public function view_client(){ 
         return view('Cashier/clients.view_client');
     }
 }
