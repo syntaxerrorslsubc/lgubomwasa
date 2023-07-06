@@ -2,7 +2,7 @@
 
 
 <div class="container-fluid">
-	<form action="" id="category-form">
+	<form action="" id="category-form" method="post">
 		<input type="hidden" name ="id" value="">
 		<div class="form-group">
 			<label for="name" class="control-label">Name</label>

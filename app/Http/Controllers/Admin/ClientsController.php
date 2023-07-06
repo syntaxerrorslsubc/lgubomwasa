@@ -29,18 +29,19 @@ class ClientsController extends Controller
         public function storeClient(Request $request)
          {
 
-                $client = new Client_list;
-                $client->clientid = $request->client_id;
-                $client->reading_date = $request->reading_date;
-                $client->due_date = $request->due_date;
-                $client->reading = $request->reading;
-                $client->previous = $request->previous;
-                $client->rate = $request->rate;
-                $client->total = $request->total;
+                $client = new Client_lists;
+                $client->category_id = $request->category_id;
+                $client->firstname = $request->firstname;
+                $client->middlename = $request->middlename;
+                $client->lastname = $request->lastname;
+                $client->contact = $request->contact;
+                $client->address = $request->rate;
+                $client->meter_code = $request->meter_code;
+                $client->first_reading = $request->first_reading;
                 $client->status = $request->status;
                 
                 if($client->save()){
-                    return redirect()->back()->with('Success','Bill has been created successfully.');
+                    return redirect()->back()->with('Success','Client has been created successfully.');
                 }
             
          }

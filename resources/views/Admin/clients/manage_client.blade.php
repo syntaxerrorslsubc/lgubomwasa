@@ -18,7 +18,7 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="" id="client-form">
+						<form action="{{route('adminmanage_client_store')}}" id="client-form" method="post">
 							<input type="hidden" name ="id" value="">
 							<div class="form-group mb-3">
 								<label for="category_id" class="control-label">Category</label>
