@@ -5,7 +5,7 @@
   <div class="card-header">
     <h3 class="card-title">List of Bill</h3>
     <div class="card-tools">
-      <a href="" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+      <a href="{{route('adminmanage_billings')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
     </div>
   </div>
   <div class="card-body">

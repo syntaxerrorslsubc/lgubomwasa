@@ -1,8 +1,8 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
 
-
+@section
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b></b></h3>
+	<h3><b>Create New Billing</b></h3>
 </div>
 <style>
 	img#cimg{
@@ -17,12 +17,13 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="{{ route('register.custom') }}" id="billing-form">
+						<form action="{{ route('adminmanage_billings_store') }}" id="billing-form" method="post"> @csrf
 							<input type="hidden" name ="id" value="">
 							<div class="form-group mb-3">
 								<label for="client_id" class="control-label">Client</label>
 								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
-									
+									<option value="1">1</option>
+									<option value="2">2</option>
 								</select>
 							</div>
 							<div class="form-group mb-3">
@@ -61,9 +62,10 @@
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" form="billing-form"><i class="fa fa-save"></i> Save</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=billings"><i class="fa fa-angle-left"></i> Cancel</a>
+				<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" form="billing-form" type="submit"><i class="fa fa-save"></i> Save</button>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminmanage_billings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 			</div>
 		</div>
 	</div>
 </div>
+@endsection
