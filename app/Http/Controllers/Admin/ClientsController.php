@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Client_lists;
+use App\Models\Client_list;
 
 
 class ClientsController extends Controller
@@ -17,8 +17,10 @@ class ClientsController extends Controller
 
         public function index()
         {
-            $client=Client_list::paginate(10);
-            return view('Admin/clients.index');
+            $client_lists=Client_list::orderby('id')->paginate(10);
+            return view('Admin/clients.index', [
+                    'client_lists'=>$client_lists
+            ]);
         }
 
         public function manage_client()
@@ -30,16 +32,10 @@ class ClientsController extends Controller
          {
 
                 $client = new Client_lists;
-                $client->category_id = $request->category_id;
-                $client->firstname = $request->firstname;
-                $client->middlename = $request->middlename;
-                $client->lastname = $request->lastname;
-                $client->contact = $request->contact;
-                $client->address = $request->rate;
-                $client->meter_code = $request->meter_code;
-                $client->first_reading = $request->first_reading;
+                $client->created_at = $request->created_at;
+                $client->code = $request->code;
+                $client->name = $request->name;
                 $client->status = $request->status;
-                
                 if($client->save()){
                     return redirect()->back()->with('Success','Client has been created successfully.');
                 }

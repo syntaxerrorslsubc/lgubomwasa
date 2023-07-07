@@ -33,14 +33,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					
-						<tr>
-							<td class="text-center"></td>
-							<td></td>
-							<td></td>
-							<td class="text-center">
-								
-                            </td>
+				@foreach($category_lists as $categories )
+         	 			<tr>
+              				<td class="text-center">{{$categories->id}}</td>
+							<td>{{$categories->created_at}}</td>
+							<td>{{$categories->name}}</td>
+							<td class="text-center">{{$categories->status}}</td>
+
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
@@ -57,6 +56,7 @@
 						</tr>
 					
 				</tbody>
+				@endforeach
 			</table>
 		</div>
 	</div>

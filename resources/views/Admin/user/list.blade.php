@@ -1,4 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
+
+@section('content')
 
 <div class="card card-outline rounded-0 card-navy">
 	<div class="card-header">
@@ -25,14 +27,20 @@
 						<th>Date Updated</th>
 						<th>Avatar</th>
 						<th>Name</th>
-						<th>Username</th>
+						<th>Email</th>
 						<th>Type</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					
-                            </td>
+					@foreach($users as $users )
+         	 			<tr>
+              				<td class="text-center">{{$users->id}}</td>
+              				<td>{{$users->updated_at}}</td>
+              				<td>{{$users->avatar}}</td>
+              				<td>{{$users->name}}</td>
+              				<td>{{$users->email}}</td>
+              				<td>{{$users->type}}</td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
@@ -47,7 +55,9 @@
 						</tr>
 					
 				</tbody>
+				@endforeach
 			</table>
 		</div>
 	</div>
 </div>
+@endsection

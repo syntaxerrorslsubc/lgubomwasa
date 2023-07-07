@@ -139,7 +139,7 @@
             <div class="btn-group nav-link">
                   <button type="button" class="btn btn-rounded badge badge-light dropdown-toggle dropdown-icon" data-toggle="dropdown">
                     <span><img src="http://localhost/wbms/uploads/avatars/1.png?v=1649834664" class="img-circle elevation-2 user-img" alt="User Image"></span>
-                    <span class="ml-3">Admin</span>
+                    <span class="ml-3">Meter Reader</span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <div class="dropdown-menu" role="menu">
@@ -185,7 +185,7 @@
                 <nav class="mt-4">
                    <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
-                      <a href="{{route('admindashboard')}}" class="nav-link nav-home">
+                      <a href="{{route('meterreaderdashboard')}}" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                           Dashboard
@@ -194,7 +194,7 @@
                     </li> 
                     <li class="nav-header">Main</li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('adminclients')}}" class="nav-link nav-clients">
+                      <a href="{{route('meterreaderclients')}}" class="nav-link nav-clients">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                           List of Clients
@@ -202,7 +202,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('adminbillings')}}" class="nav-link nav-billings">
+                      <a href="{{route('meterreaderbillings')}}" class="nav-link nav-billings">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p>
                           Billings

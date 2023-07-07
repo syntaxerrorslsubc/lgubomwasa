@@ -228,7 +228,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="{{route('adminuser')}}" class="nav-link nav-user_list">
+                      <a href="{{route('adminuserlist')}}" class="nav-link nav-user_list">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
                           User List

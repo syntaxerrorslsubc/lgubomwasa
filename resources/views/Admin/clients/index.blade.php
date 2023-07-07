@@ -32,11 +32,14 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($client_lists as $clientsProfile )
 					<tr>
-							<td class="text-center"></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td class="text-center">{{$clientsProfile->id}}</td>
+							<td>{{$clientsProfile->created_at}}</td>
+							<td>{{$clientsProfile->code}}</td>
+							<td>{{$clientsProfile->name}}</td>
+							<td>{{$clientsProfile->status}}</td>
+							
 							<td class="text-center">
 								
                             </td>
@@ -53,8 +56,8 @@
 				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
 							</td>
-						</tr>
-					
+					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>

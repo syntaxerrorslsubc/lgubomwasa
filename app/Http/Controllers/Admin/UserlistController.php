@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserlistController extends Controller
 {
@@ -16,6 +17,10 @@ class UserlistController extends Controller
     }
 
      public function list(){
-        return view('Admin/user.list');
+      $Users=User::orderby('id')->paginate(10);
+        return view('Admin/user.list', [
+                    'users'=>$Users
+            ]);
+
     }
 }

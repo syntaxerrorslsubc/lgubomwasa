@@ -10,56 +10,56 @@
   </div>
   <div class="card-body">
         <div class="container-fluid">
-      <table class="table table-hover table-striped table-bordered" id="list">
-        <colgroup>
-          <col width="5%">
-          <col width="10%">
-          <col width="25%">
-          <col width="15%">
-          <col width="20%">
-          <col width="10%">
-          <col width="15%">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Reading Date</th>
-            <th>Client</th>
-            <th>Amount</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-  
-          
+        <table class="table table-hover table-striped table-bordered" id="list">
+          <colgroup>
+            <col width="5%">
+            <col width="10%">
+            <col width="25%">
+            <col width="15%">
+            <col width="20%">
+            <col width="10%">
+            <col width="15%">
+          </colgroup>
+          <thead>
             <tr>
-              <td class="text-center"></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="text-center">
-                
-                            </td>
-              <td align="center">
-                 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                              Action
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item view_data" href="./?page=billings/view_billing&id="><span class="fa fa-eye text-dark"></span> View</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item edit_data" href="./?page=billings/manage_billing&id="><span class="fa fa-edit text-primary"></span> Edit</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
-                          </div>
-              </td>
+              <th>#</th>
+              <th>Reading Date</th>
+              <th>Client</th>
+              <th>Amount</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
-   
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          @foreach($billing_lists as $billings )
+          <tr>
+              <td class="text-center">{{$billings->id}}</td>
+              <td>{{$billings->reading_date}}</td>
+              <td>{{$billings->client->code}} - {{$billings->client->lastname}}, {{$billings->client->firstname}} </td>
+              <td>{{$billings->total}}</td>
+              <td>{{$billings->due_date}}</td>
+
+                <td class="text-center">{{$billings->status}}</td>
+
+                <td align="center">
+                   <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                Action
+                              <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu" role="menu">
+                              <a class="dropdown-item view_data" href="./?page=billings/view_billing&id="><span class="fa fa-eye text-dark"></span> View</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item edit_data" href="./?page=billings/manage_billing&id="><span class="fa fa-edit text-primary"></span> Edit</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+                            </div>
+                </td>
+              </tr>
+     
+          </tbody>
+          @endforeach
+        </table>
     </div>
   </div>
 </div>

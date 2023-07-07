@@ -15,10 +15,13 @@ class BillingsController extends Controller
 
 	    public function index()
 	    {
-	    $billing=Billing_list::orderBy('id')->paginate(10);
-	    	return view('Admin/billings.index', $billing);
+	    $billing_lists=Billing_list::orderby('id')
+	    											->with('client')
+	    											->paginate(10);
+	    	return view('Admin/billings.index', [
+                    'billing_lists'=>$billing_lists
+            ]);
 	    }
-
 	    public function manage_billings()
 	    {
 	    	return view('Admin/billings.manage_billing');

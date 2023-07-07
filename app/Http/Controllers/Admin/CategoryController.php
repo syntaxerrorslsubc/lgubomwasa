@@ -9,8 +9,10 @@ use App\Models\Category_list;
 class CategoryController extends Controller
 {
      public function index(){
-      $category=Category_list::paginate(10);
-        return view('Admin/category.index');
+      $category_lists=Category_list::orderby('id')->paginate(10);
+        return view('Admin/category.index', [
+                    'category_lists'=>$category_lists
+            ]);
     }
 
      public function manage_category(){
