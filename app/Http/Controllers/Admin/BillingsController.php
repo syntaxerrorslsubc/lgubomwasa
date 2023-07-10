@@ -46,9 +46,13 @@ class BillingsController extends Controller
 			
 		 }
 
-	    public function view_billing()
+	    public function view_billing(Request $request)
 	    {
-	    	return view('Admin/billings.view_billing');
+	    	$billing_list = Billing_list::where('id', $request->id)->first();
+
+	    	return view('Admin/billings.view_billing', [
+	    		'billing_list'=> $billing_list
+	    	]);
 	    }
 
 

@@ -63,3 +63,52 @@
 		<hr>
 	</div>
 </noscript>
+<script>
+	
+	$(document).ready(function(){
+        $('#delete-data').click(function(){
+			_conf("Are you sure to delete this billing permanently?","delete_billing",['<?= isset($id) ? $id : '' ?>'])
+		})
+		$('#print').click(function(){
+			var h = $('head').clone()
+			var p = $('#printout').clone()
+			var ph = $($('noscript#print-header').html()).clone()
+
+			var nw = window.open('', '_blank','width='+($(window).width() * .80)+',height='+($(window).height() * .90)+',left='+($(window).width() * .1)+',top='+($(window).height() * .05))
+					 nw.document.querySelector("head").innerHTML = h.html()
+					 nw.document.querySelector("body").innerHTML = ph[0].outerHTML + p[0].outerHTML
+					 nw.document.close()
+
+					 start_loader()
+					 setTimeout(() => {
+						 nw.print()
+						 setTimeout(() => {
+							nw.close()
+							end_loader() 
+						 }, 300);
+					 }, 300);
+		})
+	})
+    function delete_billing($id){
+		start_loader();
+		$.ajax({
+			url:_base_url_+"classes/Master.php?f=delete_billing",
+			method:"POST",
+			data:{id: $id},
+			dataType:"json",
+			error:err=>{
+				console.log(err)
+				alert_toast("An error occured.",'error');
+				end_loader();
+			},
+			success:function(resp){
+				if(typeof resp== 'object' && resp.status == 'success'){
+					location.replace("./?page=billings");
+				}else{
+					alert_toast("An error occured.",'error');
+					end_loader();
+				}
+			}
+		})
+	}
+</script>

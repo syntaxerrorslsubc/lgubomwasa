@@ -1,4 +1,7 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
+
+@section('content')
+
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b></b></h3>
 </div>
@@ -67,3 +70,4 @@
 		</div>
 	</div>
 </div>
+@endsection     

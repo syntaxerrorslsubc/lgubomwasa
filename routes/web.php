@@ -36,7 +36,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/manage_billings', [App\Http\Controllers\Admin\BillingsController::class, 'manage_billings'])->name('adminmanage_billings');
             Route::post('/admin/manage_billings/store', [App\Http\Controllers\Admin\BillingsController::class, 'storeBilling'])->name('adminmanage_billings_store');
 
-            Route::get('/admin/view_billings', [App\Http\Controllers\Admin\BillingsController::class, 'view_billings'])->name('adminview_billings');
+            Route::get('/admin/view_billings/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billings'])->name('adminview_billings');
 
 
             #Category

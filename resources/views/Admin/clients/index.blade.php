@@ -37,7 +37,7 @@
 							<td class="text-center">{{$clientsProfile->id}}</td>
 							<td>{{$clientsProfile->created_at}}</td>
 							<td>{{$clientsProfile->code}}</td>
-							<td>{{$clientsProfile->name}}</td>
+							<td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
 							<td>{{$clientsProfile->status}}</td>
 							
 							<td class="text-center">
