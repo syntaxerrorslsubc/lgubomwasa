@@ -1,22 +1,33 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>User checking bill</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./css/userstyle.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
 </head>
-
 <body>
-<!-- partial:index.partial.html -->
-    <form class="search" action="">
-      <input type="search" placeholder=" Account No." required>
-      <button type="submit">Check Bill</button>
+	<div class="topnav">
+    <div class="login-container">
+    <form action="/action_page.php">
+      <button type="submit">Login</button>
     </form>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  </div>
+</div>
+
+  <center><input type="hidden" name="_token" value="{{ csrf_token() }}" /> 
+        <br><br>
+        <img src="../images/logo.jpg" alt="Store Logo" class="brand-image img-circle elevation-3 bg-gradient-light" style="opacity: .8;width: 8rem;height: 8rem;max-height: unset">
+        </a> <br>
+  <b><h1 style="color:black;">BILLING QUERY</h1></body> </center>
+  </b>
+  	<div class="flex-parent jc-center">
+  <input type="search" placeholder="Meter Code" required>
+</div>
+
+<div class="jc-center">
+ <center> <button type="submit">Check Bill</button></center>
+</div>
 </body>
 </html>
+
