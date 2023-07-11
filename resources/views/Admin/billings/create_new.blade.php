@@ -17,55 +17,58 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="{{ route('adminmanage_billings_store') }}" id="billing-form" method="post"> @csrf
+						<form action="{{route('adminmanage_billing.store')}}" id="billing-form" method="post"> 
+							@csrf
 							<input type="hidden" name ="id" value="">
 							<div class="form-group mb-3">
-								<label for="client_id" class="control-label">Client</label>
-								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
-									@if($clients=\App\Models\Client_list::orderby('lastname', 'asc')->get())
-										@foreach($clients as $client)
-											<option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
-										@endforeach
-									@endif
+								<label for="category_id" class="control-label">Category</label>
+								<select name="category_id" id="category_id" class="form-control form-control-sm rounded-0" required="required">
+									<option value="1">commercial</option>
+									<option value="2">residential</option>
 								</select>
 							</div>
 							<div class="form-group mb-3">
-								<label for="reading_date" class="control-label">Reading Date</label>
-								<input type="date" class="form-control form-control-sm rounded-0" id="reading_date" name="reading_date" required="required" max="" value=""/>
+								<label for="firstname" class="control-label">First Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="firstname" name="firstname" required="required" value=""/>
 							</div>
 							<div class="form-group mb-3">
-								<label for="previous" class="control-label">Previous Reading</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" readonly value=""/>
+								<label for="middlename" class="control-label">Middle Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="middlename" name="middlename" placeholder="optional" value=""/>
 							</div>
 							<div class="form-group mb-3">
-								<label for="reading" class="control-label">Current Reading</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="reading" name="reading" required="required" value=""/>
+								<label for="lastname" class="control-label">Last Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="lastname" name="lastname" required value=""/>
 							</div>
 							<div class="form-group mb-3">
-								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value=""/>
+								<label for="contact" class="control-label">Contact #</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="contact" name="contact" required value=""/>
 							</div>
 							<div class="form-group mb-3">
-								<label for="total" class="control-label">Total Bill</label>
-								<input type="number" step="any" class="form-control form-control-sm rounded-0 text-right" id="total" readonly name="total" required value=""/>
+								<label for="address" class="control-label">Address</label>
+								<textarea rows="3" class="form-control form-control-sm rounded-0" id="address" name="address" required="required"></textarea>
 							</div>
-							<div class="form-group mb-3">
-								<label for="due_date" class="control-label">Due Date</label>
-								<input type="date" class="form-control form-control-sm rounded-0" id="due_date" name="due_date" required="required" value=""/>
+							<div class="form-group p-0 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+								<label for="meter_code" class="control-label">Meter Code</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="meter_code" name="meter_code" value="" required="required">
+							</div>
+							<div class="form-group p-0 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+								<label for="first_reading" class="control-label">First Reading</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="first_reading" name="first_reading" value="" required="required">
 							</div>
 							<div class="form-group">
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
-								<option value="0" >Pending</option>
-								<option value="1" >Paid</option>
+								<option value="1"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Active</span></option>
+								<option value="2"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Inctive</span></option>
 								</select>
 							</div>
+
 						</form>
 					</div>
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" form="billing-form" type="submit"><i class="fa fa-save"></i> Save</button>
+				<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" form="billing-form"><i class="fa fa-save"></i> Save</button>
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminmanage_billings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 			</div>
 		</div>

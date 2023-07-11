@@ -1,3 +1,6 @@
+@extends('layouts.Admin.default')
+
+@section('content')
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b>Billing Details</b></h3>
@@ -112,3 +115,5 @@
 		})
 	}
 </script>
+
+@endsection

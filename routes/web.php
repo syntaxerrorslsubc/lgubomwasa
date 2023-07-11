@@ -33,16 +33,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #Billing
             Route::get('/admin/billings', [App\Http\Controllers\Admin\BillingsController::class, 'index'])->name('adminbillings');
 
-            Route::get('/admin/manage_billings', [App\Http\Controllers\Admin\BillingsController::class, 'manage_billings'])->name('adminmanage_billings');
-            Route::post('/admin/manage_billings/store', [App\Http\Controllers\Admin\BillingsController::class, 'storeBilling'])->name('adminmanage_billings_store');
 
-            Route::get('/admin/view_billings/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billings'])->name('adminview_billings');
+            Route::get('/admin/manage_billings', [App\Http\Controllers\Admin\BillingsController::class, 'manage_Billing'])->name('adminmanage_billings');
+            Route::get('/admin/manage_billings/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'editBilling'])->name('adminmanage_billing');
+            Route::post('/admin/manage_billings/store', [App\Http\Controllers\Admin\BillingsController::class, 'storeBilling'])->name('adminmanage_billing.store');
+
+            Route::get('/admin/view_billings/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billing'])->name('adminview_billings');
 
 
             #Category
             Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admincategory');
 
-            Route::get('/admin/manage_category', [App\Http\Controllers\Admin\CategoryController::class, 'manage_category'])->name('adminmanage_category');
+            Route::get('/admin/manage_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'manage_category'])->name('adminmanage_category');
             Route::post('/admin/manage_category/store', [App\Http\Controllers\Admin\CategoryController::class, 'storeCategory'])->name('adminmanage_category_store');
 
             Route::get('/admin/view_category', [App\Http\Controllers\Admin\CategoryController::class, 'view_category'])->name('adminview_category');
@@ -52,7 +54,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
              Route::get('/admin/clients', [App\Http\Controllers\Admin\ClientsController::class, 'index'])->name('adminclients');
             Route::get('/admin/billing_history', [App\Http\Controllers\Admin\ClientsController::class, 'billing_history'])->name('adminbilling_history');
 
-            Route::get('/admin/manage_client', [App\Http\Controllers\Admin\ClientsController::class, 'manage_client'])->name('adminmanage_client');
+            
+            Route::get('/admin/manage_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'store_client'])->name('adminmanage_client');
             Route::post('/admin/manage_client/store', [App\Http\Controllers\Admin\ClientsController::class, 'storeClient'])->name('adminmanage_client_store');
 
             Route::get('/admin/view_client', [App\Http\Controllers\Admin\ClientsController::class, 'view_client'])->name('adminview_client');

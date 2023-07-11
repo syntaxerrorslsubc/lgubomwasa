@@ -48,9 +48,9 @@
                               <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu" role="menu">
-                              <a class="dropdown-item view_data" href="./?page=billings/view_billing&id="><span class="fa fa-eye text-dark"></span> View</a>
+                              <a class="dropdown-item view_data" href="/admin/view_billings/{id}"><span class="fa fa-eye text-dark"></span> View</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item edit_data" href="./?page=billings/manage_billing&id="><span class="fa fa-edit text-primary"></span> Edit</a>
+                              <a class="dropdown-item edit_data" href="{{ url('admin/manage_billings/').'/'.$billings->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
                             </div>
@@ -67,7 +67,7 @@
 <script>
   $(document).ready(function(){
     $('.delete_data').click(function(){
-      _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('data-id')])
+      _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('id')])
     })
     $('.table').dataTable({
       columnDefs: [
@@ -80,7 +80,7 @@
   function delete_billing($id){
     start_loader();
     $.ajax({
-      url:_base_url_+"classes/Master.php?f=delete_billing",
+      url:_base_url_+"{{route('adminbillings')}}",
       method:"POST",
       data:{id: $id},
       dataType:"json",

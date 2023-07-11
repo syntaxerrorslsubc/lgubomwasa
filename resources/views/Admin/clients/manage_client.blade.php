@@ -23,8 +23,11 @@
 							<div class="form-group mb-3">
 								<label for="category_id" class="control-label">Category</label>
 								<select name="category_id" id="category_id" class="form-control form-control-sm rounded-0" required="required">
-									<option value="" disabled></option>
-									
+									@if($categories=\App\Models\Category_list::orderby('id', 'asc')->get())
+										@foreach($categories as $category)
+											<option value="{{$category->id}}">{{$category->name}}</option>
+										@endforeach
+									@endif
 								</select>
 							</div>
 							<div class="form-group mb-3">
@@ -58,8 +61,8 @@
 							<div class="form-group">
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
-								<option value="1" >Active</option>
-								<option value="2" >Inactive</option>
+								<option value="1"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Active</span></option>
+								<option value="2"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Inctive</span></option>
 								</select>
 							</div>
 						</form>
@@ -73,5 +76,50 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		$('#category_id').select2({
+			placeholder:"Please Select Here",
+			containerCssClass:'form-control form-control-sm rounded-0'
+		})
+		$('#client-form').submit(function(e){
+			e.preventDefault();
+            var _this = $(this)
+			 $('.err-msg').remove();
+			start_loader();
+			$.ajax({
+				url:_this.attr('action'),
+				data: new FormData($(this)[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST',
+                dataType: 'json',
+				error:err=>{
+					console.log(err)
+					alert_toast("An error occured",'error');
+					end_loader();
+				},
+				success:function(resp){
+					if(typeof resp =='object' && resp.status == 'success'){
+						location.href = "../admin/manage_client/store"+resp.aid
+					}else if(resp.status == 'failed' && !!resp.msg){
+                        var el = $('<div>')
+                            el.addClass("alert alert-danger err-msg").text(resp.msg)
+                            _this.prepend(el)
+                            el.show('slow')
+                            $("html, body, .modal").scrollTop(0)
+                            end_loader()
+                    }else{
+						alert_toast("An error occured",'error');
+						end_loader();
+                        console.log(resp)
+					}
+				}
+			})
+		})
 
+	})
+</script>
 @endsection				

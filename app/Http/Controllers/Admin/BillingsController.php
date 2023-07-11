@@ -22,38 +22,54 @@ class BillingsController extends Controller
                     'billing_lists'=>$billing_lists
             ]);
 	    }
-	    public function manage_billings()
+	    public function editBilling(Request $request)
 	    {
-	    	return view('Admin/billings.manage_billing');
+	    	$billing=Billing_list::where('id', $request->id)->first();
+	
+	    	 return view('Admin.billings.edit_billing',[
+	    	 	 'billing'=>$billing
+	    	 ]);
 	    }
 
 	    public function storeBilling(Request $request)
 		 {
 
-				$billing = new Billing_list;
-				$billing->clientid = $request->client_id;
-				$billing->reading_date = $request->reading_date;
-				$billing->due_date = $request->due_date;
-				$billing->reading = $request->reading;
-				$billing->previous = $request->previous;
-				$billing->rate = $request->rate;
-				$billing->total = $request->total;
-				$billing->status = $request->status;
+				$storeBilling = new Billing_list;
+				$storeBilling->reading_date = $request->reading_date;
+				$storeBilling->due_date = $request->due_date;
+				$storeBilling->reading = $request->reading;
+				$storeBilling->previous = $request->previous;
+				$storeBilling->rate = $request->rate;
+				$storeBilling->total = $request->total;
+				$storeBilling->status = $request->status;
 				
-				if($billing->save()){
+				if($storeBilling->save()){
 					return redirect()->back()->with('Success','Bill has been created successfully.');
 				}
 			
 		 }
 
-	    public function view_billing(Request $request)
-	    {
-	    	$billing_list = Billing_list::where('id', $request->id)->first();
+	    // public function view_billing(Request $request):View
+	    // {
+	    // 	$billing_list = Billing_list::where('id', $request->id);
 
-	    	return view('Admin/billings.view_billing', [
-	    		'billing_list'=> $billing_list
-	    	]);
-	    }
+	    // 	return view('Admin/billings.view_billing', [
+	    // 		'billing_list'=> $billing_list
+	    // 	]);
+	    // }
+
+ public function view_billing($id = null)
+    {
+        $billing = Billing_list::select(
+                'billing_lists.*', 
+                'billing_lists.clientid as billing_lists'
+            )->where('billing_lists.id', $id)
+            ->first(); 
+
+        return view('Admin/billings.view_billing', compact(
+            'billing'));
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
 
+@section('content')
 
 <div class="container-fluid">
 	<form action="" id="category-form" method="post">
@@ -17,5 +18,5 @@
 		</div>
 	</form>
 </div>
-
+@endsection
 					

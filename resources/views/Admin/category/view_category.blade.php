@@ -1,4 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
+
+@section('content')
 <style>
 	#uni_modal .modal-footer{
 		display:none;
@@ -17,3 +19,4 @@
 <div class="text-right py-3">
 	<button class="btn btn-primary-light btn-sm bg-gradient-light border" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
 </div>
+@endsection
