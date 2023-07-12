@@ -34,7 +34,7 @@ class BillingsController extends Controller
 	    public function storeBilling(Request $request)
 		 {
 
-				$storeBilling = new Billing_list;
+				$storeBilling = Billing_list::where('id', $request->id)->first();
 				$storeBilling->reading_date = $request->reading_date;
 				$storeBilling->due_date = $request->due_date;
 				$storeBilling->reading = $request->reading;
@@ -44,7 +44,7 @@ class BillingsController extends Controller
 				$storeBilling->status = $request->status;
 				
 				if($storeBilling->save()){
-					return redirect()->back()->with('Success','Bill has been created successfully.');
+					return redirect()->back()->withErrors('Success','Bill has been created successfully.');
 				}
 			
 		 }

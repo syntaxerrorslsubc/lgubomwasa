@@ -17,7 +17,7 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="{{route('adminmanage_billing.store')}}" method="post"> @csrf
+						<form action="{{route('adminedit_billing.store')}}" method="post"> @csrf
 							<input type="hidden" name ="id" value="">
 							<div class="form-group mb-3">
 								<label for="client_id" class="control-label">Client</label>
@@ -66,7 +66,7 @@
 			</div>
 			<div class="card-footer py-1 text-center">
 				<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminmanage_billings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" form="billing-form" href="{{route('adminmanage_billings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 			</div>
 		</div>
 	</div>
@@ -82,8 +82,78 @@
 
 		$('#total').val((parseFloat(current_reading) - parseFloat(previous)) * parseFloat(rate))
 	}
+		// $(document).ready(function(){
+		// $('#client_id').select2({
+		// 	placeholder:"Please Select Here",
+		// 	containerCssClass:'form-control form-control-sm rounded-0'
+		// })
+		// $('#client_id').change(function(){
+		// 	var id = $(this).val()
+		// 	if(id <= 0)
+		// 		return false;
+		// 	start_loader()
+		// 	$.ajax({
+		// 		url:_base_url_+"classes/Master.php?f=get_previous_reading",
+		// 		data:{client_id : id, id: '<?= isset($id) ? $id : '' ?>'},
+		// 		method:'POST',
+		// 		dataType:'json',
+		// 		error:err=>{
+		// 			console.log(err)
+		// 			alert_toast("An error occurred.", 'error')
+		// 			end_loader()
+		// 		},
+		// 		success:function(resp){
+		// 			if(resp.status == 'success'){
+		// 				$('#previous').val(resp.previous)
+		// 				calc_total()
+		// 			}else{
+		// 				alert_toast("An error occurred.", 'error')
+		// 			}
+		// 			end_loader();
+		// 		}
+		// 	})
+		// })
+		// $('#reading').on('input', function(){
+		// 	calc_total()
+		// })
+		// $('#billing-form').submit(function(e){
+		// 	e.preventDefault();
+        //     var _this = $(this)
+		// 	 $('.err-msg').remove();
+		// 	start_loader();
+		// 	$.ajax({
+		// 		url:_this.attr('action'),
+		// 		data: new FormData($(this)[0]),
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         method: 'POST',
+        //         type: 'POST',
+        //         dataType: 'json',
+		// 		error:err=>{
+		// 			console.log(err)
+		// 			alert_toast("An error occured",'error');
+		// 			end_loader();
+		// 		},
+		// 		success:function(resp){
+		// 			if(typeof resp =='object' && resp.status == 'success'){
+		// 				location.href = "/admin/view_billings/{id}"+resp.id
+		// 			}else if(resp.status == 'failed' && !!resp.msg){
+        //                 var el = $('<div>')
+        //                     el.addClass("alert alert-danger err-msg").text(resp.msg)
+        //                     _this.prepend(el)
+        //                     el.show('slow')
+        //                     $("html, body, .modal").scrollTop(0)
+        //                     end_loader()
+        //             }else{
+		// 				alert_toast("An error occured",'error');
+		// 				end_loader();
+        //                 console.log(resp)
+		// 			}
+		// 		}
+		// 	})
 		
-</script>
+
 
 @endsection
 
