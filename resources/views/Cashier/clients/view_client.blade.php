@@ -1,4 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Cashier.default')
+
+@section('content')
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b>Client Details</b></h3>
 </div>
@@ -57,3 +59,4 @@
 		</div>
 	</div>
 </div>
+@endsection
