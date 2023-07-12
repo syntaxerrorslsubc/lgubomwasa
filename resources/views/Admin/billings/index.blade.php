@@ -32,15 +32,15 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($billing_lists as $billings )
+          @foreach($billing_lists as $billing_list)
           <tr>
-              <td class="text-center">{{$billings->id}}</td>
-              <td>{{$billings->reading_date}}</td>
-              <td>{{$billings->client->code}} - {{$billings->client->lastname}}, {{$billings->client->firstname}} </td>
-              <td>{{$billings->total}}</td>
-              <td>{{$billings->due_date}}</td>
+              <td class="text-center">{{$billing_list->id}}</td>
+              <td>{{$billing_list->reading_date}}</td>
+              <td>{{$billing_list->client->code}} - {{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
+              <td>{{$billing_list->total}}</td>
+              <td>{{$billing_list->due_date}}</td>
 
-                <td class="text-center">{{$billings->status}}</td>
+                <td class="text-center">{{$billing_list->status}}</td>
 
                 <td align="center">
                    <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -48,9 +48,9 @@
                               <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu" role="menu">
-                              <a class="dropdown-item view_data" href="/admin/view_billings/{id}"><span class="fa fa-eye text-dark"></span> View</a>
+                              <a class="dropdown-item view_data" href="{{ url('/Admin/billings/view_billing/').'/'.$billing_list->id}}"><span class="fa fa-eye text-dark"></span> View</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item edit_data" href="{{ route('adminedit_billing').'/'.$billings->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
+                              <a class="dropdown-item edit_data" href="{{ url('/admin/edit_billing/').'/'.$billing_list->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
                             </div>

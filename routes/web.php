@@ -39,9 +39,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
 
             Route::get('/admin/edit_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'editBilling'])->name('adminedit_billing');
-            Route::post('/admin/edit_billing/store', [App\Http\Controllers\Admin\BillingsController::class, 'storeBilling'])->name('adminedit_billing.store');
+            Route::post('/admin/edit_billing/update', [App\Http\Controllers\Admin\BillingsController::class, 'updateBilling'])->name('adminedit_billing.update');
 
-            Route::get('/admin/view_billings/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billing'])->name('adminview_billings');
+            Route::get('/admin/view_billing/{id?}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billing'])->name('adminview_billing');
 
 
             #Category

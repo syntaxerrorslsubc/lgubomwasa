@@ -17,8 +17,8 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="{{route('adminedit_billing.store')}}" method="post"> @csrf
-							<input type="hidden" name ="id" value="">
+						<form action="{{route('adminedit_billing.update')}}" method="post"> @csrf
+							<input type="hidden" name ="id" value="{{$billing->id}}">
 							<div class="form-group mb-3">
 								<label for="client_id" class="control-label">Client</label>
 								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
@@ -39,7 +39,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="reading" class="control-label">Current Reading</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="reading" name="reading" required="required" value="{{$billing->reading}}"/>
+								<input type="text" class="form-control form-control-sm rounded-0" oninput="calc_total()" id="reading" name="reading" required="required" value="{{$billing->reading}}"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
@@ -60,19 +60,22 @@
 								<option value="1" >Paid</option>
 								</select>
 							</div>
+							<div class="card-footer py-1 text-center">
+								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
+								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0"  href="{{route('adminmanage_billings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
+							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-			<div class="card-footer py-1 text-center">
-				<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" form="billing-form" href="{{route('adminmanage_billings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
-			</div>
+			
 		</div>
 	</div>
 </div>
 <script>
 	function calc_total(){
+		
+		var minimum=150;
 		var current_reading = $('#reading').val()
 		var previous = $('#previous').val()
 		var rate = $('#rate').val()
@@ -80,7 +83,15 @@
 		current_reading = current_reading > 0 ? current_reading : 0;
 		previous = previous > 0 ? previous : 0;
 
-		$('#total').val((parseFloat(current_reading) - parseFloat(previous)) * parseFloat(rate))
+		var consume = parseFloat(current_reading) - parseFloat(previous);
+
+		if (consume <= 10) {
+			$('#total').val(minimum);
+		}else{
+			$('#total').val(consume * parseFloat(rate)+ minimum);
+
+		}
+
 	}
 		// $(document).ready(function(){
 		// $('#client_id').select2({
@@ -152,7 +163,7 @@
 		// 			}
 		// 		}
 		// 	})
-		
+	</script>
 
 
 @endsection

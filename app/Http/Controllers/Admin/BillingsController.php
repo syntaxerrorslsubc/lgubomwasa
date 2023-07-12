@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Billing_list;
+use Carbon\Carbon;
 
 class BillingsController extends Controller
 {
@@ -15,9 +16,8 @@ class BillingsController extends Controller
 
 	    public function index()
 	    {
-	    $billing_lists=Billing_list::orderby('id')
-	    											->with('client')
-	    											->paginate(10);
+	    $billing_lists=Billing_list::paginate(10);
+	    	
 	    	return view('Admin/billings.index', [
                     'billing_lists'=>$billing_lists
             ]);
@@ -31,10 +31,9 @@ class BillingsController extends Controller
 	    	 ]);
 	    }
 
-	    public function storeBilling(Request $request)
+	    public function updateBilling(Request $request)
 		 {
-
-				$storeBilling = Billing_list::where('id', $request->id)->first();
+				$storeBilling = Billing_list::where('id', $request->id)->first(); 
 				$storeBilling->reading_date = $request->reading_date;
 				$storeBilling->due_date = $request->due_date;
 				$storeBilling->reading = $request->reading;
