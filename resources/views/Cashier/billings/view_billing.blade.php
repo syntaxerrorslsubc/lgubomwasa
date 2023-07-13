@@ -15,6 +15,7 @@
 				<div class="container-fluid">
 					<div class="container-fluid" id="printout">
 						<div class="row">
+							@if ($billing)
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading Date</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Client Name</div>
@@ -34,6 +35,7 @@
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">
 								
 							</div>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -45,7 +47,13 @@
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
-	</div>
+	</div> @if ($billing)
+        <p>Amount: {{ $billing->amount }}</p>
+        <p>Description: {{ $billing->description }}</p>
+        <p>Last Updated: {{ $billing->updated_at }}</p>
+    @else
+        <p>No billing information found.</p>
+    @endif
 </div>
 <noscript id="print-header">
 	<div>

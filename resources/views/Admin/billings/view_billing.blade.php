@@ -18,10 +18,11 @@
 				<div class="container-fluid">
 					<div class="container-fluid" id="printout">
 						<div class="row">
+							@if ($billing)
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading Date</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading_date}</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading_date}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Client Name</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->client->lastname}}, {{$billing->client->firstname}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Previous</div>
@@ -37,6 +38,7 @@
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">
 								{{$billing->status}}
 							</div>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -50,6 +52,8 @@
 		</div>
 	</div>
 </div>
+
+
 <noscript id="print-header">
 	<div>
 		<div class="d-flex w-100 align-items-center">

@@ -5,7 +5,7 @@
   <div class="card-header">
     <h3 class="card-title">List of Bill</h3>
     <div class="card-tools">
-      <a href="{{route('adminmanage_billings')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+      <a href="{{route('adminadd_billing')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
     </div>
   </div>
   <div class="card-body">
@@ -65,6 +65,25 @@
 </div>
 
 <script>
+
+  $(document).ready(function () {
+            $('.view-btn').click(function () {
+                var billingId = $(this).data('id');
+
+                // Make an AJAX request to fetch the billing details
+                $.ajax({
+                    url: '/admin/view_billing/' + billingId,
+                    type: 'GET',
+                    success: function (response) {
+                        $('#billing-details').html(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+
   $(document).ready(function(){
     $('.delete_data').click(function(){
       _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('id')])

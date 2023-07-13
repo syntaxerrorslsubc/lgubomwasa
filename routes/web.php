@@ -34,14 +34,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/billings', [App\Http\Controllers\Admin\BillingsController::class, 'index'])->name('adminbillings');
 
 
-            Route::get('/admin/edit_billing', [App\Http\Controllers\Admin\BillingsController::class, 'manage_Billing'])->name('adminmanage_billings');
-            Route::get('/admin/edit_billing', [App\Http\Controllers\Admin\BillingsController::class, 'manage_Billing'])->name('adminmanage_billings');
+            Route::get('/admin/add_billing', [App\Http\Controllers\Admin\BillingsController::class, 'addBilling'])->name('adminadd_billing');
+            Route::post('/admin/add_billing/save', [App\Http\Controllers\Admin\BillingsController::class, 'saveBilling'])->name('adminadd_billing.save');
 
 
             Route::get('/admin/edit_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'editBilling'])->name('adminedit_billing');
             Route::post('/admin/edit_billing/update', [App\Http\Controllers\Admin\BillingsController::class, 'updateBilling'])->name('adminedit_billing.update');
 
-            Route::get('/admin/view_billing/{id?}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billing'])->name('adminview_billing');
+            Route::get('/admin/view_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billing'])->name('adminview_billing');
 
 
             #Category
