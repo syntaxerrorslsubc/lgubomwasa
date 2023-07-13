@@ -43,6 +43,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/admin/view_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'view_billing'])->name('adminview_billing');
 
+            Route::get('/admin/delete_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'deleteBilling'])->name('admindelete_billing');
+
 
             #Category
             Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admincategory');

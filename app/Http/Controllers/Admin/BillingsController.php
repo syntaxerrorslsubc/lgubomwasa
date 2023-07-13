@@ -15,10 +15,10 @@ class BillingsController extends Controller
 
 	    public function index()
 	    {
-	    $billing_lists=Billing_list::paginate(10);
+	    $billing=Billing_list::paginate(10);
 	    	
 	    	return view('Admin/billings.index', [
-                    'billing_lists'=>$billing_lists
+                    'billing'=>$billing
             ]);
 	    }
 	    public function editBilling(Request $request)
@@ -87,6 +87,21 @@ class BillingsController extends Controller
         return view('Admin/billings.view_billing', compact(
             'billing'));
         return response()->json($billing);
+	}
+
+	public function deleteBilling($id)
+	{
+		$billing = Billing_list::find($id);
+
+		if ($billing) {
+        // Delete the billing record
+        $billing->delete();
+    }
+
+        return view('Admin/billings.index', compact(
+            'billing'));
+        return response()->json(['message' => 'Billing record deleted.']);
+
 	}
 
 }

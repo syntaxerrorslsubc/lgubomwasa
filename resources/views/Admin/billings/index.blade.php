@@ -32,7 +32,7 @@
             </tr>
           </thead>
           <tbody>
-          @foreach($billing_lists as $billing_list)
+          @foreach($billing as $billing_list)
           <tr>
               <td class="text-center">{{$billing_list->id}}</td>
               <td>{{$billing_list->reading_date}}</td>
@@ -52,7 +52,7 @@
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item edit_data" href="{{ url('/admin/edit_billing/').'/'.$billing_list->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+                              <a class="dropdown-item delete_data" href="{{ url('/admin/delete_billing/').'/'.$billing_list->id}}" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
                             </div>
                 </td>
               </tr>
@@ -66,41 +66,28 @@
 
 <script>
 
-  $(document).ready(function () {
-            $('.view-btn').click(function () {
-                var billingId = $(this).data('id');
 
-                // Make an AJAX request to fetch the billing details
-                $.ajax({
-                    url: '/admin/view_billing/' + billingId,
-                    type: 'GET',
-                    success: function (response) {
-                        $('#billing-details').html(response);
-                    },
-                    error: function (xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            });
-        });
+    $(document).ready(function () {
+       $('.delete_data').click(function(){
 
-  $(document).ready(function(){
-    $('.delete_data').click(function(){
-      _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('id')])
-    })
-    $('.table').dataTable({
-      columnDefs: [
-          { orderable: false, targets: [4] }
-      ],
-      order:[0,'asc']
+        var billingId = $(this).data('id');
+      _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('data-id')])
+       })
+      $('.table').dataTable({
+        columnDefs: [
+            { orderable: false, targets: [4] }
+        ],
+        order:[0,'asc']
+      });
+      $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
+
     });
-    $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
-  })
+
   function delete_billing($id){
     start_loader();
     $.ajax({
-      url:_base_url_+"{{route('adminbillings')}}",
-      method:"POST",
+     url: '/admin/delete_billing/' + billingId,
+      type: 'DELETE',
       data:{id: $id},
       dataType:"json",
       error:err=>{

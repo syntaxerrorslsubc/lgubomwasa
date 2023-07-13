@@ -43,7 +43,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value=""/>
+								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value="{{$billing->previous}}"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="total" class="control-label">Total Bill</label>
@@ -61,7 +61,7 @@
 								</select>
 							</div>
 							<div class="card-footer py-1 text-center">
-								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit" href="{{url('/admin/view_billing/')}}"><i class="fa fa-save"></i> Save</button>
+								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit" href="{{ url('/admin/view_billing/').'/'.$billing->id}}"><i class="fa fa-save"></i> Save</button>
 								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0"  href="{{route('adminbillings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
 						</form>
