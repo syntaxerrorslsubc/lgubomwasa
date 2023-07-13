@@ -72,16 +72,16 @@
 
         var billingId = $(this).data('id');
       _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('data-id')])
-       })
-      $('.table').dataTable({
-        columnDefs: [
-            { orderable: false, targets: [4] }
-        ],
-        order:[0,'asc']
-      });
-      $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
+       };
+    //   $('.table').dataTable({
+    //     columnDefs: [
+    //         { orderable: false, targets: [4] }
+    //     ],
+    //     order:[0,'asc']
+    //   });
+    //   $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
 
-    });
+    // });
 
   function delete_billing($id){
     start_loader();

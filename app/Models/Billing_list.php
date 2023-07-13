@@ -14,4 +14,6 @@ class Billing_list extends Model
     {
         return $this->belongsTo(Client_list::class, 'clientid', 'id');
     }
+
+    
 }

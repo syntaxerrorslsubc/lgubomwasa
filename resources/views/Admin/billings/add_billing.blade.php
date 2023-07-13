@@ -17,7 +17,8 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="{{route('adminadd_billing.save')}}" method="post"> @csrf
+						<form action="{{route('adminadd_billing.save')}}" method="post"> 
+							@csrf
 							<input type="hidden" name ="id" value="">
 							<div class="form-group mb-3">
 								<label for="client_id" class="control-label">Client</label>
@@ -35,7 +36,12 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="previous" class="control-label">Previous Reading</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="{{$newBilling->previous}}">
+									@if($previous=\App\Models\Billing_list::get())
+								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="">
+										@foreach($previous as $previouses)
+											{{$previouses->previous}}
+										@endforeach
+								@endif
 							</div>
 							<div class="form-group mb-3">
 								<label for="reading" class="control-label">Current Reading</label>
@@ -43,7 +49,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value="{{$newBilling->rate}}"/>
+								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value=""/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="total" class="control-label">Total Bill</label>
@@ -64,6 +70,7 @@
 								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
 								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminbillings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
+					
 						</form>
 					</div>
 				</div>
