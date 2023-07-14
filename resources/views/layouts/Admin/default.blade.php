@@ -218,7 +218,7 @@
                         </p>
                       </a>
                     </li>
-                                        <li class="nav-header">Maintenance</li>
+                    <li class="nav-header">Maintenance</li>
                     <li class="nav-item dropdown">
                       <a href="{{route('admincategory')}}" class="nav-link nav-category">
                         <i class="nav-icon fas fa-th-list"></i>
@@ -272,7 +272,6 @@
         <!-- Main content -->
         <section class="content  text-dark">
           <div class="container-fluid">
-            
             
             @yield('content')
           </div>

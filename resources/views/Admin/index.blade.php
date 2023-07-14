@@ -36,7 +36,7 @@
           <span class="info-box-text">Total Clients</span>
           @if($nOclient=App\Models\Client_list::count())
           <span class="info-box-number">
-              {{$nOcategories}}
+              {{$nOclient}}
           </span>
           @endif
         </div>
@@ -52,7 +52,7 @@
           <span class="info-box-text">Pending Bills</span>
           @if($nObilling=App\Models\Billing_list::count())
           <span class="info-box-number">
-              {{$nOcategories}}
+              {{$nObilling}}
          </span>
          @endif
         </div>

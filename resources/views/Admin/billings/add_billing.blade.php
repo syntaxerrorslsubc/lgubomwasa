@@ -37,11 +37,12 @@
 							<div class="form-group mb-3">
 								<label for="previous" class="control-label">Previous Reading</label>
 									@if($previous=\App\Models\Billing_list::get())
-								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="">
-										@foreach($previous as $previouses)
+								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="@foreach($previous as $previouses)
 											{{$previouses->previous}}
-										@endforeach
+										@endforeach">
+										
 								@endif
+							</input>
 							</div>
 							<div class="form-group mb-3">
 								<label for="reading" class="control-label">Current Reading</label>
