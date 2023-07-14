@@ -12,26 +12,17 @@
   }
 </style>
 <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-gradient-secondary elevation-1"><i class="fas fa-th-list"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Categories</span>
-          <span class="info-box-number">
-            2                      </span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
     <!-- /.col -->
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-gradient-success elevation-1"><i class="fas fa-users"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Total Clients</span>
+          @if($nOclient=App\Models\Client_list::count())
           <span class="info-box-number">
-            1                      </span>
+              {{$nOclient}}
+          </span>
+          @endif
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -43,8 +34,11 @@
         <span class="info-box-icon bg-gradient-danger elevation-1"><i class="fas fa-file-invoice"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Pending Bills</span>
+          @if($nObilling=App\Models\Billing_list::count())
           <span class="info-box-number">
-            0                      </span>
+              {{$nObilling}}
+         </span>
+         @endif
         </div>
         <!-- /.info-box-content -->
       </div>

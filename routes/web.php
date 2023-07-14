@@ -110,14 +110,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/meterreader', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'index'])->name('meterreaderdashboard');
 
             #Billings
-                    Route::get('/meterreader/manage_billings', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'manage_billings'])->name('meterreadermanage_billings');
-                    Route::get('/meterreader/view_billings', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'view_billings'])->name('meterreaderview_billings');
-                    Route::get('/meterreader/billings', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'index'])->name('meterreaderbillings');
+                    Route::get('/meterreader/manage_billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'manage_billings'])->name('meterreadermanage_billings');
+                    Route::get('/meterreader/view_billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'view_billings'])->name('meterreaderview_billings');
+                    Route::get('/meterreader/billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'index'])->name('meterreaderbillings');
 
             #Clients
-                Route::get('/meterreader/manage_client', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'manage_client'])->name('meterreadermanage_client');
-                Route::get('/meterreader/view_client', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'view_client'])->name('meterreaderview_client');
-                Route::get('/meterreader/clients', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'index'])->name('meterreaderclients');
+                Route::get('/meterreader/manage_client', [App\Http\Controllers\MeterReader\ClientsController::class, 'manage_client'])->name('meterreadermanage_client');
+                Route::get('/meterreader/view_client', [App\Http\Controllers\MeterReader\ClientsController::class, 'view_client'])->name('meterreaderview_client');
+                Route::get('/meterreader/clients', [App\Http\Controllers\MeterReader\ClientsController::class, 'index'])->name('meterreaderclients');
             });
 
 
