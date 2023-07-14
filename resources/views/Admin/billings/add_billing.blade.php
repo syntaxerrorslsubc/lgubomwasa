@@ -50,7 +50,20 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value=""/>
+								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
+									@if($rates=\App\Models\Client_list::orderby('name', 'asc')->get())
+										@foreach($rate as $rates)
+											<option value="{{$rates->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+										@endforeach
+									@endif
+								</select>
+								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value="
+								@if($rate=\App\Models\Category_list::orderby(get('rate'))
+									@foreach($rate as $rates)
+											{{$rates->rates}}
+									@endforeach
+								@endif
+								"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="total" class="control-label">Total Bill</label>

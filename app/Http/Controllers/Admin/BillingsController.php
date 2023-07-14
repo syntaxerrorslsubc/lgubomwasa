@@ -48,17 +48,12 @@ class BillingsController extends Controller
 		 }
 
 		 public function addBilling(Request $request){
-		 	$newBilling=Billing_list::where('id', $request->id)->first();
-
-		 	return view('Admin.billings.add_billing',[
-		 		'newBilling'=>$newBilling
-		 	]);
+		 	return view('Admin.billings.add_billing');
 		 }
 
 
 		 public function saveBilling(Request $request){
-		 		$saveNewBilling = Billing_list::where('id', $request->id)->first(); 
-				$saveNewBilling->reading_date = $request->reading_date;
+		 		$saveNewBilling = new Billing_list; 
 				$saveNewBilling->due_date = $request->due_date;
 				$saveNewBilling->reading = $request->reading;
 				$saveNewBilling->previous = $request->previous;

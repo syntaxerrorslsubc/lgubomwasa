@@ -23,18 +23,23 @@ class ClientsController extends Controller
             ]);
         }
 
-        public function manage_client()
+        public function add_client()
         {
             return view('Admin/clients.manage_client');
         }
 
-        public function storeClient(Request $request)
+        public function saveClient(Request $request)
          {
 
                 $client = new Client_lists;
-                $client->created_at = $request->created_at;
-                $client->code = $request->code;
-                $client->name = $request->name;
+                $client->category_id = $request->category_id;
+                $client->firstname = $request->firstname;
+                $client->lastname = $request->lastname;
+                $client->middlename = $request->middlename;
+                $client->address = $request->address;
+                $client->contact = $request->contact;
+                $client->meter_code = $request->meter_code;
+                $client->first_reading = $request->first_reading;
                 $client->status = $request->status;
                 if($client->save()){
                     return redirect()->back()->with('Success','Client has been created successfully.');

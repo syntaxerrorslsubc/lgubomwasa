@@ -8,12 +8,19 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+                    name
+                    img
+                    cover
+                    rate
      */
     public function up(): void
     {
-        Schema::create('category_lists', function (Blueprint $table) {
-            $table->id()->autoincrement();
+        Schema::create('system_infos', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
+            $table->string('img');
+            $table->string('cover');
+            $table->float('rate', 12, 2);
             $table->timestamps();
         });
     }
@@ -23,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_lists');
+        Schema::dropIfExists('system_infos');
     }
 };

@@ -8,31 +8,29 @@ use App\Models\Category_list;
 
 class CategoryController extends Controller
 {
-     public function index(){
-      $category_lists=Category_list::orderby('id')->paginate(10);
+    public function index() {
+        $category_lists=Category_list::orderby('id')->paginate(10);
         return view('Admin/category.index', [
-                    'category_lists'=>$category_lists
-            ]);
+            'category_lists'=>$category_lists
+        ]);
     }
 
-     public function manage_category(){
+    public function add_category(){
         return view('Admin/category.manage_category');
     }
 
-    public function storeCategory(Request $request)
-         {
+    public function saveCategory(Request $request) {
 
-                $cat = new Category_lists;
-                $cat->name = $request->name;
-                $cat->status = $request->status;
+        $cat = new Category_list;
+        $cat->name = $request->name;
                 
-                if($cat->save()){
-                    return redirect()->back()->with('Success','Category has been created successfully.');
-                }
-            
-         }
+        if($cat->save()){
+            return redirect()->back()->with('Success','Category has been created successfully.');
+        }
+             
+    }
 
-     public function view_category(){
+    public function view_category(){
         return view('Admin/category.view_category');
     }
 }

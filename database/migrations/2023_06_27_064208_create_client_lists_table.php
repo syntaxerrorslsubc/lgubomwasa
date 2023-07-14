@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id()->autoincrement();
             $table->string('code', 100);
             $table->integer('category_id')->unique();
-            $table->text('firstname');
-            $table->text('middlename');
-            $table->text('lastname');
+            $table->string('firstname');
+            $table->string('middlename');
+            $table->string('lastname');
+            $table->string('address');
             $table->text('contact');
             $table->string('meter_code', 100);
             $table->float('first_reading', 12, 2);
             $table->tinyinteger('status');
-            $table->tinyinteger('delete_flag');
             $table->timestamps();
         });
     }

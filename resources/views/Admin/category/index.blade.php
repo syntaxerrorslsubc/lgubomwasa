@@ -10,7 +10,7 @@
 	<div class="card-header">
 		<h3 class="card-title">List of Category</h3>
 		<div class="card-tools">
-			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+			<a href="{{route('admin.category.add')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -21,31 +21,23 @@
 					<col width="15%">
 					<col width="50%">
 					<col width="15%">
-					<col width="15%">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Date Created</th>
 						<th>Name</th>
-						<th>Status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($category_lists as $categories )
+				@if(isset($category_lists))
+					@foreach($category_lists as $categories )
          	 			<tr>
               				<td class="text-center">{{$categories->id}}</td>
 							<td>{{$categories->created_at}}</td>
 							<td>{{$categories->name}}</td>
-							<td class="text-center">
-								@if(${{$categories->status}}->status === 0)
-				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
-				                @elseif(${{$categories->status}}->status === 1)
-				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Denied</span>
-				                @endif
-							</td>
-
+	
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
@@ -62,7 +54,8 @@
 						</tr>
 					
 				</tbody>
-				@endforeach
+					@endforeach
+				@endif
 			</table>
 		</div>
 	</div>

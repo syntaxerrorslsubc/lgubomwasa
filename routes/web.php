@@ -34,7 +34,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/billings', [App\Http\Controllers\Admin\BillingsController::class, 'index'])->name('adminbillings');
 
 
-            Route::get('/admin/add_billing', [App\Http\Controllers\Admin\BillingsController::class, 'addBilling'])->name('adminadd_billing');
+            Route::get('/admin/add_billing/', [App\Http\Controllers\Admin\BillingsController::class, 'addBilling'])->name('adminadd_billing');
             Route::post('/admin/add_billing/save', [App\Http\Controllers\Admin\BillingsController::class, 'saveBilling'])->name('adminadd_billing.save');
 
 
@@ -49,8 +49,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #Category
             Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admincategory');
 
-            Route::get('/admin/manage_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'manage_category'])->name('adminmanage_category');
-            Route::post('/admin/manage_category/store', [App\Http\Controllers\Admin\CategoryController::class, 'storeCategory'])->name('adminmanage_category_store');
+            Route::get('/admin/category/add', [App\Http\Controllers\Admin\CategoryController::class, 'add_category'])->name('admin.category.add');
+             Route::post('/admin/category/save', [App\Http\Controllers\Admin\CategoryController::class, 'saveCategory'])->name('admin_category.save');
 
             Route::get('/admin/view_category', [App\Http\Controllers\Admin\CategoryController::class, 'view_category'])->name('adminview_category');
            
@@ -60,6 +60,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/billing_history', [App\Http\Controllers\Admin\ClientsController::class, 'billing_history'])->name('adminbilling_history');
 
             
+            Route::get('/admin/client/add', [App\Http\Controllers\Admin\ClientsController::class, 'add_client'])->name('admin.client.add');
+             Route::post('/admin/client/save', [App\Http\Controllers\Admin\ClientsController::class, 'saveClient'])->name('admin_client.save');
+
+
             Route::get('/admin/manage_client/', [App\Http\Controllers\Admin\ClientsController::class, 'store_client'])->name('adminmanage_client');
             Route::post('/admin/manage_client/store', [App\Http\Controllers\Admin\ClientsController::class, 'storeClient'])->name('adminmanage_client_store');
 
