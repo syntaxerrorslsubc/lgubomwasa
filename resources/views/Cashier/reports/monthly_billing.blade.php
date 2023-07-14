@@ -1,4 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Cashier.default')
+
+@section('content')
 <div class="card card-outline rounded-0 card-navy">
     <div class="card-header">
         <h3 class="card-title">Monthly Billing Report</h3>
@@ -104,3 +106,4 @@
         <hr>
     </div>
 </noscript>
+@endsection

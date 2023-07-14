@@ -48,10 +48,7 @@
 				                  		Action
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
-				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item view_data" href="./?page=billings/view_billing&id="><span class="fa fa-eye text-dark"></span> View</a>
-				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item edit_data" href="./?page=billings/manage_billing&id="><span class="fa fa-edit text-primary"></span> Edit</a>
+				                 <div class="dropdown-menu" role="menu">
 				                    <a class="dropdown-item view_data" href="{{route('cashierview_billings')}}"><span class="fa fa-eye text-dark"></span> View</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item edit_data" href="{{route('cashierview_billings')}}"><span class="fa fa-edit text-primary"></span> Edit</a>

@@ -1,4 +1,6 @@
-@include('layouts.display')
+@extends('layouts.Cashier.default')
+
+@section('content')
 
 <style>
 	img#cimg{
@@ -64,3 +66,4 @@
 		</div>
 	</div>
 </div>
+@endsection
