@@ -1,51 +1,81 @@
 body {
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/41294/hero.jpg) no-repeat center center fixed;
+  background: url(https://wallpaperaccess.com/full/630370.jpg) no-repeat center center fixed;
   background-size: cover;
+
 }
 
-.search {
-  
-  width: 500px;
+.flex-parent {
+  display: flex;
+
+}
+
+.jc-center {
+  justify-content: center;
+ 
+}
+
+
+.flex-parent {
+  width: 300px;
   height: 40px;
-  margin: 150px auto;
+  margin: 45px auto;
   background: #444;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   border: 1px solid #fff;
 }
-.search input {
-  width: 370px;
-  padding: 10px 5px;
+.flex-parent input {
+  width: 400px;
+  padding: 15px 5px;
   float: left;
-  color: #ccc;
+  color: black;
   border: 0;
-  background: transparent;
-  border-radius: 3px 0 0 3px;
+  background: antiquewhite;
+ 
 }
-.search input:focus {
+.flex-parent input:focus {
   outline: 0;
-  background: transparent;
+  background: ;
 }
-.search button {
+.jc-center button {
   position: relative;
-  float: right;
+  float:center;
   border: 0;
-  padding: 0;
+  padding: 15px 5px;
   cursor: pointer;
   height: 40px;
-  width: 120px;
+  width: 200px;
   color: #fff;
-  background: transparent;
-  border-left: 1px solid #fff;
+  background: green;
   border-radius: 0 3px 3px 0;
+
+
 }
-.search button:hover {
-  background: #fff;
+.jc-center button:hover {
+  background: yellowgreen;
   color: #444;
 }
-.search button:active {
+.jc-center button:active {
   box-shadow: 0px 0px 12px 0px #e1e1e1;
 }
-.search button:focus {
+.jc-center button:focus {
   outline: 0;
 }
+img {
+  border-radius: 50%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+
+<img src="bg.jpg" style="width:100%;">
+
+}
+
