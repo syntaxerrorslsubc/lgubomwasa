@@ -40,7 +40,13 @@
               <td>{{$billing_list->total}}</td>
               <td>{{$billing_list->due_date}}</td>
 
-                <td class="text-center">{{$billing_list->status}}</td>
+                <td class="text-center">
+                  @if($billing_list->status === 0)
+                      <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
+                  @elseif($billing_list->status === 1)
+                     <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
+                  @endif
+                </td>
 
                 <td align="center">
                    <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">

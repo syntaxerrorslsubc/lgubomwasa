@@ -38,7 +38,13 @@
 							<td>{{$clientsProfile->created_at}}</td>
 							<td>{{$clientsProfile->code}}</td>
 							<td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
-							<td>{{$clientsProfile->status}}</td>
+							<td>
+								@if($clientsProfile->status === 0)
+				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
+				                @elseif($clientsProfile->status === 1)
+				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+				                @endif
+			              </td>
 						
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
