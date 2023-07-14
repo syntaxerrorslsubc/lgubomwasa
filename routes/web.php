@@ -60,7 +60,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/billing_history', [App\Http\Controllers\Admin\ClientsController::class, 'billing_history'])->name('adminbilling_history');
 
             
-            Route::get('/admin/manage_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'store_client'])->name('adminmanage_client');
+            Route::get('/admin/manage_client/', [App\Http\Controllers\Admin\ClientsController::class, 'store_client'])->name('adminmanage_client');
             Route::post('/admin/manage_client/store', [App\Http\Controllers\Admin\ClientsController::class, 'storeClient'])->name('adminmanage_client_store');
 
             Route::get('/admin/view_client', [App\Http\Controllers\Admin\ClientsController::class, 'view_client'])->name('adminview_client');

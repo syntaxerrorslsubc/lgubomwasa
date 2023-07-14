@@ -7,7 +7,7 @@
 	<div class="card-header">
 		<h3 class="card-title">List of Clients</h3>
 		<div class="card-tools">
-			<a href="{{route('adminmanage_clients')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+			<a href="{{route('adminmanage_client')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -39,10 +39,7 @@
 							<td>{{$clientsProfile->code}}</td>
 							<td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
 							<td>{{$clientsProfile->status}}</td>
-							
-							<td class="text-center">
-								
-                            </td>
+						
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
