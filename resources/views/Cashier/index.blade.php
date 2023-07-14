@@ -23,13 +23,14 @@
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-gradient-success elevation-1"><i class="fas fa-users"></i></span>
-         <div class="info-box-content">
-          <span class="info-box-text">Total Clients</span>
-          @if($nOclient=App\Models\Client_list::count())
+        <div class="info-box-content">
+          <span class="info-box-text">Categories</span>
+            @if($nOclients=App\Models\Category_list::count())
           <span class="info-box-number">
-              {{$nOclient}}
+                {{$nOclients}}
           </span>
           @endif
+        </div>
         <!-- /.info-box-content -->
       </div>
       <!-- /.info-box -->
@@ -45,6 +46,7 @@
               {{$nObilling}}
          </span>
          @endif
+        </div>
         <!-- /.info-box-content -->
       </div>
       <!-- /.info-box -->
