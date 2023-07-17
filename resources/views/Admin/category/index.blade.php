@@ -27,6 +27,7 @@
 						<th>#</th>
 						<th>Date Created</th>
 						<th>Name</th>
+						<th>Rate</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -37,6 +38,7 @@
               				<td class="text-center">{{$categories->id}}</td>
 							<td>{{$categories->created_at}}</td>
 							<td>{{$categories->name}}</td>
+							<td>{{$categories->rate}}</td>
 	
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">

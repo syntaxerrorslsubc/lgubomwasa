@@ -23,6 +23,7 @@ class CategoryController extends Controller
 
         $cat = new Category_list;
         $cat->name = $request->name;
+        $cat->rate = $request->rate;
                 
         if($cat->save()){
             return redirect()->back()->with('Success','Category has been created successfully.');
