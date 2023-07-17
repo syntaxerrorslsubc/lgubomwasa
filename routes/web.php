@@ -91,8 +91,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #Billings
 
             Route::get('/cashier/manage_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'manage_billings'])->name('cashiermanage_billings');
-            Route::get('/cashier/view_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'view_billings'])->name('cashierview_billings');
+            Route::get('/cashier/view_billings', [App\Http\Controllers\Cashier\BillingsController::class, 'view_billing'])->name('cashierview_billings');
             Route::get('/cashier/billings', [App\Http\Controllers\Cashier\BillingsController::class, 'index'])->name('cashierbillings');
+
+             Route::get('/cashier/add_billing/', [App\Http\Controllers\Cashier\BillingsController::class, 'addBilling'])->name('cashieradd_billing');
+            Route::post('/cashier/add_billing/save', [App\Http\Controllers\Cashier\BillingsController::class, 'saveBilling'])->name('cashieradd_billing.save');
+
+
+            Route::get('/cashier/edit_billing/{id}', [App\Http\Controllers\Cashier\BillingsController::class, 'editBilling'])->name('cashieredit_billing');
+            Route::post('/cashier/edit_billing/update', [App\Http\Controllers\Cashier\BillingsController::class, 'updateBilling'])->name('cashieredit_billing.update');
+
+            Route::get('/cashier/view_billing/{id}', [App\Http\Controllers\Cashier\BillingsController::class, 'view_billing'])->name('cashierview_billing');
+
+            Route::get('/cashier/delete_billing/{id}', [App\Http\Controllers\Cashier\BillingsController::class, 'deleteBilling'])->name('cashierdelete_billing');
+
 
             #Clients 
 
