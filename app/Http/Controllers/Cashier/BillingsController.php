@@ -79,7 +79,7 @@ use App\Models\Billing_list;
  	{
         $billing = Billing_list::find($id);
 
-        return view('Cashier/billings.view_billing', compact(
+        return view('Cashier/cashierview_billing', compact(
             'billing'));
         return response()->json($billing);
 	}

@@ -30,7 +30,8 @@ class ClientsController extends Controller
         public function saveClient(Request $request)
          {
 
-                $client = new Client_lists;
+                $client = new Client_list;
+                $client->code = $request->code;
                 $client->category_id = $request->category_id;
                 $client->firstname = $request->firstname;
                 $client->lastname = $request->lastname;
@@ -48,6 +49,11 @@ class ClientsController extends Controller
 
         public function view_client()
         {
+             $client = Client_list::find($id);
+
+        return view('Admin/clients.view_client', compact(
+            'client'));
+        return response()->json($client);
             return view('Cashier/clients.view_client');
         }
 

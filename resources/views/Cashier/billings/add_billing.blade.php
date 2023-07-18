@@ -17,9 +17,9 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="" method="post"> 
+						<form action="{{route('cashieradd_billing.save')}}" method="post"> 
 							@csrf
-							<input type="hidden" name ="id" value="">
+							<input type="hidden" name ="code" value="">
 							<div class="form-group mb-3">
 								<label for="client_id" class="control-label">Client</label>
 								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">

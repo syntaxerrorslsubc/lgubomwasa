@@ -23,8 +23,11 @@
 							<div class="form-group mb-3">
 								<label for="category_id" class="control-label">Category</label>
 								<select name="category_id" id="category_id" class="form-control form-control-sm rounded-0" required="required">
-									<option value=""  disabled></option>
-									
+									@if($categories=\App\Models\Category_list::orderby('id', 'asc')->get())
+										@foreach($categories as $category)
+											<option value="{{$category->id}}">{{$category->name}}</option>
+										@endforeach
+									@endif
 								</select>
 							</div>
 							<div class="form-group mb-3">

@@ -1,6 +1,7 @@
 @extends('layouts.Cashier.default')
 
 @section('content')
+
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
 	<h3><b>Billing Details</b></h3>
 </div>
@@ -19,23 +20,23 @@
 						<div class="row">
 							@if ($billing)
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading Date</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading_date}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Client Name</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->client->lastname}}, {{$billing->client->firstname}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Previous</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->previous}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Rate per Cubic Meter (m<sup>3</sup>)</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->rate}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Total Amount</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->total}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Due Date</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->due_date}}</div>
 							<div class="clear-fix my-1"></div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Status</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">
-								
+								{{$billing->status}}
 							</div>
 							@endif
 						</div>
@@ -44,19 +45,15 @@
 			</div>
 			<div class="card-footer py-1 text-center">
 				<button class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print"><i class="fa fa-print"></i> Print</button>
-				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="./?page=billings/manage_billing&id="><i class="fa fa-edit"></i> Edit</a>
+				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/cashier/view_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
 				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
-	</div> @if ($billing)
-        <p>Amount: {{ $billing->amount }}</p>
-        <p>Description: {{ $billing->description }}</p>
-        <p>Last Updated: {{ $billing->updated_at }}</p>
-    @else
-        <p>No billing information found.</p>
-    @endif
+	</div>
 </div>
+
+
 <noscript id="print-header">
 	<div>
 		<div class="d-flex w-100 align-items-center">
@@ -122,4 +119,5 @@
 		})
 	}
 </script>
+
 @endsection

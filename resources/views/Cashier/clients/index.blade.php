@@ -36,7 +36,7 @@
                     <tr>
                             <td class="text-center">{{$clientsProfile->id}}</td>
                             <td>{{$clientsProfile->created_at}}</td>
-                            <td>{{$clientsProfile->code}}</td>
+                            <td>{{$clientsProfile->created_at}}-{{$clientsProfile->meter_code}}</td>
                             <td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
                             <td>
                                 @if($clientsProfile->status === 0)
