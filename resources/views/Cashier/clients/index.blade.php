@@ -7,7 +7,7 @@
     <div class="card-header">
         <h3 class="card-title">List of Clients</h3>
         <div class="card-tools">
-            <a href="{{route('admin.client.add')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+            <a href="{{route('cashieradd_client')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
         </div>
     </div>
     <div class="card-body">

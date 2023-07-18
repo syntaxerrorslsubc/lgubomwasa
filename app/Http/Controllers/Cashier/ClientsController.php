@@ -22,9 +22,9 @@ class ClientsController extends Controller
             ]);
         }
 
-        public function add_client()
+        public function addclient()
         {
-            return view('Cashier/clients.manage_client');
+           return view('Cashier/clients.addclient');
         }
 
         public function saveClient(Request $request)
