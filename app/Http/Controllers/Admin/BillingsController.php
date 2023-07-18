@@ -90,7 +90,7 @@ class BillingsController extends Controller
 	    // 	]);
 	    // }
 
- public function view_billing($id)
+	public function view_billing($id)
  	{
         $billing = Billing_list::find($id);
 
@@ -104,13 +104,12 @@ class BillingsController extends Controller
 		$billing = Billing_list::find($id);
 
 		if ($billing) {
-        // Delete the billing record
-        $billing->delete();
-    }
+	        // Delete the billing record
+	        $billing->delete();
+    	}
 
-        return view('Admin/billings.index', compact(
-            'billing'));
-        return response()->json(['message' => 'Billing record deleted.']);
+        return redirect('/admin/billings')
+        ;
 
 	}
 

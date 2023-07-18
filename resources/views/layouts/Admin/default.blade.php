@@ -272,7 +272,6 @@
         <!-- Main content -->
         <section class="content  text-dark">
           <div class="container-fluid">
-            
             @yield('content')
           </div>
         </section>

@@ -27,12 +27,24 @@ class CategoryController extends Controller
                 
         if($cat->save()){
             return redirect()->back()->with('Success','Category has been created successfully.');
-        }
-             
+        }      
     }
 
     public function view_category(){
         return view('Admin/category.view_category');
+    }
+
+    public function getCategoryRate($id)
+    {
+        $category = Category_list::find($id);
+
+        if ($category = 0) {
+            // Do something
+        }elseif ($category = 1){
+            // Do something else
+        }
+
+        return view('category_rate', ['rate' => $rate]);
     }
 }
 
