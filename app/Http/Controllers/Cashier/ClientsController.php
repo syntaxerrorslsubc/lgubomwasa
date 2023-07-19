@@ -21,11 +21,15 @@ class ClientsController extends Controller
                     'client_lists'=>$client_lists
             ]);
         }
-
-        public function addclient()
+        public function editClient(Request $request)
         {
-           return view('Cashier/clients.addclient');
+            $client=Client_list::where('id', $request->id)->first();
+    
+             return view('Cashier.clients.edit_client',[
+                 'client'=>$client
+             ]);
         }
+
 
         public function saveClient(Request $request)
          {
@@ -47,11 +51,11 @@ class ClientsController extends Controller
             
          }
 
-        public function view_client()
+        public function view_client($id)
         {
              $client = Client_list::find($id);
 
-        return view('Admin/clients.view_client', compact(
+        return view('Cashier/clients.view_client', compact(
             'client'));
         return response()->json($client);
             return view('Cashier/clients.view_client');
@@ -61,5 +65,20 @@ class ClientsController extends Controller
         {
             return view('Cashier/clients.billing_history');
         }
+
+        public function deleteClient($id)
+        {
+             $client = Client_list::find($id);
+
+             if ($client) {
+            // Delete the client record
+             $client->delete();
+            }
+
+            return redirect('/cashier/clients');
+
+        }
+
+        
 }
 

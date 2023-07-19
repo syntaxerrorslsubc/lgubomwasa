@@ -6,9 +6,6 @@
 <div class="card card-outline rounded-0 card-navy">
     <div class="card-header">
         <h3 class="card-title">List of Clients</h3>
-        <div class="card-tools">
-            <a href="{{route('cashieradd_client')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
-        </div>
     </div>
     <div class="card-body">
         <div class="container-fluid">
@@ -27,6 +24,8 @@
                         <th>Date Created</th>
                         <th>Code</th>
                         <th>Name</th>
+                        <th>Address</th>
+                        <th>Contact #</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -38,7 +37,10 @@
                             <td>{{$clientsProfile->created_at}}</td>
                             <td>{{$clientsProfile->created_at}}-{{$clientsProfile->meter_code}}</td>
                             <td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
+                            <td>{{$clientsProfile->address}}</td>
+                            <td>{{$clientsProfile->contact}}</td>
                             <td>
+
                                 @if($clientsProfile->status === 0)
                                       <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
                                 @elseif($clientsProfile->status === 1)
@@ -52,11 +54,11 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                   </button>
                                   <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item view_data" href="./?page=clients/view_client&id="><span class="fa fa-eye text-dark"></span> View</a>
+                                    <a class="dropdown-item view_data" href="{{ url('/cashier/view_client/').'/'.$clientsProfile->id}}"><span class="fa fa-eye text-dark"></span> View</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item edit_data" href="{../admin/manage_client/{id}"><span class="fa fa-edit text-primary"></span> Edit</a>
+                                    <a class="dropdown-item edit_data" href="{{ url('/cashier/edit_client/').'/'.$clientsProfile->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+                                    <a class="dropdown-item delete_data" data-url="{{ url('/cashier/delete_client/').'/'.$clientsProfile->id}}" href="" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
                                   </div>
                             </td>
                     </tr>
@@ -67,41 +69,49 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="{{asset('../jquery/jquery-ui.css')}}" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $('.delete_data').click(function(){
-            _conf("Are you sure to delete this client permanently?","delete_client",[$(this).attr('data-id')])
-        })
-        $('.table').dataTable({
-            columnDefs: [
-                    { orderable: false, targets: [4] }
-            ],
-            order:[0,'asc']
+     $(document).ready(function () {
+       $('.delete_data').on('click', function(e){
+            e.preventDefault();
+            var _thisurl = $(this).attr('data-url'); 
+            var message = "Are you sure to delete this billing permanently?";
+                $('<div></div>').appendTo('body')
+                .html('<div><h6>' + message + '?</h6></div>')
+                .dialog({
+                  modal: true,
+                  title: 'Delete message',
+                  zIndex: 10000,
+                  autoOpen: true,
+                  width: 'auto',
+                  resizable: false,
+                  buttons: {
+                    Yes: function() {
+                      // $(obj).removeAttr('onclick');                                
+                      // $(obj).parents('.Parent').remove();
+
+                      // $('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
+                        $.ajax({
+                        url: _thisurl,
+                         method:'GET',
+                        success:function(resp){
+                          location.reload();
+                        }
+                      });
+                      $(this).dialog("close");
+                    },
+                    No: function() {
+                      // $('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
+                      $(this).dialog("close");
+                    }
+                  },
+                  close: function(event, ui) {
+                    $(this).remove();
+                  }
+            });
         });
-        $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
-    })
-    function delete_client($id){
-        start_loader();
-        $.ajax({
-            url:_base_url_+"classes/Master.php?f=delete_client",
-            method:"POST",
-            data:{id: $id},
-            dataType:"json",
-            error:err=>{
-                console.log(err)
-                alert_toast("An error occured.",'error');
-                end_loader();
-            },
-            success:function(resp){
-                if(typeof resp== 'object' && resp.status == 'success'){
-                    location.reload();
-                }else{
-                    alert_toast("An error occured.",'error');
-                    end_loader();
-                }
-            }
-        })
-    }
-    
+    });
 </script>
 @endsection
