@@ -1,26 +1,21 @@
-@include('layouts.display')
+@extends('layouts.Admin.default')
+@section('content')
 
 <div class="card card-outline rounded-0 card-navy">
 	<div class="card-body">
 		<div class="container-fluid">
 			<div id="msg"></div>
-			<form action="" id="manage-user">	
+			<form action="{{route('adminedit_user.update')}}" id="manage-user">	
+				@csrf
 				<input type="hidden" name="id" value="">
 				<div class="form-group">
-					<label for="name">First Name</label>
-					<input type="text" name="firstname" id="firstname" class="form-control" value="" required>
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name" class="form-control" value="" required>
 				</div>
+				
 				<div class="form-group">
-					<label for="name">Middle Name</label>
-					<input type="text" name="middlename" id="middlename" class="form-control" value="">
-				</div>
-				<div class="form-group">
-					<label for="name">Last Name</label>
-					<input type="text" name="lastname" id="lastname" class="form-control" value="" required>
-				</div>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" name="username" id="username" class="form-control" value="" required  autocomplete="off">
+					<label for="email">Email</label>
+					<input type="text" name="email" id="email" class="form-control" value="" required  autocomplete="off">
 				</div>
 				<div class="form-group">
 					<label for="password"> Password</label>
@@ -66,3 +61,4 @@
 		border-radius: 100% 100%;
 	}
 </style>
+@endsection

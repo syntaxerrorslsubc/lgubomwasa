@@ -16,7 +16,7 @@ class CategoryController extends Controller
     }
 
     public function add_category(){
-        return view('Admin/category.manage_category');
+        return view('Admin/category.add_category');
     }
 
     public function saveCategory(Request $request) {
@@ -31,9 +31,18 @@ class CategoryController extends Controller
              
     }
 
+    public function editCategory(Request $request)
+        {
+            $category=Category_list::where('id', $request->id)->first();
+    
+             return view('Admin.category.edit_category',[
+                 'category'=>$category
+             ]);
+        }
+
+
     public function view_category(){
         return view('Admin/category.view_category');
     }
 }
-
 
