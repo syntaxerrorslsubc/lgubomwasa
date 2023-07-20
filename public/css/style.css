@@ -80,14 +80,13 @@ h1,h2,h3,h4,h5,h6{
     font-family: $font-regular;
 }
 strong{
-	font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 body{
-    background-color:#fafafa !important;
+    background-image: url(https://wallpaperaccess.com/full/630370.jpg);
     font-family: 'Ubuntu', sans-serif;
-   color: #6A6A6A;
-   overflow-x: hidden;
-
+    color: #6A6A6A;
+    overflow-x: hidden;
 }
 
 

@@ -16,7 +16,7 @@
                              </div>
                             <h1>Bontoc Municipal Waterworks System Administration</h1>
                             <br>
-                            <p><img src="icon/c-circle.svg" alt="Bootstrap" width="20" height="20">    2023</p>
+                            <p><img src="{{asset('../icon/c-circle.svg')}}" alt="Bootstrap" width="20" height="20">    2023</p>
                         </div>
 
                         <div class="col-md-7 logn-part">
