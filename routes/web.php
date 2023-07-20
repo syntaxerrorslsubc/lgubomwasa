@@ -51,10 +51,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #Category
             Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admincategory');
 
-            Route::get('/admin/category/add', [App\Http\Controllers\Admin\CategoryController::class, 'add_category'])->name('admin.category.add');
-             Route::post('/admin/category/save', [App\Http\Controllers\Admin\CategoryController::class, 'saveCategory'])->name('admin_category.save');
+            Route::get('/admin/add_category/', [App\Http\Controllers\Admin\CategoryController::class, 'add_category'])->name('admin.category.add');
+             Route::post('/admin/add_category/save', [App\Http\Controllers\Admin\CategoryController::class, 'saveCategory'])->name('adminadd_category.save');
+
+              Route::get('/admin/edit_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('adminedit_category');
+            Route::post('/admin/edit_category/update', [App\Http\Controllers\Admin\CategoryController::class, 'updatecategory'])->name('adminedit_category.update');
 
             Route::get('/admin/view_category', [App\Http\Controllers\Admin\CategoryController::class, 'view_category'])->name('adminview_category');
+
+            Route::get('/admin/delete_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'deleteCategory'])->name('admindelete_category');
+
            
 
            #CLIENTS
@@ -80,8 +86,17 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             #USERLIST
             Route::get('/admin/user', [App\Http\Controllers\Admin\UserlistController::class, 'index'])->name('adminuser');
-            Route::get('/admin/manage_user', [App\Http\Controllers\Admin\UserlistController::class, 'manage_user'])->name('adminmanage_user');
+
+            Route::get('/admin/add_user/', [App\Http\Controllers\Admin\UserlistController::class, 'add_user'])->name('admin.user.add');
+            Route::post('/admin/add_user/save', [App\Http\Controllers\Admin\UserlistController::class, 'saveUser'])->name('admin_user.save');
+
+            Route::get('/admin/edit_user/{id}', [App\Http\Controllers\Admin\UserlistController::class, 'editUser'])->name('adminedit_user');
+            Route::post('/admin/edit_user/update', [App\Http\Controllers\Admin\UserlistController::class, 'updateuser'])->name('adminedit_user.update');
+
             Route::get('/admin/userlist', [App\Http\Controllers\Admin\UserlistController::class, 'list'])->name('adminuserlist');
+
+             Route::get('/admin/delete_user/{id}', [App\Http\Controllers\Admin\UserlistController::class, 'deleteUser'])->name('admindelete_user');
+
            
 		});
 
