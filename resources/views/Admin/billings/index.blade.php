@@ -1,6 +1,7 @@
 @extends('layouts.Admin.default')
 
 @section('content')
+
 <div class="card card-outline rounded-0 card-navy">
   <div class="card-header">
     <h3 class="card-title">List of Bill</h3>
@@ -32,6 +33,7 @@
             </tr>
           </thead>
           <tbody>
+        @if(isset($billing))
           @foreach($billing as $billing_list)
           <tr>
               <td class="text-center">{{$billing_list->id}}</td>
@@ -57,59 +59,63 @@
                               <a class="dropdown-item view_data" href="{{ url('/admin/view_billing/').'/'.$billing_list->id}}"><span class="fa fa-eye text-dark"></span> View</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item edit_data" href="{{ url('/admin/edit_billing/').'/'.$billing_list->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item delete_data" href="{{ url('/admin/delete_billing/').'/'.$billing_list->id}}" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+                            <div class="dropdown-divider"></div>
+                              <a class="dropdown-item delete_data" data-url="{{ url('/admin/delete_billing/').'/'.$billing_list->id}}" href=""><span class="fa fa-trash text-danger"></span> Delete</a>
                             </div>
                 </td>
               </tr>
      
           </tbody>
-          @endforeach
+
+            @endforeach
+          @endif
         </table>
     </div>
   </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="{{asset('../jquery/jquery-ui.css')}}" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
+     $(document).ready(function () {
+       $('.delete_data').on('click', function(e){
+            e.preventDefault();
+            var _thisurl = $(this).attr('data-url'); 
+            var message = "Are you sure to delete this billing permanently?";
+                $('<div></div>').appendTo('body')
+                .html('<div><h6>' + message + '?</h6></div>')
+                .dialog({
+                  modal: true,
+                  title: 'Delete message',
+                  zIndex: 10000,
+                  autoOpen: true,
+                  width: 'auto',
+                  resizable: false,
+                  buttons: {
+                    Yes: function() {
+                      // $(obj).removeAttr('onclick');                                
+                      // $(obj).parents('.Parent').remove();
 
-
-    $(document).ready(function () {
-       $('.delete_data').click(function(){
-
-        var billingId = $(this).data('id');
-      _conf("Are you sure to delete this billing permanently?","delete_billing",[$(this).attr('data-id')])
-       };
-    //   $('.table').dataTable({
-    //     columnDefs: [
-    //         { orderable: false, targets: [4] }
-    //     ],
-    //     order:[0,'asc']
-    //   });
-    //   $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
-
-    // });
-
-  function delete_billing($id){
-    start_loader();
-    $.ajax({
-     url: '/admin/delete_billing/' + billingId,
-      type: 'DELETE',
-      data:{id: $id},
-      dataType:"json",
-      error:err=>{
-        console.log(err)
-        alert_toast("An error occured.",'error');
-        end_loader();
-      },
-      success:function(resp){
-        if(typeof resp== 'object' && resp.status == 'success'){
-          location.reload();
-        }else{
-          alert_toast("An error occured.",'error');
-          end_loader();
-        }
-      }
-    })
-  }
+                      // $('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
+                        $.ajax({
+                        url: _thisurl,
+                        method:'GET',
+                        success:function(resp){
+                          location.reload();
+                        }
+                      });
+                      $(this).dialog("close");
+                    },
+                    No: function() {
+                      // $('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
+                      $(this).dialog("close");
+                    }
+                  },
+                  close: function(event, ui) {
+                    $(this).remove();
+                  }
+            });
+        });
+    });
 </script>
 @endsection

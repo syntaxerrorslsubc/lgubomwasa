@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('billing_lists', function (Blueprint $table) {
             $table->id()->autoincrement();
-            $table->integer('clientid')->unique();
+            $table->integer('clientid');
             $table->date('reading_date')->nullable;
             $table->date('due_date');
             $table->float('reading', 12, 2);

@@ -21,11 +21,12 @@
 							@csrf
 							<input type="hidden" name ="id" value="">
 							<div class="form-group mb-3">
-								<label for="client_id" class="control-label">Client</label>
-								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
+								<label for="clientid" class="control-label">Client</label>
+								<select name="clientid" id="clientid" class="form-control form-control-sm rounded-0" required="required">
+									<option value="">choose client</option>
 									@if($clients=\App\Models\Client_list::orderby('lastname', 'asc')->get())
-										@foreach($clients as $client)
-											<option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+										@foreach($clients as $clientid)
+											<option name="clientid" id="clientid" value="{{$clientid->id}}">{{$clientid->lastname}}, {{$clientid->firstname}}</option>
 										@endforeach
 									@endif
 								</select>
@@ -36,11 +37,10 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="previous" class="control-label">Previous Reading</label>
-									@if($previous=\App\Models\Billing_list::get())
-								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="@foreach($previous as $previouses)
-											{{$previouses->previous}}
-										@endforeach">
-										
+								@if($previous=\App\Models\Billing_list::get())
+									<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="@foreach($previous as $previouses)
+										{{$previouses->previous}}
+									@endforeach">	
 								@endif
 							</input>
 							</div>
@@ -50,20 +50,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
-									@if($rates=\App\Models\Client_list::orderby('name', 'asc')->get())
-										@foreach($rate as $rates)
-											<option value="{{$rates->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
-										@endforeach
-									@endif
-								</select>
-								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value="
-								@if($rate=\App\Models\Category_list::orderby(get('rate'))
-									@foreach($rate as $rates)
-											{{$rates->rates}}
-									@endforeach
-								@endif
-								"/>
+								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value=""/>							
 							</div>
 							<div class="form-group mb-3">
 								<label for="total" class="control-label">Total Bill</label>
@@ -109,10 +96,19 @@
 			$('#total').val(minimum);
 		}else{
 			$('#total').val(consume * parseFloat(rate)+ minimum);
-
 		}
 	}
-	
+
+	$('#clientid').on('click', function() {
+	   $.ajax({
+	   		url:'{{url("/admin/add_billing/search/consumertype/")}}/' + this.value,
+	   		method: 'GET',
+	   		success:function(resp){
+	   			console.log(resp)
+	   			$('#rate').val(resp);
+	   		}
+	   });
+	});
 </script>
 
 @endsection

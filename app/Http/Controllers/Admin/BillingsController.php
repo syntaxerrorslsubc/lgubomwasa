@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Billing_list;
+use App\Models\Client_list;
+use App\Models\Category_list;
 
 class BillingsController extends Controller
 {
@@ -34,6 +36,7 @@ class BillingsController extends Controller
 		 {
 				$storeBilling = Billing_list::where('id', $request->id)->first(); 
 				$storeBilling->reading_date = $request->reading_date;
+				$storeBilling->clientid = $request->clientid;
 				$storeBilling->due_date = $request->due_date;
 				$storeBilling->reading = $request->reading;
 				$storeBilling->previous = $request->previous;
@@ -46,6 +49,17 @@ class BillingsController extends Controller
 				}
 			
 		 }
+		public function searchType(Request $request){
+			$client = Client_list::where('id', $request->id)->first();
+			$categories = Category_list::get();
+			if (isset($categories)) {
+				foreach($categories as $category){
+					if($client->category_id==$category->id){
+						return $category->rate;
+					}
+				}
+			}
+		}
 
 		 public function addBilling(Request $request){
 		 	return view('Admin.billings.add_billing');
@@ -54,6 +68,7 @@ class BillingsController extends Controller
 
 		 public function saveBilling(Request $request){
 		 		$saveNewBilling = new Billing_list; 
+		 		$saveNewBilling->clientid = $request->clientid;
 				$saveNewBilling->due_date = $request->due_date;
 				$saveNewBilling->reading = $request->reading;
 				$saveNewBilling->previous = $request->previous;
@@ -75,7 +90,7 @@ class BillingsController extends Controller
 	    // 	]);
 	    // }
 
- public function view_billing($id)
+	public function view_billing($id)
  	{
         $billing = Billing_list::find($id);
 
@@ -89,13 +104,12 @@ class BillingsController extends Controller
 		$billing = Billing_list::find($id);
 
 		if ($billing) {
-        // Delete the billing record
-        $billing->delete();
-    }
+	        // Delete the billing record
+	        $billing->delete();
+    	}
 
-        return view('Admin/billings.index', compact(
-            'billing'));
-        return response()->json(['message' => 'Billing record deleted.']);
+        return redirect('/admin/billings')
+        ;
 
 	}
 

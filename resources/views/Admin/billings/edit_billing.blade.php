@@ -20,11 +20,11 @@
 						<form action="{{route('adminedit_billing.update')}}" method="post"> @csrf
 							<input type="hidden" name ="id" value="{{$billing->id}}">
 							<div class="form-group mb-3">
-								<label for="client_id" class="control-label">Client</label>
-								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
+								<label for="clientid" class="control-label">Client</label>
+								<select name="clientid" id="clientid" class="form-control form-control-sm rounded-0" required="required">
 									@if($clients=\App\Models\Client_list::orderby('lastname', 'asc')->get())
 										@foreach($clients as $client)
-											<option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+											<option name="clientid" id="clientid" value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
 										@endforeach
 									@endif
 								</select>
