@@ -83,10 +83,11 @@ strong{
     font-family: 'Ubuntu', sans-serif;
 }
 body{
-    background-image: url(https://wallpaperaccess.com/full/630370.jpg);
+    background-color: #0082C8;
     font-family: 'Ubuntu', sans-serif;
-    color: #6A6A6A;
-    overflow-x: hidden;
+   color: #6A6A6A;
+   overflow-x: hidden;
+
 }
 
 
