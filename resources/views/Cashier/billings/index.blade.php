@@ -33,8 +33,8 @@
             </tr>
           </thead>
           <tbody>
-        @if(isset($billing))
-          @foreach($billing as $billing_list)
+        @if(isset($billings))
+          @foreach($billings as $billing_list)
           <tr>
               <td class="text-center">{{$billing_list->id}}</td>
               <td>{{$billing_list->reading_date}}</td>

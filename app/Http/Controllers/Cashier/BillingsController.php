@@ -15,10 +15,10 @@ use App\Models\Billing_list;
 
 	    public function index()
 	    {
-	    $billing=Billing_list::paginate(10);
+	    $billings=Billing_list::paginate(10);
 	    	
 	    	return view('Cashier/billings.index', [
-                    'billing'=>$billing
+                    'billings'=>$billings
             ]);
 	    }
 	    public function editBilling(Request $request)
@@ -89,13 +89,11 @@ use App\Models\Billing_list;
 		$billing = Billing_list::find($id);
 
 		if ($billing) {
-        // Delete the billing record
-        $billing->delete();
-    }
+	        // Delete the billing record
+	        $billing->delete();
+    	}
 
-        return view('Cashier/billings.index', compact(
-            'billing'));
-        return response()->json(['message' => 'Billing record deleted.']);
+        return redirect('/cashier/billings');
 
 	}
 
