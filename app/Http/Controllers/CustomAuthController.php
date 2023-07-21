@@ -68,6 +68,7 @@ class CustomAuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'type' => 'required'
         ]);
             
         $data = $request->all();

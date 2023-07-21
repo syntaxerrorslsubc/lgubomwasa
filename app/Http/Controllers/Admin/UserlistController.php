@@ -22,6 +22,8 @@ class UserlistController extends Controller
         $saveNewUser->name = $request->name;
         $saveNewUser->email = $request->email;
         $saveNewUser->password = $request->password;
+        $saveNewUser->type = $request->type;
+        $saveNewUser->avatar = $request->avatar;
         
         if($saveNewUser->save()){
             $saveUser_role = new User_role;
@@ -34,11 +36,11 @@ class UserlistController extends Controller
             }elseif ($request->type==3){
                 $saveUser_role->role_name = "Meter Reader";
             }
-            
+
             if($saveUser_role->save()){
                 return redirect()->back()->withErrors('Success','New user has been created successfully.');
             }
-            
+
         }
      }
 
@@ -74,5 +76,16 @@ class UserlistController extends Controller
         ;
 
   }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
+        ]);
+
+        $imagePath = $request->file('avatar')->store('images', 'public');
+
+        return view('Admin/user.add_user', ['imagePath' => $imagePath]);
+    }
 
 }
