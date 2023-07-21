@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-	<form action="{{route('admin_category.save')}}" id="category-form" method="post">
+	<form action="{{route('adminadd_category.save')}}" id="category-form" method="post">
 		@csrf
 		<input type="hidden" name ="id" value="">
 		<div class="form-group">

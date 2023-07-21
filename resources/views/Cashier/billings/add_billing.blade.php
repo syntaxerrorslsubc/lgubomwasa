@@ -51,6 +51,7 @@
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
 								<select name="client_id" id="client_id" class="form-control form-control-sm rounded-0" required="required">
+									@if(isset($rates))
 									@if($rates=\App\Models\Client_list::orderby('name', 'asc')->get())
 										@foreach($rate as $rates)
 											<option value="{{$rates->id}}">{{$client->lastname}}, {{$client->firstname}}</option>

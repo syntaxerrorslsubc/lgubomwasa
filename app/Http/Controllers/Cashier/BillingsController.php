@@ -75,11 +75,11 @@ use App\Models\Billing_list;
 	    // 	]);
 	    // }
 
- public function view_billing($id)
+ 	public function view_billing($id)
  	{
         $billing = Billing_list::find($id);
 
-        return view('Cashier/cashierview_billing', compact(
+        return view('Cashier/billings.view_billing', compact(
             'billing'));
         return response()->json($billing);
 	}
