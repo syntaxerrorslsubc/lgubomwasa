@@ -68,7 +68,7 @@
        $('.delete_data').on('click', function(e){
             e.preventDefault();
             var _thisurl = $(this).attr('data-url'); 
-            var message = "Are you sure to delete this billing permanently?";
+            var message = "Are you sure to delete this user permanently?";
                 $('<div></div>').appendTo('body')
                 .html('<div><h6>' + message + '?</h6></div>')
                 .dialog({

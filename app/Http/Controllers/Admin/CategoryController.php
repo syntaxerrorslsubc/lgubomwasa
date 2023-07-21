@@ -8,7 +8,13 @@ use App\Models\Category_list;
 
 class CategoryController extends Controller
 {
-    public function index() {
+   public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index() 
+    {
         $category_lists=Category_list::orderby('id')->paginate(10);
         return view('Admin/category.index', [
             'category_lists'=>$category_lists
@@ -30,19 +36,15 @@ class CategoryController extends Controller
         }      
     }
 
-    public function editCategory(Request $request)
+    public function edit_category(Request $request)
         {
             $category=Category_list::where('id', $request->id)->first();
     
-             return view('Admin.category.edit_category',[
+             return view('Admin/category.edit_category',[
                  'category'=>$category
              ]);
         }
 
-
-    public function view_category(){
-        return view('Admin/category.view_category');
-    }
 
     public function getCategoryRate($id)
     {
@@ -56,5 +58,39 @@ class CategoryController extends Controller
 
         return view('category_rate', ['rate' => $rate]);
     }
-}
 
+    public function updateCategory(Request $request)
+    {
+            $storeCategory =Category_list::where('id', $request->id)->first(); 
+            $storeCategory->name = $request->name;
+            $storeCategory->rate = $request->rate;
+            
+            if($storeCategory->save()){
+                return redirect()->back()->withErrors('Success','Category has been updated successfully.');
+            }
+    }
+
+    public function view_category($id)
+    {
+        $category = category_list::find($id);
+
+        return view('Admin/category.view_category', compact(
+            'category'));
+        return response()->json($category);
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category_list::find($id);
+
+        if ($category) {
+        // Delete the category record
+        $category->delete();
+    }
+
+        return view('Admin/category.index', compact(
+            'category'));
+        return response()->json(['message' => 'Category record deleted.']);
+
+    }
+}
