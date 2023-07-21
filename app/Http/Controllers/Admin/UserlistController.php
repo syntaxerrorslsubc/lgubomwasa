@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\User_role;
 
 class UserlistController extends Controller
 {
@@ -23,7 +24,21 @@ class UserlistController extends Controller
         $saveNewUser->password = $request->password;
         
         if($saveNewUser->save()){
-          return redirect()->back()->withErrors('Success','New user has been created successfully.');
+            $saveUser_role = new User_role;
+            $saveUser_role->userid = $saveNewUser->id;
+            $saveUser_role->roleid = $request->type;
+            if ($request->type==1) {
+                $saveUser_role->role_name = "Admin";
+            }elseif ($request->type==2) {
+                $saveUser_role->role_name = "Cashier";
+            }elseif ($request->type==3){
+                $saveUser_role->role_name = "Meter Reader";
+            }
+            
+            if($saveUser_role->save()){
+                return redirect()->back()->withErrors('Success','New user has been created successfully.');
+            }
+            
         }
      }
 
