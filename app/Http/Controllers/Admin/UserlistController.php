@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\User_role;
+use Illuminate\Support\Facades\Hash;
 
 class UserlistController extends Controller
 {
@@ -21,7 +22,7 @@ class UserlistController extends Controller
         $saveNewUser = new User; 
         $saveNewUser->name = $request->name;
         $saveNewUser->email = $request->email;
-        $saveNewUser->password = $request->password;
+        $saveNewUser->password = Hash::make($request->password);
         $saveNewUser->type = $request->type;
         $saveNewUser->avatar = $request->avatar;
         
