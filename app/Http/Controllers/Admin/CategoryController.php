@@ -36,15 +36,6 @@ class CategoryController extends Controller
         }      
     }
 
-    public function edit_category(Request $request)
-        {
-            $category=Category_list::where('id', $request->id)->first();
-    
-             return view('Admin/category.edit_category',[
-                 'category'=>$category
-             ]);
-        }
-
 
     public function getCategoryRate($id)
     {
@@ -59,15 +50,24 @@ class CategoryController extends Controller
         return view('category_rate', ['rate' => $rate]);
     }
 
+    public function edit_category(Request $request)
+    {
+        $category = Category_list::where('id', $request->id)->first();
+
+         return view('Admin/category.edit_category',[
+             'category'=>$category
+         ]);
+    }
+
     public function updateCategory(Request $request)
     {
-            $storeCategory =Category_list::where('id', $request->id)->first(); 
-            $storeCategory->name = $request->name;
-            $storeCategory->rate = $request->rate;
-            
-            if($storeCategory->save()){
-                return redirect()->back()->withErrors('Success','Category has been updated successfully.');
-            }
+        $storeCategory = Category_list::where('id', $request->id)->first(); 
+        $storeCategory->name = $request->name;
+        $storeCategory->rate = $request->rate;
+        
+        if($storeCategory->save()){
+            return redirect()->back()->withErrors('Success','Category has been updated successfully.');
+        }
     }
 
     public function view_category($id)
