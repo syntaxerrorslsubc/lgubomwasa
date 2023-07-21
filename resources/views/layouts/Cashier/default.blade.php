@@ -138,7 +138,7 @@
           <li class="nav-item">
             <div class="btn-group nav-link">
                   <button type="button" class="btn btn-rounded badge badge-light dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                    <span><img src="http://localhost/wbms/uploads/avatars/1.png?v=1649834664" class="img-circle elevation-2 user-img" alt="User Image"></span>
+                    <span><img src="" class="img-circle elevation-2 user-img" alt="User Image"></span>
                     <span class="ml-3">Cashier</span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>

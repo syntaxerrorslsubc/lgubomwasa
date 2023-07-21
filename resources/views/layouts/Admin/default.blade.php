@@ -108,7 +108,8 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="http://localhost/wbms/" class="nav-link">BOMWASA Water Billing System - Admin</a>
+            <a href="{{route
+            ('admindashboard')}}" class="nav-link">BOMWASA Water Billing System - Admin</a>
           </li>
         </ul>
         <!-- Right navbar links -->
@@ -138,12 +139,12 @@
           <li class="nav-item">
             <div class="btn-group nav-link">
                   <button type="button" class="btn btn-rounded badge badge-light dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                    <span><img src="http://localhost/wbms/uploads/avatars/1.png?v=1649834664" class="img-circle elevation-2 user-img" alt="User Image"></span>
+                    <span><img src="" class="img-circle elevation-2 user-img" alt="User Image"></span>
                     <span class="ml-3">Admin</span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <div class="dropdown-menu" role="menu">
-                    <a class="dropdown-item" href="http://localhost/wbms/admin/?page=user"><span class="fa fa-user"></span> My Account</a>
+                    <a class="dropdown-item" href=""><span class="fa fa-user"></span> My Account</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('signout') }}"><span class="fas fa-sign-out-alt"></span> Logout</a>
                   </div>
@@ -163,7 +164,8 @@
 <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand">
         <!-- Brand Logo -->
-        <a href="http://bomwasa.test" class="brand-link bg-gradient-primary text-sm">
+        <a href="
+        {{route('admindashboard')}}" class="brand-link bg-gradient-primary text-sm">
         <img src="{{asset('../images/logo.jpg')}}" alt="Store Logo" class="brand-image img-circle elevation-3 bg-gradient-light" style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
         <span class="brand-text font-weight-light">BOMWASA - WBS</span>
         </a>
