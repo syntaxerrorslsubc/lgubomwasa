@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
 }
-@media only screen and (min-width: 100px){
+@media only screen and (min-width: 300px){
   .container {
       background-color: white;
       max-width: 600px;
@@ -57,7 +57,7 @@ input[type="text"] {
 
 button {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: seagreen;
     color: #fff;
     border: none;
     border-radius: 5px;

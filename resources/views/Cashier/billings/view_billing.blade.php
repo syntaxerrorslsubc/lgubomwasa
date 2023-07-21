@@ -47,7 +47,7 @@
 				<button class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print"><i class="fa fa-print"></i> Print</button>
 				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/cashier/view_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
 				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('cashierbillings')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
 	</div>
@@ -80,7 +80,6 @@
 			var h = $('head').clone()
 			var p = $('#printout').clone()
 			var ph = $($('noscript#print-header').html()).clone()
-
 			var nw = window.open('', '_blank','width='+($(window).width() * .80)+',height='+($(window).height() * .90)+',left='+($(window).width() * .1)+',top='+($(window).height() * .05))
 					 nw.document.querySelector("head").innerHTML = h.html()
 					 nw.document.querySelector("body").innerHTML = ph[0].outerHTML + p[0].outerHTML

@@ -58,7 +58,7 @@ class CustomAuthController extends Controller
  
     public function registration()
     {
-        return view('auth.registration');
+        return view('Auth.registration');
     }
        
  
