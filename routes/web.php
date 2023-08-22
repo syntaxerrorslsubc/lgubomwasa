@@ -37,6 +37,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/add_billing/', [App\Http\Controllers\Admin\BillingsController::class, 'addBilling'])->name('adminadd_billing');
             Route::post('/admin/add_billing/save', [App\Http\Controllers\Admin\BillingsController::class, 'saveBilling'])->name('adminadd_billing.save');
 
+            Route::get('/admin/add_billing/search/consumertype/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'searchType'])->name('adminadd_billing.search');
 
             Route::get('/admin/edit_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'editBilling'])->name('adminedit_billing');
             Route::post('/admin/edit_billing/update', [App\Http\Controllers\Admin\BillingsController::class, 'updateBilling'])->name('adminedit_billing.update');
