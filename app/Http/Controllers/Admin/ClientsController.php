@@ -17,7 +17,7 @@ class ClientsController extends Controller
 
         public function index()
         {
-            $client_lists=Client_list::orderby('id')->paginate(10);
+            $client_lists=Client_list::orderby('id')->paginate(20);
             return view('Admin/clients.index', [
                     'client_lists'=>$client_lists
             ]);
@@ -58,18 +58,17 @@ class ClientsController extends Controller
         public function updateClient(Request $request)
          {
 
-                $client = new Client_list;
-                $client->code = $request->code;
-                $client->category_id = $request->category_id;
-                $client->firstname = $request->firstname;
-                $client->lastname = $request->lastname;
-                $client->middlename = $request->middlename;
-                $client->address = $request->address;
-                $client->contact = $request->contact;
-                $client->meter_serial_number = $request->meter_serial_number;
-                $client->first_reading = $request->first_reading;
-                $client->status = $request->status;
-                if($client->save()){
+                $storeClient = new Client_list;
+                $storeClient->category_id = $request->category_id;
+                $storeClient->firstname = $request->firstname;
+                $storeClient->lastname = $request->lastname;
+                $storeClient->middlename = $request->middlename;
+                $storeClient->address = $request->address;
+                $storeClient->contact = $request->contact;
+                $storeClient->meter_serial_number = $request->meter_serial_number;
+                $storeClient->first_reading = $request->first_reading;
+                $storeClient->status = $request->status;
+                if($storeClient->save()){
                     return redirect()->back()->with('Success','Client has been created successfully.');
                 }
             
@@ -99,7 +98,7 @@ class ClientsController extends Controller
              $client->delete();
             }
 
-            return redirect('/Admin/clients');
+            return redirect('/admin/clients');
 
         }
 

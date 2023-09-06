@@ -76,7 +76,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/admin/view_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'view_client'])->name('adminview_client');
 
-            Route::get('/admin/delete_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'delete_client'])->name('admindelete_client');
+            Route::get('/admin/delete_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'deleteClient'])->name('admindelete_client');
 
            
            

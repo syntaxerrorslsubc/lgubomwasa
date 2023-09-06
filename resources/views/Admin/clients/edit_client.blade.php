@@ -18,8 +18,8 @@
 			<div class="card-body">
 				<div class="container-fluid">
 					<div class="container-fluid">
-						<form action="{{route('adminadd_clients.save')}}" id="client-form" method="post"> @csrf
-							<input type="hidden" name ="id" value="">
+						<form action="{{route('adminedit_client.update')}}" id="client-form" method="post"> @csrf
+							<input type="hidden" name ="id" value="{{$client->id}}">
 							<div class="form-group mb-3">
 								<label for="category_id" class="control-label">Category</label>
 								<select name="category_id" id="category_id" class="form-control form-control-sm rounded-0" required="required">
@@ -67,7 +67,7 @@
 							</div>
 
 							<div class="card-footer py-1 text-center">
-								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
+								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save" href="{{ url('/admin/view_client/').'/'.$client->id}}" ></i> Save</button>
 								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
 						</form>

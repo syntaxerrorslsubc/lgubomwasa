@@ -27,6 +27,7 @@
 						<th>Date Created</th>
 						<th>Meter Serial Number</th>
 						<th>Name</th>
+						<th>Address</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -38,6 +39,8 @@
 							<td>{{$clientsProfile->created_at}}</td>
 							<td>{{$clientsProfile->meter_serial_number}}</td>
 							<td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
+							<td>{{$clientsProfile->address}}</td>
+
 							<td>
 								@if($clientsProfile->status === 0)
 				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
@@ -56,7 +59,7 @@
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item edit_data" href="{{url('/admin/edit_client/').'/'.$clientsProfile->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="{{url('/admin/delete_client/{id}" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+				                    <a class="dropdown-item delete_data" href="{{url('/admin/delete_client/').'/'.$clientsProfile->id}}" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
 							</td>
 					</tr>
