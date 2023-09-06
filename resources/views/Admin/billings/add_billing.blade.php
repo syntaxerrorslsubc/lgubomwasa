@@ -90,8 +90,8 @@
 		current_reading = current_reading > 0 ? current_reading : 0;
 		previous = previous > 0 ? previous : 0;
 
-		var consume = parseFloat(current_reading) - parseFloat(previous);
-
+		var consume = $parseFloat(current_reading) - parseFloat(previous);
+//add consume cubic meter then iminus to 10minimum = maoy excess amount
 		if (consume <= 10) {
 			$('#total').val(minimum);
 		}else{

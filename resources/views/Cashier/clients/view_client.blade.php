@@ -48,8 +48,6 @@
 			</div>
 			<div class="card-footer py-1 text-center">
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients/billing_history&id="><i class="fa fa-table"></i> Billing History</a>
-				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/cashier/edit_client/').'/'.$client->id}}"><i class="fa fa-edit"></i> Edit</a>
-				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0 delete_data" type="button" data-id="" data-url="{{ url('/cashier/delete_client/').'/'.$client->id}}" href=""><i class="fa fa-trash"></i> Delete</button>
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('cashierclients')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
@@ -58,46 +56,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="{{asset('../jquery/jquery-ui.css')}}" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script>
-     $(document).ready(function () {
-       $('.delete_data').on('click', function(e){
-            e.preventDefault();
-            var _thisurl = $(this).attr('data-url'); 
-            var message = "Are you sure to delete this billing permanently?";
-                $('<div></div>').appendTo('body')
-                .html('<div><h6>' + message + '?</h6></div>')
-                .dialog({
-                  modal: true,
-                  title: 'Delete message',
-                  zIndex: 10000,
-                  autoOpen: true,
-                  width: 'auto',
-                  resizable: false,
-                  buttons: {
-                    Yes: function() {
-                      // $(obj).removeAttr('onclick');                                
-                      // $(obj).parents('.Parent').remove();
-
-                      // $('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
-                        $.ajax({
-                        url: _thisurl,
-                         method:'GET',
-                        success:function(resp){
-                        	window.location = "/cashier/clients";
-                        }
-                      });
-                      $(this).dialog("close");
-                    },
-                    No: function() {
-                      // $('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
-                      $(this).dialog("close");
-                    }
-                  },
-                  close: function(event, ui) {
-                    $(this).remove();
-                  }
-            });
-        });
-    });
-</script>
+   
 @endsection

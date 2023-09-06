@@ -108,7 +108,8 @@ class BillingsController extends Controller
 	        $billing->delete();
     	}
 
-        return redirect('/admin/billings');
+        return redirect('/admin/billings')
+        ;
 
 	}
 

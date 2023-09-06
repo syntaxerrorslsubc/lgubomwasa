@@ -19,7 +19,6 @@
 				<div class="form-group">
 					<label for="short_name" class="control-label">System Short Name</label>
 					<input type="text" class="form-control form-control-sm" name="short_name" id="short_name" value="">
-
 				</div>
 			
 			<div class="form-group">
