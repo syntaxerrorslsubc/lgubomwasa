@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<form action="{{route('adminedit_category.update')}}" id="category-form" method="post">
 		@csrf
-		<input type="hidden" name ="id" value="">
+		<input type="hidden" name ="id" value="{{$category->id}}">
 		<div class="form-group">
 			<label for="name" class="control-label">Name</label>
 			<input type="text" class="form-control form-control-sm rouned-0" name="name" id="name" value="{{$category->name}}" required="required">

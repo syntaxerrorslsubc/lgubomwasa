@@ -62,13 +62,13 @@
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
 								<option value="1"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Active</span></option>
-								<option value="2"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Inctive</span></option>
+								<option value="2"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Inactive</span></option>
 								</select>
 							</div>
 
 							<div class="card-footer py-1 text-center">
 								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save" href="{{ url('/admin/view_client/').'/'.$client->id}}" ></i> Save</button>
-								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients"><i class="fa fa-angle-left"></i> Cancel</a>
+								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminclients')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
 						</form>
 					</div>

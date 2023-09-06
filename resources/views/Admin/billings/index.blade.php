@@ -38,7 +38,7 @@
           <tr>
               <td class="text-center">{{$billing_list->id}}</td>
               <td>{{$billing_list->reading_date}}</td>
-              <td>{{$billing_list->client->code}} - {{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
+              <td>{{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
               <td>{{$billing_list->total}}</td>
               <td>{{$billing_list->due_date}}</td>
 

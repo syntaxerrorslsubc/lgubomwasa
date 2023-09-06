@@ -51,14 +51,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admincategory');
 
             Route::get('/admin/add_category/', [App\Http\Controllers\Admin\CategoryController::class, 'add_category'])->name('admin.category.add');
-             Route::post('/admin/add_category/save', [App\Http\Controllers\Admin\CategoryController::class, 'saveCategory'])->name('adminadd_category.save');
+            Route::post('/admin/add_category/save', [App\Http\Controllers\Admin\CategoryController::class, 'saveCategory'])->name('adminadd_category.save');
 
-              Route::get('/admin/edit_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit_category'])->name('adminedit_category');
+            Route::get('/admin/edit_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit_category'])->name('adminedit_category');
             Route::post('/admin/edit_category/update', [App\Http\Controllers\Admin\CategoryController::class, 'updateCategory'])->name('adminedit_category.update');
 
             Route::get('/admin/view_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'view_category'])->name('adminview_category');
 
             Route::get('/admin/delete_category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'deleteCategory'])->name('admindelete_category');
+
 
            
 
