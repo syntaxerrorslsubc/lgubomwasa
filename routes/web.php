@@ -63,18 +63,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
            
 
            #CLIENTS
-           Route::get('/admin/clients', [App\Http\Controllers\Admin\ClientsController::class, 'index'])->name('adminclients');
+            Route::get('/admin/clients', [App\Http\Controllers\Admin\ClientsController::class, 'index'])->name('adminclients');
             Route::get('/admin/billing_history', [App\Http\Controllers\Admin\ClientsController::class, 'billing_history'])->name('adminbilling_history');
 
             
-            Route::get('/admin/client/add', [App\Http\Controllers\Admin\ClientsController::class, 'add_client'])->name('admin.client.add');
-             Route::post('/admin/client/save', [App\Http\Controllers\Admin\ClientsController::class, 'saveClient'])->name('admin_client.save');
+            Route::get('/admin/add/client', [App\Http\Controllers\Admin\ClientsController::class, 'addClient'])->name('admin.clients.add');
+            Route::post('/admin/add_client/save', [App\Http\Controllers\Admin\ClientsController::class, 'saveClient'])->name('adminadd_clients.save');
 
 
-            Route::get('/admin/manage_client/', [App\Http\Controllers\Admin\ClientsController::class, 'store_client'])->name('adminmanage_client');
-            Route::post('/admin/manage_client/store', [App\Http\Controllers\Admin\ClientsController::class, 'storeClient'])->name('adminmanage_client_store');
+            Route::get('/admin/edit_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'editClient'])->name('adminedit_client');
+            Route::post('/admin/edit_client/update', [App\Http\Controllers\Admin\ClientsController::class, 'updateClient'])->name('adminedit_client.update');
 
-            Route::get('/admin/view_client', [App\Http\Controllers\Admin\ClientsController::class, 'view_client'])->name('adminview_client');
+            Route::get('/admin/view_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'view_client'])->name('adminview_client');
+
+            Route::get('/admin/delete_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'delete_client'])->name('admindelete_client');
+
            
            
 

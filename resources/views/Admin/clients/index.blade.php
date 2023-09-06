@@ -7,7 +7,7 @@
 	<div class="card-header">
 		<h3 class="card-title">List of Clients</h3>
 		<div class="card-tools">
-			<a href="{{route('admin.client.add')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+			<a href="{{route('admin.clients.add')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -25,7 +25,7 @@
 					<tr>
 						<th>#</th>
 						<th>Date Created</th>
-						<th>Code</th>
+						<th>Meter Serial Number</th>
 						<th>Name</th>
 						<th>Status</th>
 						<th>Action</th>
@@ -36,7 +36,7 @@
 					<tr>
 							<td class="text-center">{{$clientsProfile->id}}</td>
 							<td>{{$clientsProfile->created_at}}</td>
-							<td>{{$clientsProfile->code}}</td>
+							<td>{{$clientsProfile->meter_serial_number}}</td>
 							<td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
 							<td>
 								@if($clientsProfile->status === 0)
@@ -52,11 +52,11 @@
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item view_data" href="./?page=clients/view_client&id="><span class="fa fa-eye text-dark"></span> View</a>
+				                    <a class="dropdown-item view_data" href="{{ url('/admin/view_client').'/'.$clientsProfile->id}}"><span class="fa fa-eye text-dark"></span> View</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item edit_data" href="{{ url('/cashier/view_client/').'/'.$clientsProfile->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
+				                    <a class="dropdown-item edit_data" href="{{url('/admin/edit_client/').'/'.$clientsProfile->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+				                    <a class="dropdown-item delete_data" href="{{url('/admin/delete_client/{id}" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
 							</td>
 					</tr>
