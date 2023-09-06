@@ -112,5 +112,9 @@ class BillingsController extends Controller
         ;
 
 	}
-
+	public function printBilling(){
+	$pdf = PDF::loadView('Admin.billings.print_billing'); // Replace 'pdf.document' with your view file.
+    
+    return $pdf->stream('document.pdf'); 
+	}
 }

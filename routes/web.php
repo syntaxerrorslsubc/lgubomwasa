@@ -46,6 +46,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/admin/delete_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'deleteBilling'])->name('admindelete_billing');
 
+            Route::get('/admin/print-document}', [App\Http\Controllers\Admin\BillingsController::class, 'printBilling'])->name('adminprint_billing');
+
 
             #Category
             Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admincategory');
@@ -84,6 +86,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             #REPORTS
             Route::get('/admin/monthly_billing', [App\Http\Controllers\Admin\ReportsController::class, 'monthly_billing'])->name('adminmonthly_billing');
+
 
             #SYSTEMINFO
             Route::get('/admin/system_info', [App\Http\Controllers\Admin\SystemInfoController::class, 'index'])->name('adminsystem_info');
