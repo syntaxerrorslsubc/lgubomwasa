@@ -58,6 +58,7 @@
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
 								<option value="0" >Pending</option>
 								<option value="1" >Paid</option>
+								
 								</select>
 							</div>
 							<div class="card-footer py-1 text-center">

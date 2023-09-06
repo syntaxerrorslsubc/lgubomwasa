@@ -89,7 +89,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/system_info', [App\Http\Controllers\Admin\SystemInfoController::class, 'index'])->name('adminsystem_info');
 
             #USERLIST
-            Route::get('/admin/user', [App\Http\Controllers\Admin\UserlistController::class, 'index'])->name('adminuser');
+              Route::get('/admin/user', [App\Http\Controllers\Admin\UserlistController::class, 'index'])->name('adminuser');
 
             Route::get('/admin/add_user/', [App\Http\Controllers\Admin\UserlistController::class, 'add_user'])->name('admin.user.add');
             Route::post('/admin/add_user/save', [App\Http\Controllers\Admin\UserlistController::class, 'saveUser'])->name('admin_user.save');

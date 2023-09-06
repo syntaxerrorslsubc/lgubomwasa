@@ -46,14 +46,12 @@
 				<div class="form-group">
 					<label for="" class="control-label">Avatar</label>
 					<div class="custom-file">
-		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="avatar" onchange="displayImg(this,$(this))" accept="image/png, image/jpeg">
+		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="img" onchange="displayImg(this,$(this))" accept="image/png, image/jpeg">
 		              <label class="custom-file-label" for="customFile">Choose file</label>
 		            </div>
 				</div>
 				<div class="form-group d-flex justify-content-center">
-					@isset($imagePath)
-				        <img src="{{ asset($imagePath) }}" id="cimg" class="img-fluid img-thumbnail" alt="Uploaded Image">
-				    @endisset
+					<img src="" alt="" id="cimg" class="img-fluid img-thumbnail">
 				</div>
 
 				<div class="card-footer py-1 text-center">
@@ -72,26 +70,4 @@
 		border-radius: 100% 100%;
 	}
 </style>
-
-<script>
-	function previewImage(event) {
-            const fileInput = event.target;
-            const file = fileInput.files[0];
-            const cimg = document.getElementById('cimg');
-
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function() {
-                    cimg.src = reader.result;
-                    cimg.style.display = 'block';
-                }
-
-                reader.readAsDataURL(file);
-            } else {
-                thumbnail.src = '#';
-                thumbnail.style.display = 'none';
-            }
-        }
-</script>	
 @endsection

@@ -56,6 +56,18 @@ class UserlistController extends Controller
              ]);
         }
 
+    public function updateuser(Request $request)
+        {
+            $saveUser->name = $request->name;
+            $saveUser->email = $request->email;
+            $saveUser->password = Hash::make($request->password);
+            $saveUser->type = $request->type;
+            $saveUser->avatar = $request->avatar;
+                    
+                if($saveUser->save()){
+                    return redirect()->back()->withErrors('Success','Category has been updated successfully.');
+                }
+        }
 
      public function list(){
       $Users=User::orderby('id')->paginate(10);
