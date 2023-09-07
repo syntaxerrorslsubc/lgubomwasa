@@ -126,6 +126,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/cashier/clients', [App\Http\Controllers\Cashier\ClientsController::class, 'index'])->name('cashierclients');
             Route::get('/cashier/billing_history', [App\Http\Controllers\Cashier\ClientsController::class, 'billing_history'])->name('cashierbilling_history');
 
+            Route::get('/cashier/edit_client/{id}', [App\Http\Controllers\Cashier\ClientsController::class, 'editClient'])->name('cashieredit_client');
+            Route::post('/cashier/edit_client/update', [App\Http\Controllers\Cashier\ClientsController::class, 'updateClient'])->name('cashieredit_client.update');
+
             Route::get('/cashier/view_client/{id}', [App\Http\Controllers\Cashier\ClientsController::class, 'view_client'])->name('cashierview_client');
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cashier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Billing_list;
+use App\Models\Client_list;
 
    class BillingsController extends Controller
 {

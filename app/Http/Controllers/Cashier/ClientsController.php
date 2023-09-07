@@ -16,7 +16,7 @@ class ClientsController extends Controller
 
         public function index()
         {
-            $client_lists=Client_list::orderby('id')->paginate(10);
+            $client_lists=Client_list::orderby('id')->paginate(20);
             return view('Cashier/clients.index', [
                     'client_lists'=>$client_lists
             ]);
@@ -31,21 +31,20 @@ class ClientsController extends Controller
         }
 
 
-        public function saveClient(Request $request)
+        public function updateClient(Request $request)
          {
 
-                $client = new Client_list;
-                $client->code = $request->code;
-                $client->category_id = $request->category_id;
-                $client->firstname = $request->firstname;
-                $client->lastname = $request->lastname;
-                $client->middlename = $request->middlename;
-                $client->address = $request->address;
-                $client->contact = $request->contact;
-                $client->meter_code = $request->meter_code;
-                $client->first_reading = $request->first_reading;
-                $client->status = $request->status;
-                if($client->save()){
+                $updateClients = new Client_list;
+                $updateClients->category_id = $request->category_id;
+                $updateClients->firstname = $request->firstname;
+                $updateClients->lastname = $request->lastname;
+                $updateClients->middlename = $request->middlename;
+                $updateClients->address = $request->address;
+                $updateClients->contact = $request->contact;
+                $updateClients->meter_serial_number = $request->meter_serial_number;
+                $updateClients->first_reading = $request->first_reading;
+                $updateClients->status = $request->status;
+                if($updateClients->save()){
                     return redirect()->back()->with('Success','Client has been created successfully.');
                 }
             

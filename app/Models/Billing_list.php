@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client_list;
 use App\Models\Category_list;
+use App\Models\Billing_list;
 
 class Billing_list extends Model
 {

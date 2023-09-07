@@ -55,6 +55,8 @@
                                   </button>
                                   <div class="dropdown-menu" role="menu">
                                     <a class="dropdown-item view_data" href="{{ url('/cashier/view_client/').'/'.$clientsProfile->id}}"><span class="fa fa-eye text-dark"></span> View</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item edit_data" href="{{url('/cashier/edit_client/').'/'.$clientsProfile->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
                                   </div>
                             </td>
                     </tr>
