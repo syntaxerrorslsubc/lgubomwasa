@@ -22,7 +22,8 @@
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading Date</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading_date}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Client Name</div>
-							
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->client->lastname}}, {{$billing->client->firstname}}</div>
+
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Reading</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->reading}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Previous</div>
@@ -47,7 +48,7 @@
 				<button class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print" href="{{ route('adminprint_billing') }}" target="_blank"><i class="fa fa-print"></i> Print</button>
 				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/admin/edit_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
 				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('cashieradd_billing')}}./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminadd_billing')}}./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
 	</div>

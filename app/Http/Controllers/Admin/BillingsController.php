@@ -17,8 +17,7 @@ class BillingsController extends Controller
 
 	    public function index()
 	    {
-	    $billing=Billing_list::paginate(10);
-	    	
+	    	$billing=Billing_list::with('client')->paginate(10);
 	    	return view('Admin/billings.index', [
                     'billing'=>$billing
             ]);
@@ -55,7 +54,8 @@ class BillingsController extends Controller
 			if (isset($categories)) {
 				foreach($categories as $category){
 					if($client->category_id==$category->id){
-						return $category->rate;
+						$cat = array('rate' => $category->rate, 'id'=> $category->id, 'name'=>$category->name,  'minimum'=>$category->minimum);
+						return json_encode($cat);
 					}
 				}
 			}

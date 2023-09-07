@@ -58,7 +58,7 @@ class ClientsController extends Controller
         public function updateClient(Request $request)
          {
 
-                $storeClient = new Client_list;
+                $storeClient = Client_list::where('id', $request->id)->first();
                 $storeClient->category_id = $request->category_id;
                 $storeClient->firstname = $request->firstname;
                 $storeClient->lastname = $request->lastname;

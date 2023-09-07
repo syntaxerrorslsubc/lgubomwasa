@@ -49,6 +49,10 @@
 								<input type="text" class="form-control form-control-sm rounded-0" oninput="calc_total()" id="reading" name="reading" required="required" value="">
 							</div>
 							<div class="form-group mb-3">
+								<label for="reading" class="control-label">Minimum</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="minimum" name="minimum" required="required" readonly value="">
+							</div>
+							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
 								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value=""/>							
 							</div>
@@ -82,9 +86,11 @@
 </div>
 <script>
 	function calc_total(){
-		var minimum=150;
+		var minimum = $('#minimum').val()
 		var current_reading = $('#reading').val()
 		var previous = $('#previous').val()
+		var minconsume = 10;
+		var cat = $('#category').val()
 		var rate = $('#rate').val()
 
 		current_reading = current_reading > 0 ? current_reading : 0;
@@ -92,20 +98,24 @@
 
 		var consume = parseFloat(current_reading) - parseFloat(previous);
 
-		if (consume <= 10) {
+		if (consume <= minconsume) {
 			$('#total').val(minimum);
 		}else{
-			$('#total').val(consume * parseFloat(rate)+ minimum);
+			var excessconsume = consume - minconsume;
+			var partialbill = (excessconsume * parseFloat(rate)) + parseFloat(minimum);
+			$('#total').val(partialbill);
 		}
 	}
 
-	$('#clientid').on('click', function() {
+	$('#clientid').on('change', function() {
 	   $.ajax({
 	   		url:'{{url("/admin/add_billing/search/consumertype/")}}/' + this.value,
 	   		method: 'GET',
 	   		success:function(resp){
-	   			console.log(resp)
-	   			$('#rate').val(resp);
+	   			var response = JSON.parse(resp)
+	   			$('#rate').val(response.rate);
+	   			$('#minimum').val(response.minimum);
+
 	   		}
 	   });
 	});
