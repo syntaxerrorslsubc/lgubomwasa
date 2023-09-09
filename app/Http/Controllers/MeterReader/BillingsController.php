@@ -70,6 +70,21 @@ class BillingsController extends Controller
             }
       }
 
+      public function searchType(Request $request){
+         $client = Client_list::where('id', $request->id)->first();
+         $categories = Category_list::get();
+         if (isset($categories)) {
+            foreach($categories as $category){
+               if($client->category_id==$category->id){
+                  $cat = array('rate' => $category->rate, 'id'=> $category->id, 'name'=>$category->name,  'minimum'=>$category->minimum);
+                  return json_encode($cat);
+               }
+            }
+         }
+      }
+
+      
+
       public function view_billing($id)
       {
         $billing = Billing_list::find($id);
