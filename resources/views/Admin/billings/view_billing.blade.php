@@ -48,7 +48,7 @@
 				<button class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print" href="{{ route('adminprint_billing') }}" target="_blank"><i class="fa fa-print"></i> Print</button>
 				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/admin/edit_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
 				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminadd_billing')}}./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminadd_billing')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
 	</div>

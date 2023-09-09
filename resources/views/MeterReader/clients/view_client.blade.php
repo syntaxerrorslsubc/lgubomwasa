@@ -16,46 +16,30 @@
 		<div class="card rounded-0 shadow">
 			<div class="card-body">
 				<div class="container-fluid">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Code</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+					<div class="row">
+							@if ($client)
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Client Name</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->lastname}}, {{$client->firstname}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Contact #</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->contact}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Address</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
-							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter Code</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->address}}</div>
+							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter Serial Number</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->meter_serial_number}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter First Reading</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->first_reading}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Date Created</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border"></div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->created_at}}</div>
 							<div class="clear-fix my-1"></div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Status</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">
-								<?php
-									$status = isset($status) ? $status : 0 ;
-									switch($status){
-										case 1:
-											echo '<span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>';
-											break;
-										case 2:
-											echo '<span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>';
-											break;
-									}
-								?>
-							</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->status}}</div>
+							@endif
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients/billing_history&id="><i class="fa fa-table"></i> Billing History</a>
-				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="./?page=clients/manage_client&id="><i class="fa fa-edit"></i> Edit</a>
-				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients"><i class="fa fa-angle-left"></i> Back to List</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('meterreaderclients')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
 	</div>

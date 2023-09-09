@@ -5,9 +5,6 @@
 <div class="card card-outline rounded-0 card-navy">
 	<div class="card-header">
 		<h3 class="card-title">List of Clients</h3>
-		<div class="card-tools">
-			<a href="./?page=clients/manage_client" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
-		</div>
 	</div>
 	<div class="card-body">
         <div class="container-fluid">
@@ -24,37 +21,38 @@
 					<tr>
 						<th>#</th>
 						<th>Date Created</th>
-						<th>Code</th>
+						<th>Meter Serial Number</th>
 						<th>Name</th>
+						<th>Address</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					
-						<tr>
-							<td class="text-center"></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="text-center">
-								
-                            </td>
+					@foreach($client_lists as $clientsProfile )
+					<tr>
+							<td class="text-center">{{$clientsProfile->id}}</td>
+							<td>{{$clientsProfile->created_at}}</td>
+							<td>{{$clientsProfile->meter_serial_number}}</td>
+							<td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
+							<td>{{$clientsProfile->address}}</td>
+
+							<td>
+								@if($clientsProfile->status === 0)
+				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
+				                @elseif($clientsProfile->status === 1)
+				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+				                @endif
+			              </td>
+						
 							<td align="center">
-								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-				                  		Action
-				                    <span class="sr-only">Toggle Dropdown</span>
+								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm">
+				                  		<a class="dropdown-item view_data" href="{{ url('/meterreader/view_client').'/'.$clientsProfile->id}}"><span class="fa fa-eye text-dark"></span> View</a> 
 				                  </button>
-				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item view_data" href="./?page=clients/view_client&id="><span class="fa fa-eye text-dark"></span> View</a>
-				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item edit_data" href="{../admin/manage_client/{id}"><span class="fa fa-edit text-primary"></span> Edit</a>
-				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
-				                  </div>
+				                      
 							</td>
-						</tr>
-					
+					</tr>
+					@endforeach
 				</tbody>
 			</table>
 		</div>

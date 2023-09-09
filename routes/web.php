@@ -144,13 +144,25 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/meterreader', [App\Http\Controllers\MeterReader\MeterReaderController::class, 'index'])->name('meterreaderdashboard');
 
             #Billings
-                    Route::get('/meterreader/manage_billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'manage_billings'])->name('meterreadermanage_billings');
-                    Route::get('/meterreader/view_billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'view_billings'])->name('meterreaderview_billings');
-                    Route::get('/meterreader/billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'index'])->name('meterreaderbillings');
+                Route::get('/meterreader/billings', [App\Http\Controllers\MeterReader\BillingsController::class, 'index'])->name('meterreaderbillings');
+
+                    Route::get('/meterreader/add_billing/', [App\Http\Controllers\MeterReader\BillingsController::class, 'addBilling'])->name('meterreaderadd_billing');
+                    Route::post('/meterreader/add_billing/save', [App\Http\Controllers\MeterReader\BillingsController::class, 'saveBilling'])->name('meterreaderadd_billing.save');
+
+                    Route::get('/meterreader/add_billing/search/consumertype/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'searchType'])->name('meterreaderadd_billing.search');
+
+                    Route::get('/meterreader/edit_billing/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'editBilling'])->name('meterreaderedit_billing');
+                    Route::post('/meterreader/edit_billing/update', [App\Http\Controllers\MeterReader\BillingsController::class, 'updateBilling'])->name('meterreaderedit_billing.update');
+
+                    Route::get('/meterreader/view_billing/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'view_billing'])->name('meterreaderview_billing');
+
+                    Route::get('/meterreader/delete_billing/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'deleteBilling'])->name('meterreaderdelete_billing');
+
+                    Route::get('/meterreader/print-document}', [App\Http\Controllers\MeterReader\BillingsController::class, 'printBilling'])->name('meterreaderprint_billing');         
 
             #Clients
-                Route::get('/meterreader/manage_client', [App\Http\Controllers\MeterReader\ClientsController::class, 'manage_client'])->name('meterreadermanage_client');
-                Route::get('/meterreader/view_client', [App\Http\Controllers\MeterReader\ClientsController::class, 'view_client'])->name('meterreaderview_client');
+                Route::get('/meterreader/view_client/{id}', [App\Http\Controllers\MeterReader\ClientsController::class, 'view_client'])->name('meterreaderview_client');
+
                 Route::get('/meterreader/clients', [App\Http\Controllers\MeterReader\ClientsController::class, 'index'])->name('meterreaderclients');
             });
 
