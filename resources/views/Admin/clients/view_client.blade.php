@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients/billing_history&id="><i class="fa fa-table"></i> Billing History</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{url('/admin/billings/billing_history/').'/'.$client->id}}"><i class="fa fa-table"></i> Billing History</a>
 					<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/admin/edit_client/').'/'.$client->id}}"><i class="fa fa-edit"></i> Edit</a>
 					<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0 delete_data" type="button" data-id="" data-url="{{ url('/admin/delete_client/').'/'.$client->id}}" href=""><i class="fa fa-trash"></i> Delete</button>
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{ route('adminclients')}}"><i class="fa fa-angle-left"></i> Back to List</a>

@@ -45,29 +45,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                        @if ($billingRecords->isEmpty())
+                            <p>No billing records available.</p>
+                        @else  
+                            @if(isset($billingRecords))  
+                            @foreach ($billingRecords as $record)
                                 <tr>
-                                    <td class="text-center"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
-                                    <td class="text-right"></td>
+                                    <td class="text-center">{{$record->id}}</td>
+                                    <td>{{$record->reading_date}}</td>
+                                    <td>{{$record->due_date}}</td>
+                                    <td class="text-right">{{$record->reading}}</td>
+                                    <td class="text-right">{{$record->previous}}</td>
+                                    <td class="text-right">{{$record->id}}</td>
+                                    <td class="text-right">{{$record->rate}}</td>
                                     <td class="text-center">
-                                        
+                                        @if($record->status === 0)
+                                              <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
+                                        @elseif($record->status === 1)
+                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+                                        @endif
                                     </td>
-                                    <td class="text-right"></td>
+                                    <td class="text-right">{{$record->total}}</td>
                                 </tr>
-                            
+                            @endforeach
+                            @endif
+                         @endif
                         </tbody>
                     </table>
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients/view_client&id="><i class="fa fa-angle-left"></i> Back </a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href=""><i class="fa fa-angle-left"></i> Back </a>
 			</div>
 		</div>
 	</div>
 </div>
+
 @endsection     
