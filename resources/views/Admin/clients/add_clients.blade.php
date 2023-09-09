@@ -3,7 +3,7 @@
 
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b>Create New User</b></h3>
+	<h3><b>Create New Client</b></h3>
 </div>
 <style>
 	img#cimg{
@@ -13,54 +13,68 @@
     }
 </style>
 
-<div class="card card-outline rounded-0 card-navy">
-	<div class="card-body">
-		<div class="container-fluid">
-			<div id="msg"></div>
-			<form action="{{route('admin_user.save')}}" method="post">	
-				@csrf
-				<input type="hidden" name="id" value="">
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input type="text" name="name" id="name" class="form-control" value="" required>
+<div class="row justify-content-center" style="margin-top:-2em;">
+	<div class="col-lg-10 col-md-11 col-sm-11 col-xs-11">
+		<div class="card rounded-0 shadow">
+			<div class="card-body">
+				<div class="container-fluid">
+					<div class="container-fluid">
+						<form action="{{route('adminadd_clients.save')}}" method="post" id="client-form">
+							@csrf
+							<input type="hidden" name ="id" value="">
+							<div class="form-group mb-3">
+								<label for="category_id" class="control-label">Category</label>
+								<select name="category_id" id="category_id" class="form-control form-control-sm rounded-0" required="required">
+									@if($categories=\App\Models\Category_list::orderby('id', 'asc')->get())
+										@foreach($categories as $category)
+											<option value="{{$category->id}}">{{$category->name}}</option>
+										@endforeach
+									@endif
+								</select>
+							</div>
+							<div class="form-group mb-3">
+								<label for="firstname" class="control-label">First Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="firstname" name="firstname" required="required" value=""/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="middlename" class="control-label">Middle Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="middlename" name="middlename" placeholder="optional" value=""/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="lastname" class="control-label">Last Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="lastname" name="lastname" required value=""/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="contact" class="control-label">Contact #</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="contact" name="contact" required value=""/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="address" class="control-label">Address</label>
+								<textarea rows="3" class="form-control form-control-sm rounded-0" id="address" name="address" required="required"></textarea>
+							</div>
+							<div class="form-group p-0 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+								<label for="meter_serial_number" class="control-label">Meter Serial Number</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="meter_serial_number" name="meter_serial_number" required="required" >
+							</div>
+							<div class="form-group p-0 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
+								<label for="first_reading" class="control-label">First Reading</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="first_reading" name="first_reading" value="" required="required">
+							</div>
+							<div class="form-group">
+								<label for="status" class="control-label">Status</label>
+								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
+								<option value="1" >Active</option>
+								<option value="2" >Inactive</option>
+								</select>
+							</div>
+							<div class="card-footer py-1 text-center">
+								<button class="btn btn-sm btn-primary rounded-0 mr-3" type="submit">Save User Details</button>
+								<a href="{{route('adminuser')}}" class="btn btn-sm btn-default border rounded-0" form="manage-user"><i class="fa fa-angle-left"></i> Cancel</a>
+							</div>
+						</form>
+					</div>
 				</div>
-				
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="text" name="email" id="email" class="form-control" value="" required  autocomplete="off">
-				</div>
-				<div class="form-group">
-					<label for="password"> Password</label>
-					<input type="password" name="password" id="password" class="form-control" value="" autocomplete="off">
-                    
-					<small><i>Leave this blank if you dont want to change the password.</i></small>
-                    
-				</div>
-                <div class="form-group">
-                    <label for="type" class="control-label">Type</label>
-                    <select name="type" id="type" class="form-control form-control-sm rounded-0" required>
-                    <option value="1" >Administrator</option>
-                    <option value="2" >Staff</option>
-                    </select>
-                </div>
-				<div class="form-group">
-					<label for="" class="control-label">Avatar</label>
-					<div class="custom-file">
-		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="avatar" onchange="displayImg(this,$(this))" accept="image/png, image/jpeg">
-		              <label class="custom-file-label" for="customFile">Choose file</label>
-		            </div>
-				</div>
-				<div class="form-group d-flex justify-content-center">
-					@isset($imagePath)
-				        <img src="{{ asset($imagePath) }}" id="cimg" class="img-fluid img-thumbnail" alt="Uploaded Image">
-				    @endisset
-				</div>
-
-				<div class="card-footer py-1 text-center">
-					<button class="btn btn-sm btn-primary rounded-0 mr-3" type="submit">Save User Details</button>
-					<a href="{{route('adminuser')}}" class="btn btn-sm btn-default border rounded-0" form="manage-user"><i class="fa fa-angle-left"></i> Cancel</a>
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>	
 </div>
