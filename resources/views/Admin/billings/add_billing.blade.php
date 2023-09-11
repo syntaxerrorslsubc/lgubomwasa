@@ -37,11 +37,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="previous" class="control-label">Previous Reading</label>
-								@if($previous=\App\Models\Billing_list::get())
-									<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="@foreach($previous as $previouses)
-										{{$previouses->previous}}
-									@endforeach">	
-								@endif
+									<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="">	
 							</input>
 							</div>
 							<div class="form-group mb-3">
@@ -115,6 +111,7 @@
 	   			var response = JSON.parse(resp)
 	   			$('#rate').val(response.rate);
 	   			$('#minimum').val(response.minimum);
+	   			$('#previous').val(response.previous);
 
 	   		}
 	   });
