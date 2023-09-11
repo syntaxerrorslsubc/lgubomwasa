@@ -42,28 +42,28 @@
               <td>{{$billing_list->total}}</td>
               <td>{{$billing_list->due_date}}</td>
 
-                <td class="text-center">
-                  @if($billing_list->status === 0)
-                      <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
-                  @elseif($billing_list->status === 1)
-                     <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
-                  @endif
-                </td>
+              <td class="text-center">
+                @if($billing_list->status === 0)
+                    <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
+                @elseif($billing_list->status === 1)
+                   <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
+                @endif
+              </td>
 
-                <td align="center">
-                   <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                Action
-                              <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu" role="menu">
-                              <a class="dropdown-item view_data" href="{{ url('/admin/view_billing/').'/'.$billing_list->id}}"><span class="fa fa-eye text-dark"></span> View</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item edit_data" href="{{ url('/admin/edit_billing/').'/'.$billing_list->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
+              <td align="center">
+                 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                              Action
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item view_data" href="{{ url('/admin/view_billing/').'/'.$billing_list->id}}"><span class="fa fa-eye text-dark"></span> View</a>
                             <div class="dropdown-divider"></div>
-                              <a class="dropdown-item delete_data" data-url="{{ url('/admin/delete_billing/').'/'.$billing_list->id}}" href=""><span class="fa fa-trash text-danger"></span> Delete</a>
-                            </div>
-                </td>
-              </tr>
+                            <a class="dropdown-item edit_data" href="{{ url('/admin/edit_billing/').'/'.$billing_list->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
+                          <div class="dropdown-divider"></div>
+                            <a class="dropdown-item delete_data" data-url="{{ url('/admin/delete_billing/').'/'.$billing_list->id}}" href=""><span class="fa fa-trash text-danger"></span> Delete</a>
+                          </div>
+              </td>
+            </tr>
      
           </tbody>
 
