@@ -101,7 +101,7 @@
 			var partialbill = (excessconsume * parseFloat(rate)) + parseFloat(minimum);
 			$('#total').val(partialbill);
 		}
-	}
+	} 
 
 	$('#clientid').on('change', function() {
 	   $.ajax({

@@ -42,10 +42,10 @@
 				<img src="" alt="" id="cimg2" class="img-fluid img-thumbnail">
 			</div>
 			<fieldset>
-				<legend>Pricing</legend>
+				<legend>Minimum</legend>
 				<div class="form-group col-lg-6 col-md-10 col-sm-12 col-xs-12">
-					<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-					<input type="text" class="form-control form-control-sm" name="rate" id="rate" value="">
+					<label for="rate" class="control-label">Minimum</label>
+					<input type="text" class="form-control form-control-sm" name="minimum" id="minimum" value="">
 				</div>
 			</fieldset>
 			</form>

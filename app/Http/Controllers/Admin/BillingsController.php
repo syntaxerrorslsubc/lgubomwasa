@@ -59,6 +59,16 @@ class BillingsController extends Controller
 					}
 				}
 			}
+
+			$previous = Client_list::get();
+			if (isset($previous)) {
+				foreach($previous as $previouses){
+					if($client->id==$previouses->id){
+						$prev = array('previous'=>$previouses->previous);
+						return json_encode($prev);
+					}
+				}
+			}
 		}
 
 		 public function addBilling(Request $request){
@@ -69,6 +79,7 @@ class BillingsController extends Controller
 		 public function saveBilling(Request $request){
 		 		$saveNewBilling = new Billing_list; 
 		 		$saveNewBilling->clientid = $request->clientid;
+		 		$saveNewBilling->reading_date = $request->reading_date;
 				$saveNewBilling->due_date = $request->due_date;
 				$saveNewBilling->reading = $request->reading;
 				$saveNewBilling->previous = $request->previous;
@@ -80,15 +91,6 @@ class BillingsController extends Controller
 					return redirect()->back()->withErrors('Success','New bill has been created successfully.');
 				}
 		 }
-
-	    // public function view_billing(Request $request):View
-	    // {
-	    // 	$billing_list = Billing_list::where('id', $request->id);
-
-	    // 	return view('Admin/billings.view_billing', [
-	    // 		'billing_list'=> $billing_list
-	    // 	]);
-	    // }
 
 	public function view_billing($id)
  	{
