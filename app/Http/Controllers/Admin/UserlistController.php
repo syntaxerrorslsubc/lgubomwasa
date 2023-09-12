@@ -11,7 +11,15 @@ use Illuminate\Support\Facades\Hash;
 class UserlistController extends Controller
 {
     public function index(){
-        return view('Admin/user.list');
+        // return view('Admin/user.list');
+       $users = User::all();
+        return view('Admin/user.list', compact('users'));
+
+    }
+
+    public function layout(){
+        $user = User::find($id);
+        return view('layouts/Admin.default', compact('user'));
     }
 
      public function add_user(){
@@ -25,6 +33,13 @@ class UserlistController extends Controller
         $saveNewUser->password = Hash::make($request->password);
         $saveNewUser->type = $request->type;
         $saveNewUser->avatar = $request->avatar;
+
+        if ($request->hasFile('avatar')) {
+        $avatar = $request->file('avatar');
+        $avatarName = time().'.'.$avatar->getClientOriginalExtension();
+        $avatar->move(public_path('img'), $avatarName);
+        $data['img'] = $avatarName;
+        }
         
         if($saveNewUser->save()){
             $saveUser_role = new User_role;
@@ -56,18 +71,18 @@ class UserlistController extends Controller
              ]);
         }
 
-    public function updateuser(Request $request)
-        {
-            $saveUser->name = $request->name;
-            $saveUser->email = $request->email;
-            $saveUser->password = Hash::make($request->password);
-            $saveUser->type = $request->type;
-            $saveUser->avatar = $request->avatar;
+    public function updateUser(Request $request){
+            $updatedUser = User::where('id', $request->id)->first(); 
+            $updatedUser->name = $request->name;
+            $updatedUser->email = $request->email;
+            $updatedUser->password = Hash::make($request->password);
+            $updatedUser->type = $request->type;
+            $updatedUser->avatar = $request->avatar;
                     
-                if($saveUser->save()){
-                    return redirect()->back()->withErrors('Success','Category has been updated successfully.');
-                }
-        }
+            if($updatedUser->save()){
+                return redirect()->back()->withErrors('Success','Bill has been updated successfully.');
+         }
+    }
 
      public function list(){
       $Users=User::orderby('id')->paginate(10);
@@ -90,15 +105,21 @@ class UserlistController extends Controller
 
   }
 
-    public function uploadImage(Request $request)
-    {
-        $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
-        ]);
+  // public function image()
+  //   {
+  //       $avatar = Storage::files('public/images'); // Change the path as per your file structure
 
-        $imagePath = $request->file('avatar')->store('images', 'public');
+  //       return view('Admin/user.add_user', compact('images'));
+  //   }
 
-        return view('Admin/user.add_user', ['imagePath' => $imagePath]);
-    }
+  //   public function uploadImage(Request $request)
+  //   {
+  //       $request->validate([
+  //           'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
+  //       ]);
 
+  //       $imagePath = $request->file('avatar')->store('public/images');
+
+  //       return view('Admin/user.add_user', ['imagePath' => $imagePath]);
+  //   }
 }

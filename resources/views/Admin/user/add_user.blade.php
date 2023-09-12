@@ -43,10 +43,12 @@
                     <option value="2" >Staff</option>
                     </select>
                 </div>
+
+
 				<div class="form-group">
 					<label for="" class="control-label">Avatar</label>
 					<div class="custom-file">
-		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="img" onchange="displayImg(this,$(this))" accept="image/png, image/jpeg">
+		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="avatar" onchange="displayImg(this,$(this))" accept="image/png, image/jpeg">
 		              <label class="custom-file-label" for="customFile">Choose file</label>
 		            </div>
 				</div>

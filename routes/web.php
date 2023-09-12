@@ -94,6 +94,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #USERLIST
               Route::get('/admin/user', [App\Http\Controllers\Admin\UserlistController::class, 'index'])->name('adminuser');
 
+            Route::get('/admin/user/{id}', [App\Http\Controllers\Admin\UserlistController::class, 'layout'])->name('adminusers');
+
+
             Route::get('/admin/add_user/', [App\Http\Controllers\Admin\UserlistController::class, 'add_user'])->name('admin.user.add');
             Route::post('/admin/add_user/save', [App\Http\Controllers\Admin\UserlistController::class, 'saveUser'])->name('admin_user.save');
 
@@ -103,8 +106,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/userlist', [App\Http\Controllers\Admin\UserlistController::class, 'list'])->name('adminuserlist');
 
              Route::get('/admin/delete_user/{id}', [App\Http\Controllers\Admin\UserlistController::class, 'deleteUser'])->name('admindelete_user');
-
-           
+             Route::get('/admin/delete_user/{id}', [App\Http\Controllers\Admin\UserlistController::class, 'deleteUser'])->name('admindelete_user');
 		});
 
 

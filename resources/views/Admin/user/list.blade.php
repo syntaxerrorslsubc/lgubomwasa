@@ -37,7 +37,13 @@
          	 			<tr>
               				<td class="text-center">{{$users->id}}</td>
               				<td>{{$users->updated_at}}</td>
-              				<td>{{$users->avatar}}</td>
+              				<td>
+              					@if ($users->avatar)
+                                <img src="{{ asset('avatars/' . $users->avatar) }}" alt="{{ $users->name }}" class="img-thumbnail" width="100">
+                            @else
+                                No Avatar
+                        @endif
+              				</td>
               				<td>{{$users->name}}</td>
               				<td>{{$users->email}}</td>
               				<td>{{$users->type}}</td>

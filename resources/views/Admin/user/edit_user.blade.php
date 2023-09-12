@@ -33,7 +33,9 @@
 		            </div>
 				</div>
 				<div class="form-group d-flex justify-content-center">
-					<img src="" alt="" id="cimg" class="img-fluid img-thumbnail">
+					@foreach($avatar as $image)
+			            <img src="{{ asset('images/'.$image->avatar) }}" alt="{{ $image->name }}" class="img-thumbnail">
+			        @endforeach
 				</div>
 			</form>
 		</div>
