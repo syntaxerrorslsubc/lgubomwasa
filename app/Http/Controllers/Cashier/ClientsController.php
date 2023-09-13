@@ -42,10 +42,10 @@ class ClientsController extends Controller
                 $updateClients->address = $request->address;
                 $updateClients->contact = $request->contact;
                 $updateClients->meter_serial_number = $request->meter_serial_number;
-                $updateClients->first_reading = $request->first_reading;
+                $updateClients->previous = $request->previous;
                 $updateClients->status = $request->status;
                 if($updateClients->save()){
-                    return redirect()->route('cashierview_client', $storeClient);
+                    return redirect()->route('cashierview_client', $updateClients);
                 }
             
          }

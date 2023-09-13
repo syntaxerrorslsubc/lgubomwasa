@@ -22,7 +22,6 @@
                     <tr>
                         <th>#</th>
                         <th>Date Created</th>
-                        <th>Code</th>
                         <th>Name</th>
                         <th>Address</th>
                         <th>Contact #</th>
@@ -35,7 +34,6 @@
                     <tr>
                             <td class="text-center">{{$clientsProfile->id}}</td>
                             <td>{{$clientsProfile->created_at}}</td>
-                            <td>{{$clientsProfile->created_at}}-{{$clientsProfile->meter_code}}</td>
                             <td>{{$clientsProfile->lastname}}, {{$clientsProfile->firstname}}</td>
                             <td>{{$clientsProfile->address}}</td>
                             <td>{{$clientsProfile->contact}}</td>

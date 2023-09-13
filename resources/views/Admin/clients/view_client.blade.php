@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b>Client Details</b></h3>
+	<h3><b>Client Details - </b>{{$client->lastname}}, {{$client->firstname}}</h3>
 </div>
 <style>
 	img#cimg{
@@ -26,13 +26,18 @@
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->address}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter Serial Number</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->meter_serial_number}}</div>
-							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter First Reading</div>
+							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter Previous Reading</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->previous}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Date Created</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->created_at}}</div>
 							<div class="clear-fix my-1"></div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Status</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->status}}</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">
+												@if($client->status === 0)
+				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
+				                @elseif($client->status === 1)
+				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+				                @endif</div></div>
 							@endif
 						</div>
 					</div>

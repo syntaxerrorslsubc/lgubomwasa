@@ -43,7 +43,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value="{{$billing->previous}}"/>
+								<input type="text" class="form-control form-control-sm rounded-0" id="rate" name="rate" required readonly value="{{$billing->rate}}"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="total" class="control-label">Total Bill</label>
@@ -75,10 +75,11 @@
 </div>
 <script>
 	function calc_total(){
-		
-		var minimum=150;
+		var minimum = $('#minimum').val()
 		var current_reading = $('#reading').val()
 		var previous = $('#previous').val()
+		var minconsume = 10;
+		var cat = $('#category').val()
 		var rate = $('#rate').val()
 
 		current_reading = current_reading > 0 ? current_reading : 0;
@@ -86,84 +87,37 @@
 
 		var consume = parseFloat(current_reading) - parseFloat(previous);
 
-		if (consume <= 10) {
+		if (consume <= minconsume) {
 			$('#total').val(minimum);
 		}else{
-			$('#total').val(consume * parseFloat(rate)+ minimum);
-
+			var excessconsume = consume - minconsume;
+			var partialbill = (excessconsume * parseFloat(rate)) + parseFloat(minimum);
+			$('#total').val(partialbill);
 		}
+	} 
 
-	}
-		// $(document).ready(function(){
-		// $('#client_id').select2({
-		// 	placeholder:"Please Select Here",
-		// 	containerCssClass:'form-control form-control-sm rounded-0'
-		// })
-		// $('#client_id').change(function(){
-		// 	var id = $(this).val()
-		// 	if(id <= 0)
-		// 		return false;
-		// 	start_loader()
-		// 	$.ajax({
-		// 		url:_base_url_+"classes/Master.php?f=get_previous_reading",
-		// 		data:{client_id : id, id: '<?= isset($id) ? $id : '' ?>'},
-		// 		method:'POST',
-		// 		dataType:'json',
-		// 		error:err=>{
-		// 			console.log(err)
-		// 			alert_toast("An error occurred.", 'error')
-		// 			end_loader()
-		// 		},
-		// 		success:function(resp){
-		// 			if(resp.status == 'success'){
-		// 				$('#previous').val(resp.previous)
-		// 				calc_total()
-		// 			}else{
-		// 				alert_toast("An error occurred.", 'error')
-		// 			}
-		// 			end_loader();
-		// 		}
-		// 	})
-		// })
-		// $('#reading').on('input', function(){
-		// 	calc_total()
-		// })
-		// $('#billing-form').submit(function(e){
-		// 	e.preventDefault();
-        //     var _this = $(this)
-		// 	 $('.err-msg').remove();
-		// 	start_loader();
-		// 	$.ajax({
-		// 		url:_this.attr('action'),
-		// 		data: new FormData($(this)[0]),
-        //         cache: false,
-        //         contentType: false,
-        //         processData: false,
-        //         method: 'POST',
-        //         type: 'POST',
-        //         dataType: 'json',
-		// 		error:err=>{
-		// 			console.log(err)
-		// 			alert_toast("An error occured",'error');
-		// 			end_loader();
-		// 		},
-		// 		success:function(resp){
-		// 			if(typeof resp =='object' && resp.status == 'success'){
-		// 				location.href = "/admin/view_billings/{id}"+resp.id
-		// 			}else if(resp.status == 'failed' && !!resp.msg){
-        //                 var el = $('<div>')
-        //                     el.addClass("alert alert-danger err-msg").text(resp.msg)
-        //                     _this.prepend(el)
-        //                     el.show('slow')
-        //                     $("html, body, .modal").scrollTop(0)
-        //                     end_loader()
-        //             }else{
-		// 				alert_toast("An error occured",'error');
-		// 				end_loader();
-        //                 console.log(resp)
-		// 			}
-		// 		}
-		// 	})
+	$('#clientid').on('change', function() {
+	   $.ajax({
+	   		url:'{{url("/admin/add_billing/search/consumertype/")}}/' + this.value,
+	   		method: 'GET',
+	   		success:function(resp){
+	   			var response = JSON.parse(resp)
+	   			$('#rate').val(response.rate);
+	   			$('#minimum').val(response.minimum);
+	   		}
+	   });
+	});
+
+	$('#clientid').on('change', function() {
+	   $.ajax({
+	   		url:'{{url("/admin/add_billing/search/prevBilling/")}}/' + this.value,
+	   		method: 'GET',
+	   		success:function(resp){
+	   			// var response = JSON.parse(resp)
+	   			$('#previous').val(resp);
+	   		}
+	   });
+	});
 	</script>
 
 
