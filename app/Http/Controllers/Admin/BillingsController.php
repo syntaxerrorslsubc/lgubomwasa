@@ -44,7 +44,7 @@ class BillingsController extends Controller
 				$storeBilling->status = $request->status;
 				
 				if($storeBilling->save()){
-					return redirect()->back()->withErrors('Success','Bill has been updated successfully.');
+					return redirect()->route('adminview_billing', $storeBilling);
 				}
 			
 		 }
@@ -73,6 +73,7 @@ class BillingsController extends Controller
 
 			}
 		}
+
 		 public function addBilling(Request $request){
 		 	return view('Admin.billings.add_billing');
 		 }
@@ -90,7 +91,7 @@ class BillingsController extends Controller
 				$saveNewBilling->status = $request->status;
 				
 				if($saveNewBilling->save()){
-					return redirect()->back()->withErrors('Success','New bill has been created successfully.');
+					return redirect()->route('adminview_billing', $saveNewBilling);
 				}
 		 }
 

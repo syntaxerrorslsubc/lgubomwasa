@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b>Billing Details</b></h3>
+	<h3><b>Billing Details - </b>{{$billing->client->lastname}}, {{$billing->client->firstname}}</h3>
 </div>
 <style>
 	img#cimg{

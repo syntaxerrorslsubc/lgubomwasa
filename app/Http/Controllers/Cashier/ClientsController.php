@@ -45,7 +45,7 @@ class ClientsController extends Controller
                 $updateClients->first_reading = $request->first_reading;
                 $updateClients->status = $request->status;
                 if($updateClients->save()){
-                    return redirect()->back()->with('Success','Client has been created successfully.');
+                    return redirect()->route('cashierview_client', $storeClient);
                 }
             
          }

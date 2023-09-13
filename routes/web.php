@@ -38,6 +38,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('/admin/add_billing/save', [App\Http\Controllers\Admin\BillingsController::class, 'saveBilling'])->name('adminadd_billing.save');
 
             Route::get('/admin/add_billing/search/consumertype/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'searchType'])->name('adminadd_billing.search');
+
             Route::get('/admin/add_billing/search/prevBilling/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'searchPrevBilling'])->name('adminadd_billing.searchBilling');
 
             Route::get('/admin/edit_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'editBilling'])->name('adminedit_billing');
@@ -153,6 +154,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
                     Route::post('/meterreader/add_billing/save', [App\Http\Controllers\MeterReader\BillingsController::class, 'saveBilling'])->name('meterreaderadd_billing.save');
 
                     Route::get('/meterreader/add_billing/search/consumertype/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'searchType'])->name('meterreaderadd_billing.search');
+
+                    Route::get('/meterreader/add_billing/search/prevBilling/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'searchPrevBilling'])->name('meterreaderadd_billing.searchBilling');
 
                     Route::get('/meterreader/edit_billing/{id}', [App\Http\Controllers\MeterReader\BillingsController::class, 'editBilling'])->name('meterreaderedit_billing');
                     Route::post('/meterreader/edit_billing/update', [App\Http\Controllers\MeterReader\BillingsController::class, 'updateBilling'])->name('meterreaderedit_billing.update');

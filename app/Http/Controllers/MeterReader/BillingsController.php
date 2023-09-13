@@ -45,7 +45,7 @@ class BillingsController extends Controller
             $storeBilling->status = $request->status;
             
             if($storeBilling->save()){
-               return redirect()->back()->withErrors('Success','Bill has been updated successfully.');
+               return redirect()->route('meterreaderview_billing', $storeBilling);
             }
          
       }
@@ -66,7 +66,7 @@ class BillingsController extends Controller
             $saveNewBilling->status = $request->status;
             
             if($saveNewBilling->save()){
-               return redirect()->back()->withErrors('Success','New bill has been created successfully.');
+               return redirect()->route('meterreaderview_billing', $saveNewBilling);
             }
       }
 
@@ -80,6 +80,19 @@ class BillingsController extends Controller
                   return json_encode($cat);
                }
             }
+         }
+      }
+
+      public function searchPrevBilling(Request $request){
+         $client = Client_list::where('id', $request->id)->first();
+         $billingPrev = Billing_list::orderBy('created_at', 'desc')
+                              ->where('clientid', $request->id)
+                              ->first();
+         if (isset($billingPrev)) {
+            return $billingPrev->reading; 
+         }else{
+            return $client->previous;
+
          }
       }
 

@@ -27,7 +27,7 @@
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter Serial Number</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->meter_serial_number}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Meter First Reading</div>
-							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->first_reading}}</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->previous}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Date Created</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$client->created_at}}</div>
 							<div class="clear-fix my-1"></div>

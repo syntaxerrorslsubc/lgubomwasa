@@ -37,11 +37,11 @@ class ClientsController extends Controller
                 $saveNewClient->address = $request->address;
                 $saveNewClient->contact = $request->contact;
                 $saveNewClient->meter_serial_number = $request->meter_serial_number;
-                $saveNewClient->first_reading = $request->first_reading;
+                $saveNewClient->previous = $request->previous;
                 $saveNewClient->status = $request->status;
                 
                 if($saveNewClient->save()){
-                    return redirect()->back()->withErrors('Success','New bill has been created successfully.');
+                    return redirect()->route('adminview_client', $saveNewClient);
                 }
          }
 
@@ -69,7 +69,7 @@ class ClientsController extends Controller
                 $storeClient->first_reading = $request->first_reading;
                 $storeClient->status = $request->status;
                 if($storeClient->save()){
-                    return redirect()->back()->with('Success','Client has been created successfully.');
+                    return redirect()->route('adminview_client', $storeClient);
                 }
             
          }

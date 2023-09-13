@@ -57,8 +57,8 @@
 								<input type="text" class="form-control form-control-sm rounded-0" id="meter_serial_number" name="meter_serial_number" required="required" >
 							</div>
 							<div class="form-group p-0 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-								<label for="first_reading" class="control-label">First Reading</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="first_reading" name="first_reading" value="" required="required">
+								<label for="previous" class="control-label">Previous</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" value="" required="required">
 							</div>
 							<div class="form-group">
 								<label for="status" class="control-label">Status</label>

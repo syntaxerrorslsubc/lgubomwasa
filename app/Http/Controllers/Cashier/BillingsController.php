@@ -63,18 +63,10 @@ use App\Models\Client_list;
 				$saveNewBilling->status = $request->status;
 				
 				if($saveNewBilling->save()){
-					return redirect()->back()->withErrors('Success','New bill has been created successfully.');
+					return redirect()->route('cashierview_billing', $saveNewBilling);
 				}
 		 }
 
-	    // public function view_billing(Request $request):View
-	    // {
-	    // 	$billing_list = Billing_list::where('id', $request->id);
-
-	    // 	return view('Admin/billings.view_billing', [
-	    // 		'billing_list'=> $billing_list
-	    // 	]);
-	    // }
 
  	public function view_billing($id)
  	{
