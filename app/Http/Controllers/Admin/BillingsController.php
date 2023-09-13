@@ -59,18 +59,20 @@ class BillingsController extends Controller
 					}
 				}
 			}
-
-			$previous = Client_list::get();
-			if (isset($previous)) {
-				foreach($previous as $previouses){
-					if($client->id==$previouses->id){
-						$prev = array('previous'=>$previouses->previous);
-						return json_encode($prev);
-					}
-				}
-			}
 		}
 
+		public function searchPrevBilling(Request $request){
+			$client = Client_list::where('id', $request->id)->first();
+			$billingPrev = Billing_list::orderBy('created_at', 'desc')
+										->where('clientid', $request->id)
+										->first();
+			if (isset($billingPrev)) {
+				return $billingPrev->reading;	
+			}else{
+				return $client->previous;
+
+			}
+		}
 		 public function addBilling(Request $request){
 		 	return view('Admin.billings.add_billing');
 		 }

@@ -111,8 +111,17 @@
 	   			var response = JSON.parse(resp)
 	   			$('#rate').val(response.rate);
 	   			$('#minimum').val(response.minimum);
-	   			$('#previous').val(response.previous);
+	   		}
+	   });
+	});
 
+	$('#clientid').on('change', function() {
+	   $.ajax({
+	   		url:'{{url("/admin/add_billing/search/prevBilling/")}}/' + this.value,
+	   		method: 'GET',
+	   		success:function(resp){
+	   			// var response = JSON.parse(resp)
+	   			$('#previous').val(resp);
 	   		}
 	   });
 	});
