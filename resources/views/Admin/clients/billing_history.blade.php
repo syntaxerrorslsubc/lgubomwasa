@@ -75,7 +75,7 @@
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href=""><i class="fa fa-angle-left"></i> Back </a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{ route('adminclients')}}"><i class="fa fa-angle-left"></i> Back </a>
 			</div>
 		</div>
 	</div>

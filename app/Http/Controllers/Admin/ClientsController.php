@@ -66,7 +66,7 @@ class ClientsController extends Controller
                 $storeClient->address = $request->address;
                 $storeClient->contact = $request->contact;
                 $storeClient->meter_serial_number = $request->meter_serial_number;
-                $storeClient->first_reading = $request->first_reading;
+                $storeClient->previous = $request->previous;
                 $storeClient->status = $request->status;
                 if($storeClient->save()){
                     return redirect()->route('adminview_client', $storeClient);

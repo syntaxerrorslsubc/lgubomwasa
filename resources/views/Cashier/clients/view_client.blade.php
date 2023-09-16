@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=clients/billing_history&id="><i class="fa fa-table"></i> Billing History</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{url('/cashier/billings/billing_history/').'/'.$client->id}}"><i class="fa fa-table"></i> Billing History</a>
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('cashierclients')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>

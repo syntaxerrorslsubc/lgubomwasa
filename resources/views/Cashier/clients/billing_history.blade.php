@@ -45,11 +45,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @if ($billingRecord->isEmpty())
+                            <p>No billing record available.</p>
+                            @else  
+                            @if(isset($billingRecord))  
+                            @foreach ($billingRecord as $record)
+                                <tr>
+                                    <td class="text-center">{{$record->id}}</td>
+                                    <td>{{$record->reading_date}}</td>
+                                    <td>{{$record->due_date}}</td>
+                                    <td class="text-right">{{$record->reading}}</td>
+                                    <td class="text-right">{{$record->previous}}</td>
+                                    <td class="text-right">{{$record->id}}</td>
+                                    <td class="text-right">{{$record->rate}}</td>
+                                    <td class="text-center">
+                                        @if($record->status === 0)
+                                              <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
+                                        @elseif($record->status === 1)
+                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+                                        @endif
                                     </td>
-                                    <td class="text-right"></td>
+                                    <td class="text-right">{{$record->total}}</td>
                                 </tr>
-                           
+                            @endforeach
+                            @endif
+                            @endif
                         </tbody>
                     </table>
 				</div>

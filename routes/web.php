@@ -84,7 +84,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/admin/delete_client/{id}', [App\Http\Controllers\Admin\ClientsController::class, 'deleteClient'])->name('admindelete_client');
  
-            Route::get('/admin/billings/billing_history/{billing_list}/{clientid}', [App\Http\Controllers\BillingHistoryController::class, 'history'])->name('adminbillinghistory');
+            Route::get('/admin/billings/billing_history/{clientid}', [App\Http\Controllers\BillingHistoryController::class, 'history'])->name('adminbillinghistory');
 
             #REPORTS
             Route::get('/admin/monthly_billing', [App\Http\Controllers\Admin\ReportsController::class, 'monthly_billing'])->name('adminmonthly_billing');
@@ -128,7 +128,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #Clients 
 
             Route::get('/cashier/clients', [App\Http\Controllers\Cashier\ClientsController::class, 'index'])->name('cashierclients');
-            Route::get('/cashier/billing_history', [App\Http\Controllers\Cashier\ClientsController::class, 'billing_history'])->name('cashierbilling_history');
+            Route::get('/cashier/billings/billing_history/{clientid}', [App\Http\Controllers\BillingHistoryController::class, 'historyCash'])->name('cashierbillinghistory');
+
 
             Route::get('/cashier/edit_client/{id}', [App\Http\Controllers\Cashier\ClientsController::class, 'editClient'])->name('cashieredit_client');
             Route::post('/cashier/edit_client/update', [App\Http\Controllers\Cashier\ClientsController::class, 'updateClient'])->name('cashieredit_client.update');
