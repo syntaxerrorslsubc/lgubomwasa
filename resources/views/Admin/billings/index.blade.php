@@ -19,15 +19,19 @@
             <col width="15%">
             <col width="20%">
             <col width="10%">
+            <col width="10%">
+            <col width="10%">
             <col width="15%">
           </colgroup>
           <thead>
-            <tr>
+            <tr  class="text-center">
               <th>#</th>
               <th>Reading Date</th>
               <th>Client</th>
               <th>Amount</th>
               <th>Due Date</th>
+              <th>Penalty</th>
+              <th>OR #</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -35,12 +39,14 @@
           <tbody>
         @if(isset($billing))
           @foreach($billing as $billing_list)
-          <tr>
+          <tr  class="text-center">
               <td class="text-center">{{$billing_list->id}}</td>
               <td>{{$billing_list->reading_date}}</td>
               <td>{{$billing_list->client->id}} - {{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
               <td>{{$billing_list->total}}</td>
               <td>{{$billing_list->due_date}}</td>
+              <td>{{$billing_list->penalty}}</td>
+              <td>{{$billing_list->or}}</td>
 
               <td class="text-center">
                 @if($billing_list->status === 0)

@@ -22,7 +22,7 @@
 					<col width="15%">
 				</colgroup>
 				<thead>
-					<tr>
+					<tr class="text-center">
 						<th>#</th>
 						<th>Date Updated</th>
 						<th>Avatar</th>
@@ -34,7 +34,7 @@
 				</thead>
 				<tbody>
 					@foreach($users as $users )
-         	 			<tr>
+         	 			<tr class="text-center">
               				<td class="text-center">{{$users->id}}</td>
               				<td>{{$users->updated_at}}</td>
               				<td>

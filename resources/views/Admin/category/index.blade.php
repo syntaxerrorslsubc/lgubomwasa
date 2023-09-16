@@ -23,7 +23,7 @@
 					<col width="15%">
 				</colgroup>
 				<thead>
-					<tr>
+					<tr class="text-center">
 						<th>#</th>
 						<th>Date Created</th>
 						<th>Name</th>
@@ -34,7 +34,7 @@
 				<tbody>
 				@if(isset($category_lists))
 					@foreach($category_lists as $categories )
-         	 			<tr>
+         	 			<tr class="text-center">
               				<td class="text-center">{{$categories->id}}</td>
 							<td>{{$categories->created_at}}</td>
 							<td>{{$categories->name}}</td>

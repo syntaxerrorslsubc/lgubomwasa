@@ -53,6 +53,14 @@
 								<label for="due_date" class="control-label">Due Date</label>
 								<input type="date" class="form-control form-control-sm rounded-0" id="due_date" name="due_date" required="required" value="{{$billing->due_date}}"/>
 							</div>
+							<div class="form-group mb-3">
+								<label for="penalty" class="control-label">Penalty</label>
+								<input type="number" class="form-control form-control-sm rounded-0" id="penalty" name="penalty" required="required">
+							</div>
+							<div class="form-group mb-3">
+								<label for="or" class="control-label">OR #</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="or" name="or" required="required">
+							</div>
 							<div class="form-group">
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>

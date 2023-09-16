@@ -220,6 +220,14 @@
                         </p>
                       </a>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a  href="{{route('admindaily_billing')}}" class="nav-link nav-reports_daily_billing">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                          Daily Report
+                        </p>
+                      </a>
+                    </li>
                     <li class="nav-header">Maintenance</li>
                     <li class="nav-item dropdown">
                       <a href="{{route('admincategory')}}" class="nav-link nav-category">

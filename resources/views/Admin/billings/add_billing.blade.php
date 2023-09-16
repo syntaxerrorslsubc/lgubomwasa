@@ -67,6 +67,7 @@
 								<option value="1" >Paid</option>
 								</select>
 							</div>
+							
 							<div class="card-footer py-1 text-center">
 								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
 								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminbillings')}}"><i class="fa fa-angle-left"></i> Cancel</a>

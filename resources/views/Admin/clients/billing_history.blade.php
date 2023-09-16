@@ -42,6 +42,7 @@
                                 <th>Rate (m<sup>3</sup>)</th>
                                 <th>Status</th>
                                 <th>Amount</th>
+                                <th>Payables</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,6 +67,7 @@
                                         @endif
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>
+                                    <td class="text-right"></td>
                                 </tr>
                             @endforeach
                             @endif

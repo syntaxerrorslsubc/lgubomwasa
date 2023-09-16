@@ -85,7 +85,7 @@ class ClientsController extends Controller
         }
 
         public function billing_history()
-        {
+        { 
             return view('Admin/clients.billing_history');
         }
 

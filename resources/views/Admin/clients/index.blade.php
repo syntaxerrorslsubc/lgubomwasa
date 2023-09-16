@@ -22,7 +22,7 @@
 					<col width="15%">
 				</colgroup>
 				<thead>
-					<tr>
+					<tr  class="text-center">
 						<th>#</th>
 						<th>Date Created</th>
 						<th>Meter Serial Number</th>
@@ -34,7 +34,7 @@
 				</thead>
 				<tbody>
 					@foreach($client_lists as $clientsProfile )
-					<tr>
+					<tr  class="text-center">
 							<td class="text-center">{{$clientsProfile->id}}</td>
 							<td>{{$clientsProfile->created_at}}</td>
 							<td>{{$clientsProfile->meter_serial_number}}</td>

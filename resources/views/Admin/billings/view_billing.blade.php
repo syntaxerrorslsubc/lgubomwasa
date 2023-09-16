@@ -34,6 +34,8 @@
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->total}}</div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Due Date</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->due_date}}</div>
+							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Penalty</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$billing->penalty}}</div>
 							<div class="clear-fix my-1"></div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Status</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">

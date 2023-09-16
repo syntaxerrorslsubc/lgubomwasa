@@ -88,6 +88,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             #REPORTS
             Route::get('/admin/monthly_billing', [App\Http\Controllers\Admin\ReportsController::class, 'monthly_billing'])->name('adminmonthly_billing');
+            Route::get('/admin/daily_billing', [App\Http\Controllers\Admin\ReportsController::class, 'daily_billing'])->name('admindaily_billing');
 
 
             #SYSTEMINFO

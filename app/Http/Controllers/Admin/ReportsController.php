@@ -11,4 +11,10 @@ class ReportsController extends Controller
         {
             return view('Admin/reports.monthly_billing');
         }
+
+     public function daily_billing()
+        {
+            return view('Admin/reports.daily_billing');
+        }
 }
+
