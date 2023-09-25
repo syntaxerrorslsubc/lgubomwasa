@@ -33,10 +33,10 @@
 							<div class="clear-fix my-1"></div>
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Status</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">
-								@if($client->status === 0)
+								@if($client->status === 1)
 				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
-				                @elseif($client->status === 1)
-				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+				                @elseif($client->status === 2)
+				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Disconnected</span>
 				                @endif</div>
 							@endif
 						</div>

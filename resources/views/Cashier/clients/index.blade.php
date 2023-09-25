@@ -39,10 +39,10 @@
                             <td>{{$clientsProfile->contact}}</td>
                             <td>
 
-                                @if($clientsProfile->status === 0)
+                                @if($clientsProfile->status === 1)
                                       <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
-                                @elseif($clientsProfile->status === 1)
-                                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+                                @elseif($clientsProfile->status === 2)
+                                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Disconnected</span>
                                 @endif
                           </td>
                         

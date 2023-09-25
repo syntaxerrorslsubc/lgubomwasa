@@ -59,10 +59,10 @@
                                     <td class="text-right">{{$record->id}}</td>
                                     <td class="text-right">{{$record->rate}}</td>
                                     <td class="text-center">
-                                        @if($record->status === 0)
+                                        @if($record->status === 1)
                                               <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
-                                        @elseif($record->status === 1)
-                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Inactive</span>
+                                        @elseif($record->status === 2)
+                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Disconnected</span>
                                         @endif
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>

@@ -62,7 +62,7 @@
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
 								<option value="1"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Active</span></option>
-								<option value="2"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Inactive</span></option>
+								<option value="2"><span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Disconnected</span></option>
 								</select>
 							</div>
 
