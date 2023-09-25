@@ -41,7 +41,7 @@
           @foreach($billing as $billing_list)
           <tr  class="text-center">
               <td class="text-center">{{$billing_list->id}}</td>
-              <td>{{$billing_list->reading_date}}</td>
+              <td>{{ \Carbon\Carbon::parse($billing_list->reading_date)->format('F d, Y') }}</td>
               <td>{{$billing_list->client->id}} - {{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
               <td>{{$billing_list->total}}</td>
               <td>{{$billing_list->due_date}}</td>

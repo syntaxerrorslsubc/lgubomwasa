@@ -48,7 +48,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/admin/delete_billing/{id}', [App\Http\Controllers\Admin\BillingsController::class, 'deleteBilling'])->name('admindelete_billing');
 
-            Route::get('/admin/print-document}', [App\Http\Controllers\Admin\BillingsController::class, 'printBilling'])->name('adminprint_billing');
+            Route::get('/admin/print-document/{billing_id}', [App\Http\Controllers\Admin\BillingsController::class, 'printBilling'])->name('adminprint_billing');
 
 
 
@@ -87,8 +87,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/admin/billings/billing_history/{clientid}', [App\Http\Controllers\BillingHistoryController::class, 'history'])->name('adminbillinghistory');
 
             #REPORTS
-            Route::get('/admin/monthly_billing', [App\Http\Controllers\Admin\ReportsController::class, 'monthly_billing'])->name('adminmonthly_billing');
-            Route::get('/admin/daily_billing', [App\Http\Controllers\Admin\ReportsController::class, 'daily_billing'])->name('admindaily_billing');
+            Route::get('/admin/monthly_billing/', [App\Http\Controllers\Admin\ReportsController::class, 'monthly_billing'])->name('adminmonthly_billing');
+
+            Route::get('/admin/daily_billing/', [App\Http\Controllers\Admin\ReportsController::class, 'daily_billing'])->name('admindaily_billing');
 
 
             #SYSTEMINFO
