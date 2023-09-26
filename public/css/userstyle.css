@@ -1,6 +1,6 @@
 body {
-  background: url(https://wallpaperaccess.com/full/630370.jpg) no-repeat center center fixed;
-  background-size: cover;
+  background-color: darkgreen;
+  
 
 }
 
@@ -8,16 +8,18 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+
 }
 @media only screen and (min-width: 300px){
   .container {
       background-color: white;
       max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
+      margin: 150px auto;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   }
 }
 
@@ -25,6 +27,7 @@ body {
     min-height: 100%;
     background-size: 100%;
     padding: 20px;
+
 }
 
 h1 {
@@ -98,6 +101,7 @@ button:hover {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   border: 1px solid #fff;
+
 }
 .flex-parent input {
   width: 400px;
@@ -106,6 +110,7 @@ button:hover {
   color: black;
   border: 0;
   background: antiquewhite;
+
  
 }
 .flex-parent input:focus {

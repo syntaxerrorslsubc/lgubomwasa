@@ -171,11 +171,7 @@ td
 
 <table border='0' cellpadding='0' cellspacing='0' width='511' style='border-collapse: 
  collapse;table-layout:fixed;width:383pt'>
-    <col width='23' style='mso-width-source:userset;width:17.25pt'/>
-    <col width='67' style='mso-width-source:userset;width:50.25pt'/>
-    <col width='332' style='mso-width-source:userset;width:249pt'/>
-    <col width='89' style='mso-width-source:userset;width:66.75pt'/>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+   <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' width='90' style='mso-ignore:colspan;height:14.4pt;'></td>
    <td height='19' width='332' style='text-align: left;height:14.4pt;width:249pt;vertical-align:top;' align='left'><span style='mso-ignore:vglayout;position:absolute;z-index:1;margin-left:103px;margin-top:0px;width:64px;height:60px'><img width='64' height='60' src="{{asset('../images/logo.jpg')}}" name='Picture2' alt='1'/></span><span style='mso-ignore:vglayout2'><table cellpadding='0' cellspacing='0'><tr><td height='19' width='332' style='height:14.4pt;width:249pt;'><a name="Print_Area"></a></td></tr></table></span></td>
    <td width='89' style='width:66.75pt;'></td>
@@ -183,6 +179,10 @@ td
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
     </tr>
+    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+   <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
+    </tr>
+
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
    <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp; </span>BONTOC MUNICIPAL SYSTEM ADMINISTRATION</td>
@@ -194,43 +194,33 @@ td
    <td></td>
     </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='3' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td>&nbsp;</td>
+      <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
     </tr>
+   <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+      <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
+      <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Reading Date:</td>
+      <td>{{$billing->reading_date}}</td>
+    </tr>
+   <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+      <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
+      <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Due Date:</td>
+      <td>{{$billing->due_date}}</td>
+    </tr>
+   <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+      <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
+   </tr>
+   <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+      <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
+      <td>Meter Serial Number: {{$billing->client->meter_serial_number}}</td>
+   </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td>Reference No:</td>
-   <td>&nbsp;</td>
-    </tr>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-    </tr>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Reading Date:</td>
-   <td>{{$billing->reading_date}}</td>
-    </tr>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Due Date:</td>
-   <td>{{$billing->due_date}}</td>
-    </tr>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-    </tr>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td>Meter Serial Number:</td>
-   <td></td>
-    </tr>
-    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
-   <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td>Type of Consumer:<span style='mso-spacerun:yes;'>&nbsp;&nbsp;</span></td>
-   <td>
+   <td>Type of Consumer:<span style='mso-spacerun:yes;'></span>
       @if($categorylist = \App\Models\Category_list::where('id', $billing->client->category_id)->first())
          {{$categorylist->name}}
       @endif
    </td>
+ 
     </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
@@ -272,7 +262,7 @@ td
    <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
    <td>Previous: </td>
    <td>
-      {{$billing->previous }}
+      {{$billing->previous}}
    </td>
     </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>

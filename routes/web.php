@@ -180,6 +180,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         
             Route::get('/users', [App\Http\Controllers\userController::class, 'index'])->name('user');
 
+            Route::get('/admin/billings/billing_history/{clientid}', [App\Http\Controllers\BillingHistoryController::class, 'history'])->name('adminbillinghistory');
+
 });
 
 
