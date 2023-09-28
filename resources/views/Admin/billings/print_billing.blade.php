@@ -21,9 +21,8 @@ xmlns="http://www.w3.org/TR/REC-html40">
  {
  mso-header-data:"";
  mso-footer-data:"";
- margin:0.75in 0.7in 0.75in 0.7in;
- mso-header-margin:0.3in;
- mso-footer-margin:0.3in;
+ mso-header-margin:0.1in;
+ mso-footer-margin:0.1in;
  mso-page-orientation:Portrait;
  }
 tr
@@ -45,7 +44,7 @@ ruby
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:400;
  font-style:normal;
  font-family:Calibri,sans-serif;
@@ -55,7 +54,7 @@ ruby
 .font2
  {
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:700;
  font-style:normal;
  font-family:Calibri,sans-serif; }
@@ -68,7 +67,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:400;
  font-style:normal;
  font-family:Calibri,sans-serif;
@@ -83,7 +82,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:400;
  font-style:normal;
  font-family:Calibri,sans-serif;
@@ -98,7 +97,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:400;
  font-style:normal;
  font-family:Calibri,sans-serif;
@@ -113,7 +112,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:400;
  font-style:normal;
  font-family:Calibri,sans-serif;
@@ -128,7 +127,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:700;
  font-style:normal;
  font-family:Calibri,sans-serif;
@@ -143,7 +142,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:700;
  font-style:italic;
  font-family:Calibri,sans-serif;
@@ -158,7 +157,7 @@ td
  background:auto;
  mso-pattern:auto;
  color:#000000;
- font-size:11pt;
+ font-size:20pt;
  font-weight:400;
  font-style:italic;
  font-family:Calibri,sans-serif;
@@ -173,7 +172,7 @@ td
  collapse;table-layout:fixed;width:383pt'>
    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' width='90' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td height='19' width='332' style='text-align: left;height:14.4pt;width:249pt;vertical-align:top;' align='left'><span style='mso-ignore:vglayout;position:absolute;z-index:1;margin-left:103px;margin-top:0px;width:64px;height:60px'><img width='64' height='60' src="{{asset('../images/logo.jpg')}}" name='Picture2' alt='1'/></span><span style='mso-ignore:vglayout2'><table cellpadding='0' cellspacing='0'><tr><td height='19' width='332' style='height:14.4pt;width:249pt;'><a name="Print_Area"></a></td></tr></table></span></td>
+   <td height='19' width='332' style='text-align: left;height:14.4pt;width:249pt;vertical-align:top;' align='left'><span style='mso-ignore:vglayout;position:absolute;z-index:1;margin-left:103px;margin-top:0px;width:64px;height:60px'><img width='130' height='80' src="{{asset('../images/logo.jpg')}}" name='Picture2' alt='1'/></span><span style='mso-ignore:vglayout2'><table cellpadding='0' cellspacing='0'><tr><td height='19' width='332' style='height:14.4pt;width:249pt;'><a name="Print_Area"></a></td></tr></table></span></td>
    <td width='89' style='width:66.75pt;'></td>
     </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
@@ -182,7 +181,10 @@ td
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
     </tr>
-
+     </tr>
+    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+   <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
+    </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
    <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp; </span>BONTOC MUNICIPAL SYSTEM ADMINISTRATION</td>
@@ -198,15 +200,15 @@ td
     </tr>
    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
       <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-      <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Reading Date:</td>
+      <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Reading Date:</td>
       <td>{{$billing->reading_date}}</td>
     </tr>
    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
       <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-      <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Due Date:</td>
+      <td><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Due Date:</td>
       <td>{{$billing->due_date}}</td>
     </tr>
-   <tr height='19' style='mso-height-source:userset;height:14.4pt'>
+   <tr height='19' style='mso-heights-source:userset;height:14.4pt'>
       <td colspan='4' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
    </tr>
    <tr height='19' style='mso-height-source:userset;height:14.4pt'>
@@ -229,7 +231,7 @@ td
     </tr>
     <tr height='19' style='mso-height-source:userset;height:14.4pt'>
    <td colspan='2' height='19' style='mso-ignore:colspan;height:14.4pt;'></td>
-   <td>Name:{{$billing->client->lastname}}, {{$billing->client->firstname}}{{$billing->client->middlename}}</td>
+   <td>Name: {{$billing->client->lastname}}, {{$billing->client->firstname}}{{$billing->client->middlename}}</td>
    <td>
    </td>
     </tr>
