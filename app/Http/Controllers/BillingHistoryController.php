@@ -13,7 +13,6 @@ class BillingHistoryController extends Controller
         $billingRecords = Billing_list::where('clientid', $request->clientid)
             ->orderBy('created_at', 'desc')
             ->get();
-
         return view('Admin.clients.billing_history', compact('billingRecords'));
 
     }

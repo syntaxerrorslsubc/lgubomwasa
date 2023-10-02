@@ -11,8 +11,12 @@
 			<input type="text" class="form-control form-control-sm rouned-0" name="name" id="name" value="" required="required">
 		</div>
 		<div class="form-group">
-			<label for="name" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)e</label>
-			<input type="text" class="form-control form-control-sm rouned-0" name="rate" id="name" value="" required="required">
+			<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)e</label>
+			<input type="number" class="form-control form-control-sm rouned-0" name="rate" id="rate" value="" required="required">
+		</div>
+		<div class="form-group">
+			<label for="minimum" class="control-label">Minimum</label>
+			<input type="number" class="form-control form-control-sm rouned-0" name="minimum" id="minimum" value="" required="required">
 		</div>
 		<button class="btn btn-primary" type="submit">Save</button>
 	</form>

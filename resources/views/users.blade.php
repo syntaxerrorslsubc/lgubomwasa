@@ -6,7 +6,7 @@
   <title>User checking bill</title>
 <link rel="stylesheet" href="./css/userstyle.css">
 </head>
-<body>
+<body style="background-image: url('../images/bontocoffice.jpg'); background-size: cover;">
 
 
 <div class="container-fluid bg-login">

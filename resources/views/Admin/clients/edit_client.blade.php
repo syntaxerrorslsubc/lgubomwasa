@@ -48,7 +48,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="address" class="control-label">Address</label>
-								<textarea rows="3" class="form-control form-control-sm rounded-0" id="address" name="address" required="required" value="{{$client->address}}"></textarea>
+								<input type="text" class="form-control form-control-sm rounded-0" id="address" name="address" required value="{{$client->address}}"/>
 							</div>
 							<div class="form-group p-0 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
 								<label for="meter_serial_number" class="control-label">Meter Serial Number</label>

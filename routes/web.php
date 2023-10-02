@@ -70,7 +70,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
            #CLIENTS
             Route::get('/admin/clients', [App\Http\Controllers\Admin\ClientsController::class, 'index'])->name('adminclients');
-            Route::get('/admin/billing_history', [App\Http\Controllers\Admin\ClientsController::class, 'billing_history'])->name('adminbilling_history');
 
             
             Route::get('/admin/add/client', [App\Http\Controllers\Admin\ClientsController::class, 'addClient'])->name('admin.clients.add');

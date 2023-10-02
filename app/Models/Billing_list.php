@@ -21,6 +21,9 @@ class Billing_list extends Model
     {
         return $this->belongsTo(Category_list::class, 'rate', 'id');
     }
-
+    public function clients()
+    {
+        return $this->belongsTo(Client_list::class);
+    }
     
 }

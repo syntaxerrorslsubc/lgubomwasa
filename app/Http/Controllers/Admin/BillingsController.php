@@ -121,9 +121,10 @@ class BillingsController extends Controller
 	}
 	public function printBilling(Request $request){
 		$billing=Billing_list::where('id', $request->billing_id)->with('client')->first();
-    	// return json_encode($billing);
+
    		return view('Admin.billings.print_billing', [
-   				'billing' => $billing
+   				'billing' => $billing,
+
    		]);
 	}
 }

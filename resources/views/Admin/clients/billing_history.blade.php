@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b></b></h3>
+     <h3><b></b></h3>
+  
 </div>
 <style>
 	img#cimg{
@@ -22,7 +23,8 @@
                     <table class="table table-hover table-striped table-bordered" id="list">
                         <colgroup>
                             <col width="5%">
-                            <col width="10%">
+                            <col width="15%">
+                            <col width="15%">
                             <col width="10%">
                             <col width="10%">
                             <col width="10%">
@@ -53,8 +55,8 @@
                             @foreach ($billingRecords as $record)
                                 <tr>
                                     <td class="text-center">{{$record->id}}</td>
-                                    <td>{{$record->reading_date}}</td>
-                                    <td>{{$record->due_date}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($record->reading_date)->format('F d, Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($record->due_date)->format('F d, Y')}}</td>
                                     <td class="text-right">{{$record->reading}}</td>
                                     <td class="text-right">{{$record->previous}}</td>
                                     <td class="text-right">{{$record->id}}</td>

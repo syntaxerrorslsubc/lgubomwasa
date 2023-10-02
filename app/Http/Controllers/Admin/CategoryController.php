@@ -30,6 +30,7 @@ class CategoryController extends Controller
         $cat = new Category_list;
         $cat->name = $request->name;
         $cat->rate = $request->rate;
+        $cat->minimum = $request->minimum;
                 
         if($cat->save()){
             return redirect()->back()->with('Success','Category has been created successfully.');
@@ -51,6 +52,7 @@ class CategoryController extends Controller
                 $storeCategory =Category_list::where('id', $request->id)->first(); 
                 $storeCategory->name = $request->name;
                 $storeCategory->rate = $request->rate;
+                $storeCategory->minimum = $request->minimum;
                 
                 if($storeCategory->save()){
                     return redirect()->back()->withErrors('Success','Category has been updated successfully.');

@@ -64,7 +64,7 @@
 </div>
 <hr>
 <center>
-  <img src="../images/Bontoc.jpg" alt="BontocMunicipalHall" id="site-cover" class="img-fluid w-100">
+  <img src="../images/bontocoffice.jpg" alt="BontocMunicipalHall" id="site-cover" class="img-fluid w-100">
 </center>
   </div>
         </section>
