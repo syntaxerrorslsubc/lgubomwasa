@@ -14,18 +14,13 @@
     <div class="row">
         <h1>Bill Inquiry</h1>
         <img src="../images/logo.jpg" alt="Store Logo">
-        <form id="billInquiryForm" >
-            <!-- Add your bill inquiry form fields here -->
-            <label for="meter_code">Meter Code:</label>
-            <input type="text" id="meter_code" name="meter_code" required>
-            
-            <!-- Add more form fields as needed -->
-            
+        <form id="billInquiryForm" action="{{url('/user/billing_history/{meter_serial_number}')}}" method="GET">
+            @csrf
+            <label for="meter_serial_number">Meter Serial Number:</label>
+            <input type="text" id="meter_serial_number" name="meter_serial_number" required>            
             <button type="submit">Check Inquiry</button>
         </form>
-        <div id="billInquiryResult">
-            <!-- The inquiry result will be shown here -->
-        </div>
+      
     </div>
   </div>
 </div>

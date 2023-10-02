@@ -16,7 +16,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group m-0">
                                     <label for="day" class="control-label">Filter Day</label>
-                                    <input type="day" id="day" name="day" value="" class="form-control form-control-sm rounded-0" required>
+                                    <input type="date" id="day" name="day" value="" class="form-control form-control-sm rounded-0" required>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">

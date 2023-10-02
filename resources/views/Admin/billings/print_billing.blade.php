@@ -344,12 +344,12 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Previous:  {{$billing->previous}}</td>
+<td class='x21'>Previous:  {{$billing->previous}}<input value="{{$billing->previous}}" type="hidden" id="previous"></td>
 <td class='x21'>  </td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Present: {{$billing->reading}}</td>
+<td class='x21'>Present: {{$billing->reading}}<input value="{{$billing->reading}}" type="hidden" id="present"></td>
 <td class='x21'></td>
  </tr>
   <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -367,7 +367,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Excess:&nbsp;</td>
+<td class='x21'>Excess:&nbsp;<span id="excess"></span></td>
 <td class='x21'></td>
  </tr>
   <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -380,7 +380,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21' id="minimum">Minimum:<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span></td>
+<td class='x21' id="minimum">Minimum:<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span><input value="{{$billing->minimum}}" type="hidden" id="present">{{$billing->minimum}}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -447,7 +447,21 @@ td
 </table>
 <script type="text/javascript">
    window.print()
+      var current_reading = document.getElementById('present').value;
+      var previous = document.getElementById('previous').value;
+      var minconsume = 10;
 
+      current_reading = current_reading > 0 ? current_reading : 0;
+      previous = previous > 0 ? previous : 0;
+
+      var consume = parseFloat(current_reading) - parseFloat(previous);
+
+      if (consume <= minconsume) {
+         $('#total').val(minimum);
+      }else{
+         var excessconsume = consume - minconsume;
+         document.getElementById('excess').innerHTML = excessconsume;
+      }
 </script>
 
 </body>
