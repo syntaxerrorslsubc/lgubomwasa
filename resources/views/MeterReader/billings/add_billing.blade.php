@@ -37,11 +37,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="previous" class="control-label">Previous Reading</label>
-								@if($previous=\App\Models\Billing_list::get())
-									<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="@foreach($previous as $previouses)
-										{{$previouses->previous}}
-									@endforeach">	
-								@endif
+									<input type="text" class="form-control form-control-sm rounded-0" id="previous" name="previous" required="required" value="">	
 							</input>
 							</div>
 							<div class="form-group mb-3">
@@ -71,9 +67,10 @@
 								<option value="1" >Paid</option>
 								</select>
 							</div>
+							
 							<div class="card-footer py-1 text-center">
 								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit"><i class="fa fa-save"></i> Save</button>
-								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('meterreaderbillings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
+								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('adminbillings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
 					
 						</form>
@@ -105,7 +102,7 @@
 			var partialbill = (excessconsume * parseFloat(rate)) + parseFloat(minimum);
 			$('#total').val(partialbill);
 		}
-	}
+	} 
 
 	$('#clientid').on('change', function() {
 	   $.ajax({
@@ -115,7 +112,17 @@
 	   			var response = JSON.parse(resp)
 	   			$('#rate').val(response.rate);
 	   			$('#minimum').val(response.minimum);
+	   		}
+	   });
+	});
 
+	$('#clientid').on('change', function() {
+	   $.ajax({
+	   		url:'{{url("/meterreader/add_billing/search/prevBilling/")}}/' + this.value,
+	   		method: 'GET',
+	   		success:function(resp){
+	   			// var response = JSON.parse(resp)
+	   			$('#previous').val(resp);
 	   		}
 	   });
 	});

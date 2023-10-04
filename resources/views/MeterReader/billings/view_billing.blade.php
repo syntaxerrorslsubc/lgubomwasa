@@ -49,10 +49,9 @@
 				</div>
 			</div>
 			<div class="card-footer py-1 text-center">
-				<button class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" onclick="window.print()" id="print" href="{{ route('meterreaderprint_billing') }}" target="_blank"><i class="fa fa-print"></i> Print</button>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print" href="{{ route('meterreaderprint_billing',['billing_id'=>$billing->id]) }}" target="_blank"><i class="fa fa-print"></i> Print</a>
 				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/meterreader/edit_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
-				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('meterreaderadd_billing')}}./?page=billings"><i class="fa fa-angle-left"></i> Back to List</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('meterreaderbillings')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
 	</div>
@@ -75,54 +74,5 @@
 		<hr>
 	</div>
 </noscript>
-<script>
-	
-	$(document).ready(function(){
-        $('#delete-data').click(function(){
-			_conf("Are you sure to delete this billing permanently?","delete_billing",['<?= isset($id) ? $id : '' ?>'])
-		})
-		$('#print').click(function(){
-			var h = $('head').clone()
-			var p = $('#printout').clone()
-			var ph = $($('noscript#print-header').html()).clone()
-
-			var nw = window.open('', '_blank','width='+($(window).width() * .80)+',height='+($(window).height() * .90)+',left='+($(window).width() * .1)+',top='+($(window).height() * .05))
-					 nw.document.querySelector("head").innerHTML = h.html()
-					 nw.document.querySelector("body").innerHTML = ph[0].outerHTML + p[0].outerHTML
-					 nw.document.close()
-
-					 start_loader()
-					 setTimeout(() => {
-						 nw.print()
-						 setTimeout(() => {
-							nw.close()
-							end_loader() 
-						 }, 300);
-					 }, 300);
-		})
-	})
-    function delete_billing($id){
-		start_loader();
-		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_billing",
-			method:"POST",
-			data:{id: $id},
-			dataType:"json",
-			error:err=>{
-				console.log(err)
-				alert_toast("An error occured.",'error');
-				end_loader();
-			},
-			success:function(resp){
-				if(typeof resp== 'object' && resp.status == 'success'){
-					location.replace("./?page=billings");
-				}else{
-					alert_toast("An error occured.",'error');
-					end_loader();
-				}
-			}
-		})
-	}
-</script>
 
 @endsection

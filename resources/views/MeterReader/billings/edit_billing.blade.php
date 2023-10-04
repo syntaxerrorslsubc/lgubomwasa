@@ -53,6 +53,14 @@
 								<label for="due_date" class="control-label">Due Date</label>
 								<input type="date" class="form-control form-control-sm rounded-0" id="due_date" name="due_date" required="required" value="{{$billing->due_date}}"/>
 							</div>
+							<div class="form-group mb-3">
+								<label for="penalty" class="control-label">Penalty</label>
+								<input type="number" class="form-control form-control-sm rounded-0" id="penalty" name="penalty" required="required">
+							</div>
+							<div class="form-group mb-3">
+								<label for="or" class="control-label">OR #</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="or" name="or" required="required">
+							</div>
 							<div class="form-group">
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
@@ -62,7 +70,7 @@
 								</select>
 							</div>
 							<div class="card-footer py-1 text-center">
-								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit" href="{{ url('/admin/view_billing/').'/'.$billing->id}}"><i class="fa fa-save"></i> Save</button>
+								<button class="btn btn-primary btn-sm bg-gradient-primary rounded-0" type="submit" href="{{ url('/meterreader/view_billing/').'/'.$billing->id}}"><i class="fa fa-save"></i> Save</button>
 								<a class="btn btn-light btn-sm bg-gradient-light border rounded-0"  href="{{route('meterreaderbillings')}}"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
 						</form>

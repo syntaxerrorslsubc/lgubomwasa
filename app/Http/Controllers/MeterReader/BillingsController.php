@@ -58,6 +58,7 @@ class BillingsController extends Controller
       public function saveBilling(Request $request){
             $saveNewBilling = new Billing_list; 
             $saveNewBilling->clientid = $request->clientid;
+            $saveNewBilling->reading_date = $request->reading_date;
             $saveNewBilling->due_date = $request->due_date;
             $saveNewBilling->reading = $request->reading;
             $saveNewBilling->previous = $request->previous;
@@ -116,14 +117,16 @@ class BillingsController extends Controller
               $billing->delete();
          }
 
-           return redirect('/MeterReader/billings')
+           return redirect('/meterreader/billings')
            ;
       }
 
-      public function printBilling(){
-      $pdf = PDF::loadView('MeterReader.billings.print_billing'); // Replace 'pdf.document' with your view file.
-    
-      return $pdf->stream('document.pdf'); 
-       }
+      public function printBilling(Request $request){
+      $billing=Billing_list::where('id', $request->billing_id)->with('client')->first();
 
+         return view('MeterReader.billings.print_billing', [
+               'billing' => $billing,
+
+         ]);
+   }
 }
