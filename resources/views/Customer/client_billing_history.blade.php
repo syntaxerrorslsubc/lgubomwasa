@@ -45,7 +45,6 @@
                                 <th>Rate (m<sup>3</sup>)</th>
                                 <th>Status</th>
                                 <th>Amount</th>
-                                <th>Payables</th>
                             </tr>
                         </thead>
                         <tbody>         
@@ -61,13 +60,12 @@
                                     <td class="text-right">{{$record->rate}}</td>
                                     <td class="text-center">
                                         @if($record->status === 1)
-                                              <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
+                                              <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Pending</span>
                                         @elseif($record->status === 2)
-                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Disconnected</span>
+                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Paid</span>
                                         @endif
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>
-                                    <td class="text-right"></td>
                                 </tr>
                             @endforeach
                            

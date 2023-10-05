@@ -16,10 +16,9 @@ use App\Models\Client_list;
 
 	    public function index()
 	    {
-	    $billings=Billing_list::paginate(10);
-	    	
+	    	$billing=Billing_list::with('client')->paginate(10);
 	    	return view('Cashier/billings.index', [
-                    'billings'=>$billings
+                    'billing'=>$billing
             ]);
 	    }
 	    public function editBilling(Request $request)
@@ -66,6 +65,32 @@ use App\Models\Client_list;
 					return redirect()->route('cashierview_billing', $saveNewBilling);
 				}
 		 }
+
+		 public function searchType(Request $request){
+			$client = Client_list::where('id', $request->id)->first();
+			$categories = Category_list::get();
+			if (isset($categories)) {
+				foreach($categories as $category){
+					if($client->category_id==$category->id){
+						$cat = array('rate' => $category->rate, 'id'=> $category->id, 'name'=>$category->name,  'minimum'=>$category->minimum);
+						return json_encode($cat);
+					}
+				}
+			}
+		}
+
+		public function searchPrevBilling(Request $request){
+			$client = Client_list::where('id', $request->id)->first();
+			$billingPrev = Billing_list::orderBy('created_at', 'desc')
+										->where('clientid', $request->id)
+										->first();
+			if (isset($billingPrev)) {
+				return $billingPrev->reading;	
+			}else{
+				return $client->previous;
+
+			}
+		}
 
 
  	public function view_billing($id)

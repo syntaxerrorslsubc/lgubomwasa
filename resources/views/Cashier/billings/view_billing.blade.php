@@ -49,7 +49,7 @@
 			</div>
 			<div class="card-footer py-1 text-center">
 				<button class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print"><i class="fa fa-print"></i> Print</button>
-				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/cashier/view_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
+				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/cashier/edit_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('cashierbillings')}}"><i class="fa fa-angle-left"></i> Back to List</a>
 			</div>
 		</div>
