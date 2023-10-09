@@ -21,10 +21,12 @@
 							<input type="hidden" name ="id" value="{{$billing->id}}">
 							<div class="form-group mb-3">
 								<label for="clientid" class="control-label">Client</label>
-								<select name="clientid" id="clientid" class="form-control form-control-sm rounded-0" required="required">
+								<select name="clientid" id="clientid" readonly class="form-control form-control-sm rounded-0" required="required">
 									@if($clients=\App\Models\Client_list::orderby('lastname', 'asc')->get())
 										@foreach($clients as $client)
-											<option name="clientid" id="clientid" value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+											@if($billing->clientid == $client->id)
+												<option value="{{$client->id}}"  selected>{{$client->lastname}}, {{$client->firstname}}</option>
+											@endif
 										@endforeach
 									@endif
 								</select>
@@ -39,7 +41,11 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="reading" class="control-label">Current Reading</label>
-								<input type="text" class="form-control form-control-sm rounded-0" oninput="calc_total()" id="reading" name="reading" required="required" value="{{$billing->reading}}"/>
+								<input type="number" class="form-control form-control-sm rounded-0" oninput="calc_total()" id="reading" name="reading" required="required" value="{{$billing->reading}}"/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="reading" class="control-label">Minimum</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="minimum" name="minimum" required="required" readonly  value="">
 							</div>
 							<div class="form-group mb-3">
 								<label for="rate" class="control-label">Rate per Cubic Meter (m<sup>3</sup>)</label>
@@ -83,6 +89,7 @@
 </div>
 <script>
 	function calc_total(){
+
 		var minimum = $('#minimum').val()
 		var current_reading = $('#reading').val()
 		var previous = $('#previous').val()
@@ -96,17 +103,18 @@
 		var consume = parseFloat(current_reading) - parseFloat(previous);
 
 		if (consume <= minconsume) {
-			$('#total').val(minimum);
+			$('#total').val(parseFloat(minimum));
 		}else{
 			var excessconsume = consume - minconsume;
-			var partialbill = (excessconsume * parseFloat(rate)) + parseFloat(minimum);
-			$('#total').val(partialbill);
+			var partialbill = (parseFloat(excessconsume) * parseFloat(rate)) + parseFloat(minimum);
+			$('#total').val(parseFloat(partialbill));
 		}
 	} 
 
-	$('#clientid').on('change', function() {
+	$('#reading').on('change', function() {
+		var clientid = $('#clientid').val()
 	   $.ajax({
-	   		url:'{{url("/admin/add_billing/search/consumertype/")}}/' + this.value,
+	   		url:'{{url("/meterreader/add_billing/search/consumertype/")}}/' + clientid,
 	   		method: 'GET',
 	   		success:function(resp){
 	   			var response = JSON.parse(resp)
@@ -116,9 +124,10 @@
 	   });
 	});
 
-	$('#clientid').on('change', function() {
+	$('#reading').on('change', function() {
+		var clientid = $('#clientid').val()
 	   $.ajax({
-	   		url:'{{url("/admin/add_billing/search/prevBilling/")}}/' + this.value,
+	   		url:'{{url("/meterreader/add_billing/search/prevBilling/")}}/' +clientid,
 	   		method: 'GET',
 	   		success:function(resp){
 	   			// var response = JSON.parse(resp)
