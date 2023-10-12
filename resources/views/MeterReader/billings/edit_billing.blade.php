@@ -41,7 +41,7 @@
 							</div>
 							<div class="form-group mb-3">
 								<label for="reading" class="control-label">Current Reading</label>
-								<input type="number" class="form-control form-control-sm rounded-0" oninput="calc_total()" id="reading" name="reading" required="required" value="{{$billing->reading}}"/>
+								<input type="number" class="form-control form-control-sm rounded-0" id="reading" name="reading" required="required"  value="{{$billing->reading}}"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="reading" class="control-label">Minimum</label>
@@ -88,31 +88,8 @@
 	</div>
 </div>
 <script>
-	function calc_total(){
-
-		var minimum = $('#minimum').val()
-		var current_reading = $('#reading').val()
-		var previous = $('#previous').val()
-		var minconsume = 10;
-		var cat = $('#category').val()
-		var rate = $('#rate').val()
-
-		current_reading = current_reading > 0 ? current_reading : 0;
-		previous = previous > 0 ? previous : 0;
-
-		var consume = parseFloat(current_reading) - parseFloat(previous);
-
-		if (consume <= minconsume) {
-			$('#total').val(parseFloat(minimum));
-		}else{
-			var excessconsume = consume - minconsume;
-			var partialbill = (parseFloat(excessconsume) * parseFloat(rate)) + parseFloat(minimum);
-			$('#total').val(parseFloat(partialbill));
-		}
-	} 
-
-	$('#reading').on('change', function() {
-		var clientid = $('#clientid').val()
+	$('#reading').on('click', function() {
+	   var clientid = $('#clientid').val()
 	   $.ajax({
 	   		url:'{{url("/meterreader/add_billing/search/consumertype/")}}/' + clientid,
 	   		method: 'GET',
@@ -125,15 +102,25 @@
 	});
 
 	$('#reading').on('change', function() {
-		var clientid = $('#clientid').val()
-	   $.ajax({
-	   		url:'{{url("/meterreader/add_billing/search/prevBilling/")}}/' +clientid,
-	   		method: 'GET',
-	   		success:function(resp){
-	   			// var response = JSON.parse(resp)
-	   			$('#previous').val(resp);
-	   		}
-	   });
+	    var minimum = parseFloat($('#minimum').val())
+		var current_reading = parseFloat($('#reading').val())
+		var previous = parseFloat($('#previous').val())
+		var minconsume = 10;
+		var cat = parseFloat($('#category').val())
+		var rate = parseFloat($('#rate').val())
+
+		current_reading = current_reading > 0 ? current_reading : 0;
+		previous = previous > 0 ? previous : 0;
+
+		var consume = current_reading - previous;
+
+		if (consume <= minconsume) {
+			$('#total').val(minimum);
+		}else{
+			var excessconsume = consume - minconsume;
+			var partialbill = (parseFloat(excessconsume) * parseFloat(rate)) + parseFloat(minimum);
+			$('#total').val(parseFloat(partialbill));
+		}
 	});
 	</script>
 

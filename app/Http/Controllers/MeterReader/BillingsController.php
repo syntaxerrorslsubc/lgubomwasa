@@ -93,11 +93,8 @@ class BillingsController extends Controller
             return $billingPrev->reading; 
          }else{
             return $client->previous;
-
          }
       }
-
-      
 
       public function view_billing($id)
       {
