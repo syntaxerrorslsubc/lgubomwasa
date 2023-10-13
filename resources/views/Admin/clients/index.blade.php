@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="card card-outline rounded-0 card-navy">
 	<div class="card-header">
 		<h3 class="card-title">List of Clients</h3>
