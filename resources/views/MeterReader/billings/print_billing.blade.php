@@ -276,12 +276,12 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x27'>Reading Date: {{$billing->reading_date}}</td>
+<td class='x27'>Reading Date:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('M. d, Y') }}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x27'>Due Date: {{$billing->due_date}}</td>
+<td class='x27'>Due Date: {{ \Carbon\Carbon::parse($billing->due_date)->format('M. d, Y')}}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -303,7 +303,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Billing Month and Year:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('F, Y') }}</td>
+<td class='x21'>Billing Month and Year:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('F Y') }}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
