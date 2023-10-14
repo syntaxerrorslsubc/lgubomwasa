@@ -59,26 +59,4 @@
 	</div>
 </div>
 
-
-<noscript id="print-header">
-	<div>
-		<div class="d-flex w-100 align-items-center">
-			<div class="col-2 text-center">
-				<img src="" alt="" class="img-thumbnail rounded-circle" style="width:5em;height:5em;object-fit:cover;object-position:center center;">
-			</div>
-			<div class="col-8">
-				<div style="line-height:1em">
-					<h4 class="text-center"></h4>
-					<h3 class="text-center">Billing Statement</h3>
-				</div>
-			</div>
-		</div>
-		<hr>
-	</div>
-</noscript>
-<script>
-	
-
-</script>
-
 @endsection

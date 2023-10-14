@@ -326,12 +326,12 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>From:</td>
+<td class='x21'>From: {{ \Carbon\Carbon::parse($billing->previous)->format('F d, Y') }}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>To: {{$billing->reading_date}}</td>
+<td class='x21'>To: {{ \Carbon\Carbon::parse($billing->reading_date)->format('F d, Y') }} </td>
 <td class='x21'></td>
  </tr>
   <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -367,7 +367,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Excess:&nbsp;<span id="excess"></span></td>
+<td class='x21'>Excess:&nbsp;<span id="excess"></span> cubic meter</td>
 <td class='x21'></td>
  </tr>
   <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -380,12 +380,23 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21' id="minimum">Minimum:<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span><input value="{{$billing->minimum}}" type="hidden" id="present">{{$billing->minimum}}</td>
+<td class='x21' id="minimum">Minimum:<span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span>
+   @if($categorylist = \App\Models\Category_list::where('id', $billing->client->category_id)->first())
+            {{$categorylist->minimum}}
+   @endif
+</td>
+
+<td class='x21' ><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span>
+   <input id="rate" value="@if($categorylist = \App\Models\Category_list::where('id', $billing->client->category_id)->first())
+            {{$categorylist->rate}}
+   @endif" type="hidden" >
+</td>
+
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Excess:&nbsp;</td>
+<td class='x21'>Excess:&nbsp;<span  id="excessmin"></span></td>
 <td class='x21'></td>
  </tr>
   </tr>
@@ -400,7 +411,7 @@ td
 
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Total Amount of Bill: ₱ {{$billing->total}}</td>
+<td class='x21' id="total">Total Amount of Bill: ₱ {{$billing->total}}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -450,6 +461,7 @@ td
       var current_reading = document.getElementById('present').value;
       var previous = document.getElementById('previous').value;
       var minconsume = 10;
+      var rate = document.getElementById('rate').value;
 
       current_reading = current_reading > 0 ? current_reading : 0;
       previous = previous > 0 ? previous : 0;
@@ -457,11 +469,17 @@ td
       var consume = parseFloat(current_reading) - parseFloat(previous);
 
       if (consume <= minconsume) {
-         $('#total').val(minimum);
+         $('#total').val('minimum');
       }else{
-         var excessconsume = consume - minconsume;
+         var excessconsume = parseFloat(consume) - parseFloat(minconsume);
+         var excessmin = parseFloat(excessconsume) * parseFloat(rate);
          document.getElementById('excess').innerHTML = excessconsume;
+         document.getElementById('excessmin').innerHTML = excessmin;
       }
+
+      
+
+
 </script>
 
 </body>
