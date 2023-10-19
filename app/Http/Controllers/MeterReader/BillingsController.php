@@ -121,6 +121,12 @@ class BillingsController extends Controller
       public function printBilling(Request $request){
       $billing=Billing_list::where('id', $request->billing_id)->with('client')->first();
 
+      $clientID = $billing->client->id;
+
+      $payables = Billing_list::where('clientid', $clientID)
+        ->where('status', 0)
+        ->get();
+
       $previousBilling = Billing_list::where('clientid', $billing->clientid)
         ->where('created_at', '<', $billing->created_at)
         ->orderBy('created_at', 'desc')
@@ -129,6 +135,7 @@ class BillingsController extends Controller
          return view('MeterReader.billings.print_billing', [
                'billing' => $billing,
                'previousBilling' => $previousBilling,
+               'payables' => $payables,
 
          ]);
    }

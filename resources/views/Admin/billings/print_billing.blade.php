@@ -423,9 +423,12 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x22'>Payables:<input value="@if($billing = \App\Models\Billing_list::where('id', $billing->client->clientid)->where('status', 0)
-            {{$billing->reading_date}}
-   @endif"></td>
+<td class='x22'>Payables:
+   @if($payables)
+      {{ \Carbon\Carbon::parse($payables->reading_date)->format('F d, Y') }}
+   @endif
+
+</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
