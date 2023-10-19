@@ -122,8 +122,14 @@ class BillingsController extends Controller
 	public function printBilling(Request $request){
 		$billing=Billing_list::where('id', $request->billing_id)->with('client')->first();
 
-   		return view('Admin.billings.print_billing', [
-   				'billing' => $billing,
+   		$previousBilling = Billing_list::where('clientid', $billing->clientid)
+        ->where('created_at', '<', $billing->created_at)
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+	    return view('Admin.billings.print_billing', [
+	        'billing' => $billing,
+	        'previousBilling' => $previousBilling,
 
    		]);
 	}

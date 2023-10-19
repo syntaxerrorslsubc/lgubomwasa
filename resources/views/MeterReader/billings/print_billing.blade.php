@@ -308,7 +308,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Name: {{$billing->client->lastname}}, {{$billing->client->firstname}}{{$billing->client->middlename}}</td>
+<td class='x21'>Name: {{$billing->client->lastname}}, {{$billing->client->firstname}} {{$billing->client->middlename}}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -326,7 +326,11 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>From: {{ \Carbon\Carbon::parse($billing->previous)->format('F d, Y') }}</td>
+<td class='x21'>From:
+   @if($previousBilling)
+      {{ \Carbon\Carbon::parse($previousBilling->reading_date)->format('F d, Y') }}
+   @endif
+</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -419,7 +423,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x22'>Payables:</td>
+<td class='x22'>Payables: </td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -427,7 +431,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x22'>Read by:&nbsp;</td>
+<td class='x22'>Read by:&nbsp; Meter Reader</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -440,7 +444,7 @@ td
  </tr>
  <tr height='17' class='x25' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x25' style='height:13.2pt;'></td>
-<td class='x25'>Team SyntaError</td>
+<td class='x25'>Team SyntaxError</td>
 <td class='x25'></td>
  </tr>
  <tr height='17' class='x25' style='mso-height-source:userset;height:13.2pt'>

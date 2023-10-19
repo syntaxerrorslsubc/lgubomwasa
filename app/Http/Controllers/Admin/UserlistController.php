@@ -32,14 +32,14 @@ class UserlistController extends Controller
         $saveNewUser->email = $request->email;
         $saveNewUser->password = Hash::make($request->password);
         $saveNewUser->type = $request->type;
-        $saveNewUser->avatar = $request->avatar;
+        // $saveNewUser->avatar = $request->avatar;
 
-        if ($request->hasFile('avatar')) {
-        $avatar = $request->file('avatar');
-        $avatarName = time().'.'.$avatar->getClientOriginalExtension();
-        $avatar->move(public_path('img'), $avatarName);
-        $data['img'] = $avatarName;
-        }
+        // if ($request->hasFile('avatar')) {
+        // $avatar = $request->file('avatar');
+        // $avatarName = time().'.'.$avatar->getClientOriginalExtension();
+        // $avatar->move(public_path('img'), $avatarName);
+        // $data['img'] = $avatarName;
+        // }
         
         if($saveNewUser->save()){
             $saveUser_role = new User_role;
@@ -104,22 +104,4 @@ class UserlistController extends Controller
         ;
 
   }
-
-  // public function image()
-  //   {
-  //       $avatar = Storage::files('public/images'); // Change the path as per your file structure
-
-  //       return view('Admin/user.add_user', compact('images'));
-  //   }
-
-  //   public function uploadImage(Request $request)
-  //   {
-  //       $request->validate([
-  //           'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // adjust validation rules as needed
-  //       ]);
-
-  //       $imagePath = $request->file('avatar')->store('public/images');
-
-  //       return view('Admin/user.add_user', ['imagePath' => $imagePath]);
-  //   }
 }
