@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="card card-outline rounded-0 card-navy">
-	<div class="card-header">
-		<h3 class="card-title">Daily Billing Report</h3>
-	</div>
-	<div class="card-body">
+    <div class="card-header">
+        <h3 class="card-title">Daily Billing Report</h3>
+    </div>
+    <div class="card-body">
         <div class="container-fluid">
             <fieldset class="border mb-4">
                 <legend class="mx-3 w-auto">Filter</legend>
@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary bg-gradient-primary rounded-0"><i class="fa fa-filter"></i> Filter</button>
-                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print"><i class="fa fa-print"></i> Print</button>
+                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print" onclick='window.print()'><i class="fa fa-print"></i> Print</button>
                             </div>
                         </div>
                     </form>
@@ -29,7 +29,7 @@
             </fieldset>
         </div>
         <div class="container-fluid" id="printout">
-			<table class="table table-hover table-striped table-bordered" id="report-tbl">
+            <table class="table table-hover table-striped table-bordered" id="report-tbl">
                 <colgroup>
                     <col width="5%">
                     <col width="20%">
@@ -55,38 +55,43 @@
                     
                     </tr>
                 </thead>
-				<tbody>
-					
-						 <tr>
-                            <td class="text-center"></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div style="line-height:1em">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </td>
-                            <td></td>
-                            <td class="text-right"></td>
-                            <td class="text-right"></td>
+                <tbody>
+                    @foreach ($billingDetails as $billingDetail)
+                         <tr>
+                            <td class="text-center">{{ $billingDetail->id }}</td>
+                            <td>{{$billingDetail->client->address }}</td>
+                            <td>{{$billingDetail->client->lastname}}, {{$billingDetail->client->firstname}}</td>
+                            <td>{{ $billingDetail->or }}</td>
+                            <td class="text-right">{{ \Carbon\Carbon::parse($billingDetail->paid_at)->format('F d, Y') }}</td>
+                            <td class="text-right">{{ $billingDetail->total }}</td>
+                            <td class="text-right">{{ $billingDetail->penalty }}</td>
                             <td class="text-center">
                                  <div style="line-height:1em">
-                                    <div><small class="text-muter">P </small></div>
-                                    <div><small class="text-muter">Current: </small></div>
+                                    <div><small class="text-muter">Current: {{ \Carbon\Carbon::parse($billingDetail->reading_date)->format('F d') }}</small></div>
                                 </div>
                             </td>
-                            <td class="text-right"></td>
+                            <td class="text-center">
+                            @if($billingDetail->status === 0)
+                                <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
+                            @elseif($billingDetail->status === 1)
+                               <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
+                            @endif
+                          </td>
                         </tr>
-					
-                        <tr>
-                            <th class="text-center" colspan="9">No data</th>
-                        </tr>
-                    
-				</tbody>
-			</table>
-		</div>
-	</div>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Total Payment for the Day: ₱{{ $totalPayment }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Total Payment for the Day: ₱{{ $totalPenalty }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 <noscript id="print-header">
 	<div>
