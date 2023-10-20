@@ -1,6 +1,7 @@
 @extends('layouts.Cashier.default')
 
 @section('content')
+
 <div class="card card-outline rounded-0 card-navy">
     <div class="card-header">
         <h3 class="card-title">Monthly Billing Report</h3>
@@ -31,58 +32,42 @@
             <table class="table table-hover table-striped table-bordered" id="report-tbl">
                 <colgroup>
                     <col width="5%">
-                    <col width="10%">
-                    <col width="10%">
                     <col width="15%">
-                    <col width="10%">
-                    <col width="10%">
-                    <col width="10%">
-                    <col width="10%">
-                    <col width="10%">
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="20%">
+                    
                 </colgroup>
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>#</th>
-                        <th>Reading Date</th>
-                        <th>Due Date</th>
-                        <th>Client</th>
-                        <th>Reading</th>
-                        <th>Consumption</th>
-                        <th>Rate (m<sup>3</sup>)</th>
-                        <th>Status</th>
-                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Income of the day</th>
+                        <th>Penalty</th>
+                        <th>Total</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     
                          <tr>
                             <td class="text-center"></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div style="line-height:1em">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </td>
-                            <td>
-                                <div style="line-height:1em">
-                                    <div><small class="text-muter">Previous: </small></div>
-                                    <div><small class="text-muter">Current: </small></div>
-                                </div>
-                            </td>
-                            <td class="text-right"></td>
-                            <td class="text-right"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
                             <td class="text-center">
-                                
+                                <div style="line-height:1em">
+                                    <div></div>
+                                    <div></div>
+                                </div>
                             </td>
-                            <td class="text-right"></td>
+                            <td class="text-center">
+                            </td>
                         </tr>
-                   
+                    
                         <tr>
                             <th class="text-center" colspan="9">No data</th>
                         </tr>
-                   
+                    
                 </tbody>
             </table>
         </div>

@@ -40,6 +40,9 @@ class BillingsController extends Controller
             $storeBilling->due_date = $request->due_date;
             $storeBilling->reading = $request->reading;
             $storeBilling->previous = $request->previous;
+            $storeBilling->penalty = $request->penalty;
+            $storeBilling->or = $request->or;
+            $storeBilling->paid_at = $request->paid_at;
             $storeBilling->rate = $request->rate;
             $storeBilling->total = $request->total;
             $storeBilling->status = $request->status;

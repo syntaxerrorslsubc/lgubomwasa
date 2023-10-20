@@ -145,7 +145,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             #Reports
 
             Route::get('/cashier/monthly_billing', [App\Http\Controllers\Cashier\ReportsController::class, 'monthly_billing'])->name('cashiermonthly_billing');
-            Route::get('/cashier/report', [App\Http\Controllers\Cashier\ReportsController::class, 'monthly_billing'])->name('cashiermonthly_billing');           
+          
+            Route::get('/cashier/daily_billing/', [App\Http\Controllers\Cashier\ReportsController::class, 'daily_billing'])->name('cashierdaily_billing');       
 
         });
 

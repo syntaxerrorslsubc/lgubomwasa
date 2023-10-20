@@ -217,6 +217,14 @@
                         </p>
                       </a>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a  href="{{route('cashierdaily_billing')}}" class="nav-link nav-reports_daily_billing">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                          Daily Report
+                        </p>
+                      </a>
+                    </li>
                  </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

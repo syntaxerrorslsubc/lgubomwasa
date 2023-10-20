@@ -34,9 +34,13 @@ use App\Models\Client_list;
 		 {
 				$storeBilling = Billing_list::where('id', $request->id)->first(); 
 				$storeBilling->reading_date = $request->reading_date;
+				$storeBilling->clientid = $request->clientid;
 				$storeBilling->due_date = $request->due_date;
 				$storeBilling->reading = $request->reading;
 				$storeBilling->previous = $request->previous;
+				$storeBilling->penalty = $request->penalty;
+				$storeBilling->or = $request->or;
+				$storeBilling->paid_at = $request->paid_at;
 				$storeBilling->rate = $request->rate;
 				$storeBilling->total = $request->total;
 				$storeBilling->status = $request->status;

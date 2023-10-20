@@ -61,6 +61,10 @@
 								<label for="or" class="control-label">OR #</label>
 								<input type="text" class="form-control form-control-sm rounded-0" id="or" name="or" required="required" value="">
 							</div>
+							<div class="form-group mb-3">
+								<label for="paid_at" class="control-label">Paid At</label>
+								<input type="date" class="form-control form-control-sm rounded-0" id="paid_at" name="paid_at" required="required">
+							</div>
 							<div class="form-group">
 								<label for="status" class="control-label">Status</label>
 								<select name="status" id="status" class="form-control form-control-sm rounded-0" required>
