@@ -90,7 +90,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/admin/daily_billing/', [App\Http\Controllers\Admin\ReportsController::class, 'daily_billing'])->name('admindaily_billing');
 
-
             #SYSTEMINFO
             Route::get('/admin/system_info', [App\Http\Controllers\Admin\SystemInfoController::class, 'index'])->name('adminsystem_info');
 
@@ -146,7 +145,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             Route::get('/cashier/monthly_billing', [App\Http\Controllers\Cashier\ReportsController::class, 'monthly_billing'])->name('cashiermonthly_billing');
           
-            Route::get('/cashier/daily_billing/', [App\Http\Controllers\Cashier\ReportsController::class, 'daily_billing'])->name('cashierdaily_billing');       
+            Route::get('/cashier/daily_billing/', [App\Http\Controllers\Cashier\ReportsController::class, 'daily_billing'])->name('cashierdaily_billing');
+
+            Route::get('/cashier/daily_billing/filter', [App\Http\Controllers\Cashier\ReportsController::class, 'filter'])->name('cashierdaily_billing.filter');
+       
 
         });
 

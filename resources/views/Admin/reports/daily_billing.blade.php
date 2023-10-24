@@ -4,14 +4,14 @@
 
 <div class="card card-outline rounded-0 card-navy">
     <div class="card-header">
-        <h3 class="card-title">Daily Billing Report</h3>
+        <h3 class="card-title">Daily Billing Report of {{ \Carbon\Carbon::parse($selectedDate)->format('F d, Y') }}</h3>
     </div>
     <div class="card-body">
         <div class="container-fluid">
             <fieldset class="border mb-4">
                 <legend class="mx-3 w-auto">Filter</legend>
                 <div class="container-fluid py-2 px-3">
-                    <form action="" id="filter-form">
+                    <form action="{{route('admindaily_billing')}}" method="GET" id="filter-form">
                         <div class="row align-items-end">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group m-0">
@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary bg-gradient-primary rounded-0"><i class="fa fa-filter"></i> Filter</button>
-                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print" onclick='window.print()'><i class="fa fa-print"></i> Print</button>
+                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print" onclick='printReport()'><i class="fa fa-print"></i> Print</button>
                             </div>
                         </div>
                     </form>
@@ -86,29 +86,41 @@
                     <p>Total Payment for the Day: ₱{{ $totalPayment }}</p>
                 </div>
                 <div class="col-md-6">
-                    <p>Total Payment for the Day: ₱{{ $totalPenalty }}</p>
+                    <p>Total Penalty for the Day: ₱{{ $totalPenalty }}</p>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-<noscript id="print-header">
-	<div>
-		<div class="d-flex w-100 align-items-center">
-			<div class="col-2 text-center">
-				<img src="" alt="" class="img-thumbnail rounded-circle" style="width:5em;height:5em;object-fit:cover;object-position:center center;">
-			</div>
-			<div class="col-8">
-				<div style="line-height:1em">
-					<h4 class="text-center"></h4>
-					<h3 class="text-center">Daily Billing Report</h3>
-                    <div class="text-center">as of</div>
-                    <h4 class="text-center"></h4>
-				</div>
-			</div>
-		</div>
-		<hr>
-	</div>
+<noscript class="print-header">
+    <!-- Your print header content goes here -->
+    <div class="d-flex w-100 align-items-center">
+        <div class="col-2 text-center">
+            <img src="{{ asset('../images/logo.jpg') }}" alt="" class="img-thumbnail rounded-circle" style="width:5em;height:5em;object-fit:cover;object-position:center center;">
+        </div>
+        <div class="col-8">
+            <div style="line-height:1em">
+                <h4 class="text-center">BOMWASA</h4>
+                <h3 class="text-center">Daily Billing Recorded Collection Report</h3>
+                <div class="text-center">of</div>
+                <h4 class="text-center">{{ \Carbon\Carbon::parse($selectedDate)->format('F d, Y') }}</h4>
+            </div>
+        </div>
+    </div>
+    <hr>
 </noscript>
+
+<script type="text/javascript">
+    function printReport() {
+        // Show the print header
+        document.querySelector('.print-header').style.display = 'block';
+
+        // Trigger the print dialog
+        window.print();
+
+        // Hide the print header after printing
+        document.querySelector('.print-header').style.display = 'none';
+    }
+</script>
 @endsection

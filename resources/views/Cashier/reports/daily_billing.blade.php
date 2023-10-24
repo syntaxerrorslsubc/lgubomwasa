@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary bg-gradient-primary rounded-0"><i class="fa fa-filter"></i> Filter</button>
-                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print" onclick='window.print()'><i class="fa fa-print"></i> Print</button>
+                                <button class="btn btn-light bg-gradient-light rounded-0 border" style="display: none; " type="button" id="print" onclick="printReport()"><i class="fa fa-print"></i> Print</button>
                             </div>
                         </div>
                     </form>
@@ -93,7 +93,22 @@
 		</div>
 	</div>
 </div>
-<noscript id="print-header">
+<style>
+    /* Your existing CSS styles */
+
+    /* Hide the section by default */
+    .print-header {
+        display: none;
+    }
+
+    /* Display the section only in print */
+    @media print {
+        .print-header {
+            display: block !important;
+        }
+    }
+</style>
+<noscript class="print-header">
 	<div>
 		<div class="d-flex w-100 align-items-center">
 			<div class="col-2 text-center">
@@ -111,4 +126,16 @@
 		<hr>
 	</div>
 </noscript>
+<script type="text/javascript">
+    function printReport() {
+        // Show the print header
+        document.querySelector('.print-header').style.display = 'block';
+
+        // Trigger the print dialog
+        window.print();
+
+        // Hide the print header after printing
+        document.querySelector('.print-header').style.display = 'none';
+    }
+</script>
 @endsection

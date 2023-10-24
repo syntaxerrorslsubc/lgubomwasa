@@ -14,25 +14,29 @@ class ReportsController extends Controller
             return view('Admin/reports.monthly_billing');
         }
 
-     public function daily_billing(Request $request)
-    {
+    public function daily_billing(Request $request)
+        {
 
-        $today = now()->format('Y-m-d');
+        if ($request->filled('day')) {
+            $selectedDate = $request->input('day');
+        } else {
+            $selectedDate = now()->format('Y-m-d');
+        }
 
-        $billingDetails = Billing_list::whereDate('paid_at', $today)
+        $billingDetails = Billing_list::whereDate('paid_at', $selectedDate)
             ->with('client')
-            ->where('status', 1) // Add this line to filter by status = 1
+            ->where('status', 1)
             ->get();
 
         $totalPayment = $billingDetails->sum('total');
         $totalPenalty = $billingDetails->sum('penalty');
 
         return view('Admin/reports.daily_billing', [
-               'billingDetails' => $billingDetails,
-               'totalPayment' =>$totalPayment,
-               'totalPenalty' =>$totalPenalty,
-
-         ]);
+            'billingDetails' => $billingDetails,
+            'totalPayment' => $totalPayment,
+            'totalPenalty' => $totalPenalty,
+            'selectedDate' => $selectedDate,
+        ]);
     }
 }
 
