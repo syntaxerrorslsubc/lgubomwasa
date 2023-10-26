@@ -1,6 +1,13 @@
 @extends('layouts.Admin.default')
 
 @section('content')
+<style type="text/css">
+    @media print {
+    .hide-on-print {
+        display: none;
+    }
+}
+</style>
 
 <div class="card card-outline rounded-0 card-navy">
     <div class="card-header">
@@ -22,7 +29,7 @@
     </div>
     <div class="card-body">
         <div class="container-fluid">
-            <fieldset class="border mb-4">
+            <fieldset class="border mb-4 hide-on-print">
                 <legend class="mx-3 w-auto">Filter</legend>
                 <div class="container-fluid py-2 px-3">
                     <form action="{{route('admindaily_billing')}}" method="GET" id="filter-form">
@@ -108,10 +115,5 @@
     </div>
 </div>
 
-<script>
-    function printReport(){
-        if 
-    }
-</script>
 
 @endsection

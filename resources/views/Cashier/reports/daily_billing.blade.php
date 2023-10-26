@@ -1,17 +1,38 @@
 @extends('layouts.Cashier.default')
 
 @section('content')
+<style type="text/css">
+    @media print {
+    .hide-on-print {
+        display: none;
+    }
+}
+</style>
 
 <div class="card card-outline rounded-0 card-navy">
-	<div class="card-header">
-		<h3 class="card-title">Daily Billing Report</h3>
-	</div>
-	<div class="card-body">
+    <div class="card-header">
+    <!-- Your print header content goes here -->
+        <div class="d-flex w-100 align-items-center">
+            <div class="col-2 text-center">
+                <img src="{{ asset('../images/logo.jpg') }}" alt="" class="img-thumbnail rounded-circle" style="width:7em;height:7em;object-fit:cover;object-position:center center;">
+            </div>
+            <div class="col-8">
+                <div style="line-height:1em">
+                    <h4 class="text-center">Bontoc Municipal Waterworks System Administration</h4>
+                    <h3 class="text-center">Daily Recorded Collection Report</h3>
+                    <div class="text-center">as of</div>
+                    <h4 class="text-center">{{ \Carbon\Carbon::parse($selectedDate)->format('F d, Y') }}</h4>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="card-body">
         <div class="container-fluid">
-            <fieldset class="border mb-4">
+            <fieldset class="border mb-4 hide-on-print">
                 <legend class="mx-3 w-auto">Filter</legend>
                 <div class="container-fluid py-2 px-3">
-                    <form action="" id="filter-form">
+                    <form action="{{route('cashierdaily_billing')}}" method="GET" id="filter-form">
                         <div class="row align-items-end">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group m-0">
@@ -21,7 +42,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary bg-gradient-primary rounded-0"><i class="fa fa-filter"></i> Filter</button>
-                                <button class="btn btn-light bg-gradient-light rounded-0 border" style="display: none; " type="button" id="print" onclick="printReport()"><i class="fa fa-print"></i> Print</button>
+                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print" onclick='window.print()'><i class="fa fa-print"></i> Print</button>
                             </div>
                         </div>
                     </form>
@@ -29,7 +50,7 @@
             </fieldset>
         </div>
         <div class="container-fluid" id="printout">
-			<table class="table table-hover table-striped table-bordered" id="report-tbl">
+            <table class="table table-hover table-striped table-bordered" id="report-tbl">
                 <colgroup>
                     <col width="5%">
                     <col width="20%">
@@ -55,9 +76,9 @@
                     
                     </tr>
                 </thead>
-				<tbody>
-					@foreach ($billingDetails as $billingDetail)
-						 <tr>
+                <tbody>
+                    @foreach ($billingDetails as $billingDetail)
+                         <tr>
                             <td class="text-center">{{ $billingDetail->id }}</td>
                             <td>{{$billingDetail->client->address }}</td>
                             <td>{{$billingDetail->client->lastname}}, {{$billingDetail->client->firstname}}</td>
@@ -79,63 +100,20 @@
                           </td>
                         </tr>
                     @endforeach
-				</tbody>
-			</table>
+                </tbody>
+            </table>
             <div class="row">
                 <div class="col-md-6">
-                    <p>Total Payment for the Day: ₱{{ $totalPayment }}</p>
+                    <p>Total Payment for the Day: <b>₱{{ $totalPayment }}</b></p>
                 </div>
                 <div class="col-md-6">
-                    <p>Total Payment for the Day: ₱{{ $totalPenalty }}</p>
+                    <p>Total Penalty for the Day: <b>₱{{ $totalPenalty }}</b></p>
                 </div>
             </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
-<style>
-    /* Your existing CSS styles */
 
-    /* Hide the section by default */
-    .print-header {
-        display: none;
-    }
 
-    /* Display the section only in print */
-    @media print {
-        .print-header {
-            display: block !important;
-        }
-    }
-</style>
-<noscript class="print-header">
-	<div>
-		<div class="d-flex w-100 align-items-center">
-			<div class="col-2 text-center">
-				<img src="" alt="" class="img-thumbnail rounded-circle" style="width:5em;height:5em;object-fit:cover;object-position:center center;">
-			</div>
-			<div class="col-8">
-				<div style="line-height:1em">
-					<h4 class="text-center"></h4>
-					<h3 class="text-center">Daily Billing Report</h3>
-                    <div class="text-center">as of</div>
-                    <h4 class="text-center"></h4>
-				</div>
-			</div>
-		</div>
-		<hr>
-	</div>
-</noscript>
-<script type="text/javascript">
-    function printReport() {
-        // Show the print header
-        document.querySelector('.print-header').style.display = 'block';
-
-        // Trigger the print dialog
-        window.print();
-
-        // Hide the print header after printing
-        document.querySelector('.print-header').style.display = 'none';
-    }
-</script>
 @endsection

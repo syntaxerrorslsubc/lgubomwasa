@@ -1,14 +1,37 @@
 @extends('layouts.Admin.default')
 
 @section('content')
+@section('content')
+<style type="text/css">
+    @media print {
+    .hide-on-print {
+        display: none;
+    }
+}
+</style>
 
 <div class="card card-outline rounded-0 card-navy">
-	<div class="card-header">
-		<h3 class="card-title">Monthly Billing Report</h3>
-	</div>
+    <div class="card-header">
+    <!-- Your print header content goes here -->
+        <div class="d-flex w-100 align-items-center">
+            <div class="col-2 text-center">
+                <img src="{{ asset('../images/logo.jpg') }}" alt="" class="img-thumbnail rounded-circle" style="width:7em;height:7em;object-fit:cover;object-position:center center;">
+            </div>
+            <div class="col-8">
+                <div style="line-height:1em">
+                    <h4 class="text-center">Bontoc Municipal Waterworks System Administration</h4>
+                    <h3 class="text-center">Monthly Income Report</h3>
+                    <div class="text-center">of</div>
+                    <h4 class="text-center">{{ \Carbon\Carbon::parse($selectedMonth)->format('F, Y') }}</h4>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
 	<div class="card-body">
         <div class="container-fluid">
-            <fieldset class="border mb-4">
+            <fieldset class="border mb-4 hide-on-print">
                 <legend class="mx-3 w-auto">Filter</legend>
                 <div class="container-fluid py-2 px-3">
                     <form action="" id="filter-form">
@@ -21,7 +44,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary bg-gradient-primary rounded-0"><i class="fa fa-filter"></i> Filter</button>
-                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" id="print"><i class="fa fa-print"></i> Print</button>
+                                <button class="btn btn-light bg-gradient-light rounded-0 border" type="button" onclick='window.print()' id="print"><i class="fa fa-print"></i> Print</button>
                             </div>
                         </div>
                     </form>
@@ -31,7 +54,6 @@
         <div class="container-fluid" id="printout">
 			<table class="table table-hover table-striped table-bordered" id="report-tbl">
                 <colgroup>
-                    <col width="5%">
                     <col width="15%">
                     <col width="20%">
                     <col width="20%">
@@ -40,7 +62,6 @@
                 </colgroup>
                 <thead>
                     <tr class="text-center">
-                        <th>#</th>
                         <th>Date</th>
                         <th>Income of the day</th>
                         <th>Penalty</th>
@@ -49,46 +70,23 @@
                     </tr>
                 </thead>
 				<tbody>
-					
+					@foreach ($dailyBillingData as $day => $data)
 						 <tr>
-                            <td class="text-center"></td>
-                            <td class="text-center"></td>
-                            <td class="text-center"></td>
-                            <td class="text-center">
-                                <div style="line-height:1em">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                            </td>
+                            <td class="text-center">{{\Carbon\Carbon::parse($day)->format('F d, Y')}}</td>
+                            <td class="text-center">{{ $dailyTotals[$day] }}</td>
+                            <td class="text-center">{{ $dailyPenalties[$day] }}</td>
+                            <td class="text-center">{{ $dailyTotals[$day] + $dailyPenalties[$day] }}</td>
                         </tr>
-					
-                        <tr>
-                            <th class="text-center" colspan="9">No data</th>
-                        </tr>
-                    
+                    @endforeach
 				</tbody>
 			</table>
+            <div class="row">
+                <div class="col-12">
+                    <p>Total <b>₱{{ $total }}</b></p>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>
-<noscript id="print-header">
-	<div>
-		<div class="d-flex w-100 align-items-center">
-			<div class="col-2 text-center">
-				<img src="" alt="" class="img-thumbnail rounded-circle" style="width:5em;height:5em;object-fit:cover;object-position:center center;">
-			</div>
-			<div class="col-8">
-				<div style="line-height:1em">
-					<h4 class="text-center"></h4>
-					<h3 class="text-center">Monthly Billing Report</h3>
-                    <div class="text-center">as of</div>
-                    <h4 class="text-center"></h4>
-				</div>
-			</div>
-		</div>
-		<hr>
-	</div>
-</noscript>
+
 @endsection

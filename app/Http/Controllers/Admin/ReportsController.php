@@ -5,13 +5,46 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Billing_list;
-
+use Carbon\Carbon;
 
 class ReportsController extends Controller
 {
-     public function monthly_billing()
+     public function monthly_billing(Request $request)
         {
-            return view('Admin/reports.monthly_billing');
+            $selectedMonth = $request->input('selectedMonth'); // Get the selected month
+
+            // Calculate the start and end dates of the selected month
+            $startDate = Carbon::parse($selectedMonth)->startOfMonth();
+            $endDate = Carbon::parse($selectedMonth)->endOfMonth();
+
+            // Query the billing data for the selected month
+            $billingData = Billing_list::whereBetween('paid_at', [$startDate, $endDate])
+                ->where('status', 1)
+                ->get();
+
+            // Group the billing data by day using the 'paid_at' column
+            $dailyBillingData = $billingData->groupBy(function ($item) {
+                return Carbon::parse($item->paid_at)->format('Y-m-d');
+            });
+
+            // Calculate the total payment for each day
+            $dailyTotals = $dailyBillingData->map(function ($dailyData) {
+                return $dailyData->sum('total');
+            });
+
+            $dailyPenalties = $dailyBillingData->map(function ($dailyData) {
+                return $dailyData->sum('penalty');
+            });
+            
+            $total = $dailyTotals->sum() + $dailyPenalties->sum();
+
+            return view('Admin/reports.monthly_billing', [
+                'dailyBillingData' => $dailyBillingData,
+                'dailyTotals' => $dailyTotals,
+                'dailyPenalties' => $dailyPenalties,
+                'selectedMonth' => $selectedMonth,
+                'total' => $total,
+            ]);
         }
 
     public function daily_billing(Request $request)

@@ -274,7 +274,7 @@ td
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td colspan='3' height='17' class='x21' style='mso-ignore:colspan;height:13.2pt;'></td>
  </tr>
-  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
+ <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
 <td class='x27'>Reading Date:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('M. d, Y') }}</td>
 <td class='x21'></td>
@@ -303,7 +303,7 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21'>Billing Month and Year:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('F, Y') }}</td>
+<td class='x21'>Billing Month and Year:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('F Y') }}</td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -330,7 +330,6 @@ td
    @if($previousBilling)
       {{ \Carbon\Carbon::parse($previousBilling->reading_date)->format('F d, Y') }}
    @endif
-
 </td>
 <td class='x21'></td>
  </tr>
@@ -390,6 +389,7 @@ td
             {{$categorylist->minimum}}
    @endif
 </td>
+
 <td class='x21' ><span style='mso-spacerun:yes;'>&nbsp;&nbsp;&nbsp;</span>
    <input id="rate" value="@if($categorylist = \App\Models\Category_list::where('id', $billing->client->category_id)->first())
             {{$categorylist->rate}}
@@ -423,13 +423,19 @@ td
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x22'>Payables:
-   @if($payables)
-      {{ \Carbon\Carbon::parse($payables->reading_date)->format('F d, Y') }}
-   @endif
+<td class='x22'>Payables: 
 
+@if($payables->isEmpty())
+        No billing entries found.
+    @else
+        @foreach($payables as $billingEntry)
+            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('F d, Y') }}
+            <br>
+        @endforeach
+        
+@endif
 </td>
-<td class='x21'></td>
+<td class='x22'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td colspan='3' height='17' class='x21' style='mso-ignore:colspan;height:13.2pt;'></td>

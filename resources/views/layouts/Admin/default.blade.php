@@ -348,7 +348,7 @@
     }
   })
 </script>
-    <footer class="main-footer text-sm">
+    <footer class="main-footer text-sm hide-on-print">
         <strong>Copyright © 2023. 
         <!-- <a href=""></a> -->
         </strong>

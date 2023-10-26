@@ -16,7 +16,7 @@ class ClientsController extends Controller
 
         public function index()
         {
-            $client_lists=Client_list::orderby('id')->paginate(20);
+            $client_lists=Client_list::orderby('id')->get();
             return view('Cashier/clients.index', [
                     'client_lists'=>$client_lists
             ]);

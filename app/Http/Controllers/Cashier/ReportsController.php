@@ -15,34 +15,15 @@ class ReportsController extends Controller
     public function daily_billing(Request $request)
         {
 
-        $today = now()->format('Y-m-d');
-
-        $billingDetails = Billing_list::whereDate('paid_at', $today)
-            ->with('client')
-            ->where('status', 1) // Add this line to filter by status = 1
-            ->get();
-
-
-        $totalPayment = $billingDetails->sum('total');
-        $totalPenalty = $billingDetails->sum('penalty');
-
-        return view('Cashier/reports.daily_billing', [
-               'billingDetails' => $billingDetails,
-               'totalPayment' =>$totalPayment,
-               'totalPenalty' =>$totalPenalty,
-               'today' =>$today,
-
-         ]);
+        if ($request->filled('day')) {
+            $selectedDate = $request->input('day');
+        } else {
+            $selectedDate = now()->format('Y-m-d');
         }
 
-    public function filter(Request $request)
-    {
-        $selectedDate = $request->input('day');
-        
-        $billingDetails = Billing_list::where('status', 1)
+        $billingDetails = Billing_list::whereDate('paid_at', $selectedDate)
             ->with('client')
-            ->whereDate('paid_at', $selectedDate)
-            ->orderBy('paid_at', 'desc')
+            ->where('status', 1)
             ->get();
 
         $totalPayment = $billingDetails->sum('total');
@@ -52,6 +33,7 @@ class ReportsController extends Controller
             'billingDetails' => $billingDetails,
             'totalPayment' => $totalPayment,
             'totalPenalty' => $totalPenalty,
+            'selectedDate' => $selectedDate,
         ]);
     }
     
