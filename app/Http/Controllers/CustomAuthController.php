@@ -58,7 +58,6 @@ class CustomAuthController extends Controller
  
     public function registration()
     {
-        return Hash::make('password404');
         return view('Auth.registration');
     }
        
