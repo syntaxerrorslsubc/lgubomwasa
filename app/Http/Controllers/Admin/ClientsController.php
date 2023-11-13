@@ -81,7 +81,6 @@ class ClientsController extends Controller
         return view('Admin/clients.view_client', compact(
             'client'));
         return response()->json($client);
-            return view('Admin/clients.view_client');
         }
 
         public function billing_history()

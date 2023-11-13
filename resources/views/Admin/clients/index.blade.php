@@ -46,7 +46,7 @@
 				                @elseif($clientsProfile->status === 2)
 				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Disconnected</span>
 				                @endif
-			              </td>
+			              	</td>
 						
 							<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
