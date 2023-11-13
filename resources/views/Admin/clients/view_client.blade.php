@@ -37,7 +37,9 @@
 				                      <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Active</span>
 				                @elseif($client->status == 2)
 				                     <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Disconnected</span>
-				                @endif
+				                @else
+										        <span class="badge badge-secondary bg-gradient-secondary text-sm px-3 rounded-pill">Unknown Status</span>
+										    @endif
 				      </div>
 				      @endif
 				    </div>
