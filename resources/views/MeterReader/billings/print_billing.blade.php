@@ -307,6 +307,9 @@ td
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
+   <td colspan='3' height='17' class='x21' style='mso-ignore:colspan;height:13.2pt;'></td>
+</tr>
+<tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
 <td class='x21'>Name: {{$billing->client->lastname}}, {{$billing->client->firstname}} {{$billing->client->middlename}}</td>
 <td class='x21'></td>
@@ -338,9 +341,9 @@ td
 <td class='x21'>To: {{ \Carbon\Carbon::parse($billing->reading_date)->format('F d, Y') }} </td>
 <td class='x21'></td>
  </tr>
-  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
-<td colspan='3' height='17' class='x21' style='mso-ignore:colspan;height:13.2pt;'></td>
- </tr>
+<tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
+   <td colspan='3' height='17' class='x21' style='mso-ignore:colspan;height:13.2pt;'></td>
+</tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
 <td class='x28'>Meter Reading</td>
@@ -429,7 +432,7 @@ td
         No billing entries found.
     @else
         @foreach($payables as $billingEntry)
-            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('F, Y') }} - ₱{{$billingEntry->total}}
+            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('MY') }} - ₱{{$billingEntry->total}}
             <br>
         @endforeach
 @endif

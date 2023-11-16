@@ -305,7 +305,11 @@ td
 <td height='17' class='x21' style='height:13.2pt;'></td>
 <td class='x21'>Billing Month and Year:  {{ \Carbon\Carbon::parse($billing->reading_date)->format('F Y') }}</td>
 <td class='x21'></td>
+<td class='x21'></td>
  </tr>
+ <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
+   <td colspan='3' height='17' class='x21' style='mso-ignore:colspan;height:13.2pt;'></td>
+</tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
 <td class='x21'>Name: {{$billing->client->lastname}}, {{$billing->client->firstname}} {{$billing->client->middlename}}</td>
@@ -415,7 +419,7 @@ td
 
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21' id="total">Total Amount of Bill: ₱ {{$billing->total}}</td>
+<td class='x21' id="total">Total Amount of Bill: <span style="font-size: 20px;">₱ {{$billing->total}}</span></td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -429,7 +433,7 @@ td
         No billing entries found.
     @else
         @foreach($payables as $billingEntry)
-            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('F d, Y') }}
+            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('MY') }} - ₱{{$billingEntry->total}}
             <br>
         @endforeach
         
