@@ -62,9 +62,9 @@
                                     <td class="text-right">{{$record->rate}}</td>
                                     <td class="text-center">
                                         @if($record->status == 0)
-                                              <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Pending</span>
+                                              <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
                                         @elseif($record->status == 1)
-                                             <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Paid</span>
+                                             <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
                                         @endif
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>
