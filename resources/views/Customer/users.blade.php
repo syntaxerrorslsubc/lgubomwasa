@@ -3,7 +3,7 @@
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>User checking bill</title>
+  <title>BOMWASA Bill Inquiry</title>
 <link rel="stylesheet" href="./css/userstyle.css">
 </head>
 <body style="background-image: url('../images/bontocoffice.jpg'); background-size: cover; background-color: transparent;">

@@ -49,9 +49,9 @@
               <td>{{$billing_list->or}}</td>
 
               <td class="text-center">
-                @if($billing_list->status === 0)
+                @if($billing_list->status == 0)
                     <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
-                @elseif($billing_list->status === 1)
+                @elseif($billing_list->status == 1)
                    <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
                 @endif
               </td>

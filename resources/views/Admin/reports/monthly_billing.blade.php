@@ -81,7 +81,7 @@
 				</tbody>
 			</table>
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" style="justify-content: center;">
                     <p>Total <b>₱{{ $total }}</b></p>
                 </div>
             </div>

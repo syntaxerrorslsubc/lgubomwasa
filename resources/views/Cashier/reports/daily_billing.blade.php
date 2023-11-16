@@ -92,9 +92,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                            @if($billingDetail->status === 0)
+                            @if($billingDetail->status == 0)
                                 <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
-                            @elseif($billingDetail->status === 1)
+                            @elseif($billingDetail->status == 1)
                                <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
                             @endif
                           </td>

@@ -415,7 +415,7 @@ td
 
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
 <td height='17' class='x21' style='height:13.2pt;'></td>
-<td class='x21' id="total">Total Amount of Bill: ₱ {{$billing->total}}</td>
+<td class='x21' id="total">Total Amount of Bill: <span style="font-size: 20px;">₱ {{$billing->total}}</span></td>
 <td class='x21'></td>
  </tr>
  <tr height='17' class='x21' style='mso-height-source:userset;height:13.2pt'>
@@ -429,7 +429,7 @@ td
         No billing entries found.
     @else
         @foreach($payables as $billingEntry)
-            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('F d, Y') }}
+            {{ \Carbon\Carbon::parse($billingEntry->reading_date)->format('F, Y') }} - ₱{{$billingEntry->total}}
             <br>
         @endforeach
 @endif

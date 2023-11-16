@@ -59,9 +59,9 @@
                                     <td class="text-right">{{$record->id}}</td>
                                     <td class="text-right">{{$record->rate}}</td>
                                     <td class="text-center">
-                                        @if($record->status === 1)
+                                        @if($record->status == 1)
                                               <span class="badge badge-primary bg-gradient-primary text-sm px-3 rounded-pill">Pending</span>
-                                        @elseif($record->status === 2)
+                                        @elseif($record->status == 2)
                                              <span class="badge badge-danger bg-gradient-danger text-sm px-3 rounded-pill">Paid</span>
                                         @endif
                                     </td>
