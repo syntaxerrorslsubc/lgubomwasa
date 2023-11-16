@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b></b></h3>
+	<h3><b>@foreach ($billingRecord as $billingRecords)
+     <h3><b>{{$billingRecords->client->meter_serial_number}} - {{$billingRecords->client->lastname}}, {{$billingRecords->client->firstname}}</b></h3>
+    @endforeach</b></h3>
 </div>
 <style>
 	img#cimg{
