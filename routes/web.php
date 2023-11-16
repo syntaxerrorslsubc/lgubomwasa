@@ -184,7 +184,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         #Users
         
-            Route::get('/users', [App\Http\Controllers\userController::class, 'index'])->name('user');
+            Route::get('/billinquiry', [App\Http\Controllers\userController::class, 'index'])->name('user');
 
             Route::get('/user/billing_history/{meter_serial_number}', [App\Http\Controllers\userController::class, 'history'])->name('billinghistory');
 
