@@ -32,6 +32,7 @@
                             <col width="10%">
                             <col width="10%">
                             <col width="10%">
+                            <col width="10%">
                         </colgroup>
                         <thead>
                             <tr>
@@ -44,6 +45,7 @@
                                 <th>Rate (m<sup>3</sup>)</th>
                                 <th>Status</th>
                                 <th>Amount</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,6 +70,9 @@
                                         @endif
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/admin/edit_billing/').'/'.$record->id}}"><i class="fa fa-edit"></i> Edit</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             @endif
