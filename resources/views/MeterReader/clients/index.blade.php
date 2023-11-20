@@ -58,4 +58,15 @@
 		</div>
 	</div>
 </div>
+<script>
+  $(document).ready(function () {
+    $('.table').dataTable({
+              columnDefs: [
+                      { orderable: false, targets: [4] }
+              ],
+              order:[0,'asc']
+          });
+        $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
+    });
+</script>
 @endsection

@@ -68,5 +68,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="{{asset('../jquery/jquery-ui.css')}}" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
+<script>
+  $(document).ready(function () {
+    $('.table').dataTable({
+              columnDefs: [
+                      { orderable: false, targets: [4] }
+              ],
+              order:[0,'asc']
+          });
+        $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
+    });
+</script>
 @endsection
