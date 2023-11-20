@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-    @foreach ($billingRecords as $billingRecord)
-     <h3><b>{{$billingRecord->client->meter_serial_number}} - {{$billingRecord->client->lastname}}, {{$billingRecord->client->firstname}}</b></h3>
-    @endforeach
+    @if ($billingRecords->isNotEmpty())
+    <h3><b>{{ $clientDetails['meter_serial_number'] }} - {{ $clientDetails['lastname'] }}, {{ $clientDetails['firstname'] }}</b></h3>
+      @endif
 </div>
 <style>
 	img#cimg{

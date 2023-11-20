@@ -23,12 +23,12 @@
 							<div class="form-group mb-3">
 								<label for="clientid" class="control-label">Client</label>
 								<select name="clientid" id="clientid" class="form-control form-control-sm rounded-0" required="required">
-									<option value="">choose client</option>
-									@if($clients=\App\Models\Client_list::orderby('lastname', 'asc')->get())
-										@foreach($clients as $clientid)
-											<option name="clientid" id="clientid" value="{{$clientid->id}}">{{$clientid->lastname}}, {{$clientid->firstname}}</option>
-										@endforeach
-									@endif
+								    <option value="">Choose a client</option>
+								    @if($clients=\App\Models\Client_list::orderby('lastname', 'asc')->get())
+								        @foreach($clients as $client)
+								            <option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+								        @endforeach
+								    @endif
 								</select>
 							</div>
 							<div class="form-group mb-3">
@@ -81,6 +81,15 @@
 		</div>
 	</div>
 </div>
+<!-- Include Select2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+<!-- Include jQuery (required for Select2) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Select2 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 <script>
 	function calc_total(){
 		var minimum = $('#minimum').val()
@@ -126,6 +135,13 @@
 	   		}
 	   });
 	});
+	$(document).ready(function() {
+        $('#clientid').select2({
+            placeholder: 'Choose a client',
+            allowClear: true,
+            width: '100%',
+        });
+    });
 </script>
 
 @endsection
