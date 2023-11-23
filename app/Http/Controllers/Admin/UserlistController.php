@@ -77,7 +77,6 @@ class UserlistController extends Controller
             $updatedUser->email = $request->email;
             $updatedUser->password = Hash::make($request->password);
             $updatedUser->type = $request->type;
-            $updatedUser->avatar = $request->avatar;
                     
             if($updatedUser->save()){
                 return redirect()->back()->withErrors('Success','Bill has been updated successfully.');

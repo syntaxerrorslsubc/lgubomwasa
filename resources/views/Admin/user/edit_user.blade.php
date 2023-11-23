@@ -17,12 +17,19 @@
 					<label for="email">Email</label>
 					<input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" required  autocomplete="off">
 				</div>
-				
+				<div class="form-group">
+					<label for="password"> Password</label>
+					<input type="password" name="password" id="password" class="form-control" value="{{$user->password}}" autocomplete="off">
+                    
+					<small><i>Leave this blank if you don't want to change the password.</i></small>
+                    
+				</div>
                 <div class="form-group">
                     <label for="type" class="control-label">Type</label>
                     <select name="type" id="type" class="form-control form-control-sm rounded-0" required>
                     <option value="1" >Administrator</option>
-                    <option value="2" >Staff</option>
+                    <option value="2" >Cashier</option>
+                    <option value="3" >Meter Readaer</option>
                     </select>
                 </div>
 			</form>

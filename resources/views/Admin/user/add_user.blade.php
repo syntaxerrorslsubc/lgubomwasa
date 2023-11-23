@@ -32,30 +32,16 @@
 				<div class="form-group">
 					<label for="password"> Password</label>
 					<input type="password" name="password" id="password" class="form-control" value="" autocomplete="off">
-                    
-					<small><i>Leave this blank if you dont want to change the password.</i></small>
-                    
+
 				</div>
                 <div class="form-group">
                     <label for="type" class="control-label">Type</label>
                     <select name="type" id="type" class="form-control form-control-sm rounded-0" required>
                     <option value="1" >Administrator</option>
-                    <option value="2" >Staff</option>
+                    <option value="2" >Cashier</option>
+                    <option value="3" >Meter Reader</option>
                     </select>
                 </div>
-
-
-				<div class="form-group">
-					<label for="" class="control-label">Avatar</label>
-					<div class="custom-file">
-		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="avatar" onchange="displayImg(this,$(this))" accept="image/png, image/jpeg">
-		              <label class="custom-file-label" for="customFile">Choose file</label>
-		            </div>
-				</div>
-				<div class="form-group d-flex justify-content-center">
-					<img src="" alt="" id="cimg" class="img-fluid img-thumbnail">
-				</div>
-
 				<div class="card-footer py-1 text-center">
 					<button class="btn btn-sm btn-primary rounded-0 mr-3" type="submit">Save User Details</button>
 					<a href="{{route('adminuser')}}" class="btn btn-sm btn-default border rounded-0" form="manage-user"><i class="fa fa-angle-left"></i> Cancel</a>
