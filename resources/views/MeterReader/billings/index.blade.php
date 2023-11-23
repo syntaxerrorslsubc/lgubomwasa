@@ -14,10 +14,10 @@
         <table class="table table-hover table-striped table-bordered" id="list">
           <colgroup>
             <col width="5%">
-            <col width="10%">
+            <col width="15%">
             <col width="25%">
             <col width="15%">
-            <col width="20%">
+            <col width="15%">
             <col width="10%">
             <col width="10%">
             <col width="10%">
@@ -42,9 +42,9 @@
           <tr  class="text-center">
               <td class="text-center">{{$billing_list->id}}</td>
               <td>{{ \Carbon\Carbon::parse($billing_list->reading_date)->format('F d, Y') }}</td>
-              <td>{{$billing_list->client->id}} - {{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
+              <td>{{$billing_list->client->lastname}}, {{$billing_list->client->firstname}} </td>
               <td>{{$billing_list->total}}</td>
-              <td>{{$billing_list->due_date}}</td>
+              <td>{{ \Carbon\Carbon::parse($billing_list->due_date)->format('F d, Y') }}</td>
               <td>{{$billing_list->penalty}}</td>
               <td>{{$billing_list->or}}</td>
 

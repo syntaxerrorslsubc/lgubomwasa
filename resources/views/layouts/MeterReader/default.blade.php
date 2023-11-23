@@ -63,7 +63,6 @@
    data.css('width','auto')
    data.css('opacity','.5')
    data.css('z-index','9999999')
-   data.html('<a href="mailto:bontocr8@gmail.com">Developed by syntaxError</a>')
    data.find('a').css('color','#7e7e7e')
    data.find('a').css('font-weight','bolder')
    data.find('a').css('background','#ebebeb')

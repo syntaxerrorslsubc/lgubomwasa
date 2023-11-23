@@ -33,16 +33,16 @@
 								</select>
 							</div>
 							<div class="form-group mb-3">
+								<label for="lastname" class="control-label">Last Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="lastname" name="lastname" required value=""/>
+							</div>
+							<div class="form-group mb-3">
 								<label for="firstname" class="control-label">First Name</label>
 								<input type="text" class="form-control form-control-sm rounded-0" id="firstname" name="firstname" required="required" value=""/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="middlename" class="control-label">Middle Name</label>
 								<input type="text" class="form-control form-control-sm rounded-0" id="middlename" name="middlename" placeholder="optional" value=""/>
-							</div>
-							<div class="form-group mb-3">
-								<label for="lastname" class="control-label">Last Name</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="lastname" name="lastname" required value=""/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="contact" class="control-label">Contact #</label>
@@ -69,7 +69,7 @@
 							</div>
 							<div class="card-footer py-1 text-center">
 								<button class="btn btn-sm btn-primary rounded-0 mr-3" type="submit">Save User Details</button>
-								<a href="{{route('adminuser')}}" class="btn btn-sm btn-default border rounded-0" form="manage-user"><i class="fa fa-angle-left"></i> Cancel</a>
+								<a href="{{route('adminclients')}}" class="btn btn-sm btn-default border rounded-0" form="manage-user"><i class="fa fa-angle-left"></i> Cancel</a>
 							</div>
 						</form>
 					</div>

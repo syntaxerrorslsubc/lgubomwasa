@@ -57,9 +57,6 @@
 				                    <a class="dropdown-item view_data" href="{{ url('/admin/view_client').'/'.$clientsProfile->id}}"><span class="fa fa-eye text-dark"></span> View</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item edit_data" href="{{url('/admin/edit_client/').'/'.$clientsProfile->id}}"><span class="fa fa-edit text-primary"></span> Edit</a>
-				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="{{url('/admin/delete_client/').'/'.$clientsProfile->id}}" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
-				                  </div>
 							</td>
 					</tr>
 					@endforeach
@@ -68,42 +65,4 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this client permanently?","delete_client",[$(this).attr('data-id')])
-		})
-		$('.table').dataTable({
-			columnDefs: [
-					{ orderable: false, targets: [4] }
-			],
-			order:[0,'asc']
-		});
-		$('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
-	})
-	function delete_client($id){
-		start_loader();
-		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_client",
-			method:"POST",
-			data:{id: $id},
-			dataType:"json",
-			error:err=>{
-				console.log(err)
-				alert_toast("An error occured.",'error');
-				end_loader();
-			},
-			success:function(resp){
-				if(typeof resp== 'object' && resp.status == 'success'){
-					location.reload();
-				}else{
-					alert_toast("An error occured.",'error');
-					end_loader();
-				}
-			}
-		})
-	}
-	
-</script>
 @endsection

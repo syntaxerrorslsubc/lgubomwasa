@@ -100,6 +100,5 @@ class ClientsController extends Controller
             return redirect('/admin/clients');
 
         }
-
         
 }

@@ -51,7 +51,7 @@
 			<div class="card-footer py-1 text-center">
 				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" type="button" id="print" href="{{ route('meterreaderprint_billing',['billing_id'=>$billing->id]) }}" target="_blank"><i class="fa fa-print"></i> Print</a>
 				<a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/meterreader/edit_billing/').'/'.$billing->id}}"><i class="fa fa-edit"></i> Edit</a>
-				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('meterreaderbillings')}}"><i class="fa fa-angle-left"></i> Back to List</a>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="{{route('meterreaderadd_billing')}}"><i class="fa fa-angle-left"></i>Create New Bill</a>
 			</div>
 		</div>
 	</div>

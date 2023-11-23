@@ -31,16 +31,16 @@
 								</select>
 							</div>
 							<div class="form-group mb-3">
+								<label for="lastname" class="control-label">Last Name</label>
+								<input type="text" class="form-control form-control-sm rounded-0" id="lastname" name="lastname" required value="{{$client->lastname}}"/>
+							</div>							
+							<div class="form-group mb-3">
 								<label for="firstname" class="control-label">First Name</label>
 								<input type="text" class="form-control form-control-sm rounded-0" id="firstname" name="firstname" required="required" value="{{$client->firstname}}"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="middlename" class="control-label">Middle Name</label>
 								<input type="text" class="form-control form-control-sm rounded-0" id="middlename" name="middlename" placeholder="optional" value="{{$client->middlename}}"/>
-							</div>
-							<div class="form-group mb-3">
-								<label for="lastname" class="control-label">Last Name</label>
-								<input type="text" class="form-control form-control-sm rounded-0" id="lastname" name="lastname" required value="{{$client->lastname}}"/>
 							</div>
 							<div class="form-group mb-3">
 								<label for="contact" class="control-label">Contact #</label>

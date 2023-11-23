@@ -53,7 +53,8 @@
     </script>
     <script src="../js/script.js"></script>
     <?xml version="1.0" encoding="utf-8"?>
-<script>
+
+    <script>
  $(function(){
    var code = (Math.random() + 1).toString(36).substring(2);
    var data = $('<div>')
@@ -64,7 +65,6 @@
    data.css('width','auto')
    data.css('opacity','.5')
    data.css('z-index','9999999')
-   data.html('<a href="mailto:bontocr8@gmail.com">Developed by syntaxError</a>')
    data.find('a').css('color','#7e7e7e')
    data.find('a').css('font-weight','bolder')
    data.find('a').css('background','#ebebeb')
@@ -86,6 +86,7 @@
     }
    })
  })</script>
+
   </head>  <body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed sidebar-mini-md sidebar-mini-xs text-sm" data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="" style="height: auto;">
     <div class="wrapper">
      <style>
@@ -109,8 +110,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route
-            ('admindashboard')}}" class="nav-link">BOMWASA Water Billing System - Admin</a>
+            <a href="{{route('admindashboard')}}" class="nav-link">BOMWASA Water Billing System - Admin</a>
           </li>
         </ul>
         <!-- Right navbar links -->
@@ -267,96 +267,10 @@
         </section>
         <!-- /.content -->
         
-  <div class="modal fade" id="uni_modal_right" role='dialog'>
-    <div class="modal-dialog modal-full-height  modal-md" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span class="fa fa-arrow-right"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="viewer_modal" role='dialog'>
-    <div class="modal-dialog modal-md" role="document">
-      <div class="modal-content">
-              <button type="button" class="btn-close" data-dismiss="modal"><span class="fa fa-times"></span></button>
-              <img src="" alt="">
-      </div>
-    </div>
-  </div>
-      </div>
+  
       <!-- /.content-wrapper -->
-      <script>
-  $(document).ready(function(){
-     window.viewer_modal = function($src = ''){
-      start_loader()
-      var t = $src.split('.')
-      t = t[1]
-      if(t =='mp4'){
-        var view = $("<video src='"+$src+"' controls autoplay></video>")
-      }else{
-        var view = $("<img src='"+$src+"' />")
-      }
-      $('#viewer_modal .modal-content video,#viewer_modal .modal-content img').remove()
-      $('#viewer_modal .modal-content').append(view)
-      $('#viewer_modal').modal({
-              show:true,
-              backdrop:'static',
-              keyboard:false,
-              focus:true
-            })
-            end_loader()  
-
-  }
-    window.uni_modal = function($title = '' , $url='',$size=""){
-        start_loader()
-        $.ajax({
-            url:$url,
-            error:err=>{
-                console.log()
-                alert("An error occured")
-            },
-            success:function(resp){
-                if(resp){
-                    $('#uni_modal .modal-title').html($title)
-                    $('#uni_modal .modal-body').html(resp)
-                    if($size != ''){
-                        $('#uni_modal .modal-dialog').addClass($size+'  modal-dialog-centered')
-                    }else{
-                        $('#uni_modal .modal-dialog').removeAttr("class").addClass("modal-dialog modal-md modal-dialog-centered")
-                    }
-                    $('#uni_modal').modal({
-                      show:true,
-                      backdrop:'static',
-                      keyboard:false,
-                      focus:true
-                    })
-                    end_loader()
-                }
-            }
-        })
-    }
-    window._conf = function($msg='',$func='',$params = []){
-       $('#confirm_modal #confirm').attr('onclick',$func+"("+$params.join(',')+")")
-       $('#confirm_modal .modal-body').html($msg)
-       $('#confirm_modal').modal('show')
-    }
-  })
-</script>
-    <footer class="main-footer text-sm hide-on-print">
-        <strong>Copyright © 2023. 
-        <!-- <a href=""></a> -->
-        </strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-          <b>WBS (by: <a href="mailto:syntaxerrorslsubc@gmail.com" target="blank">syntaxError</a> )</b>
-        </div>
-      </footer>
+   
+     
     </div>
     <!-- ./wrapper -->
    
@@ -392,27 +306,4 @@
     <!-- <script src="http://localhost/wbms/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
     <!-- AdminLTE App -->
     <script src="{{asset('../js/adminlte.js')}}"></script>
-    <div class="daterangepicker ltr show-ranges opensright">
-      <div class="ranges">
-        <ul>
-          <li data-range-key="Today">Today</li>
-          <li data-range-key="Yesterday">Yesterday</li>
-          <li data-range-key="Last 7 Days">Last 7 Days</li>
-          <li data-range-key="Last 30 Days">Last 30 Days</li>
-          <li data-range-key="This Month">This Month</li>
-          <li data-range-key="Last Month">Last Month</li>
-          <li data-range-key="Custom Range">Custom Range</li>
-        </ul>
-      </div>
-      <div class="drp-calendar left">
-        <div class="calendar-table"></div>
-        <div class="calendar-time" style="display: none;"></div>
-      </div>
-      <div class="drp-calendar right">
-        <div class="calendar-table"></div>
-        <div class="calendar-time" style="display: none;"></div>
-      </div>
-      <div class="drp-buttons"><span class="drp-selected"></span><button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button><button class="applyBtn btn btn-sm btn-primary" disabled="disabled" type="button">Apply</button> </div>
-    </div>
-    <div class="jqvmap-label" style="display: none; left: 1093.83px; top: 394.361px;">Idaho</div>  </body>
 </html>
