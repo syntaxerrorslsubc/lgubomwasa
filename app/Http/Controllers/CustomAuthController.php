@@ -16,7 +16,7 @@ class CustomAuthController extends Controller
      use AuthenticatesUsers;
 
     public function redirectTo(){
-         $role = User_role::where('userid',Auth::user()->id)->first();
+         $role = User_role::where('userid',Auth::user()->type)->first();
          dd($role);
         if ($role->roleid==1){
              return '/admin';
@@ -42,7 +42,7 @@ class CustomAuthController extends Controller
     
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-             $role = User_role::where('userid',Auth::user()->id)->first();
+             $role = User_role::where('userid',Auth::user()->type)->first();
             if (Auth::user() && $role->roleid==1){
                  return redirect('/admin');
             }elseif(Auth::user() && $role->roleid==2){

@@ -27,9 +27,9 @@
                 <div class="form-group">
                     <label for="type" class="control-label">Type</label>
                     <select name="type" id="type" class="form-control form-control-sm rounded-0" required>
-                    <option value="1" >Administrator</option>
-                    <option value="2" >Cashier</option>
-                    <option value="3" >Meter Readaer</option>
+	                    <option value="1" @if($user->type == 1) selected @endif>Administrator</option>
+	                    <option value="2" @if($user->type == 2) selected @endif >Cashier</option>
+	                    <option value="3" @if($user->type == 3) selected @endif>Meter Reader</option>
                     </select>
                 </div>
 			</form>
@@ -38,7 +38,7 @@
 	<div class="card-footer">
 			<div class="col-md-12">
 				<div class="row">
-					<button class="btn btn-sm btn-primary rounded-0 mr-3" form="manage-user" type="submit" href="{{ url('/admin/user/')}}">Save User Details</button>
+					<button class="btn btn-sm btn-primary rounded-0 mr-3" form="manage-user" type="submit">Save User Details</button>
 					<a href="{{ url('/admin/user/')}}" class="btn btn-sm btn-default border rounded-0" form="manage-user"><i class="fa fa-angle-left"></i> Cancel</a>
 				</div>
 			</div>

@@ -17,7 +17,7 @@ class ifMeterReader
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $role = User_role::where('userid',Auth::user()->id)->first();
+        $role = User_role::where('userid',Auth::user()->type)->first();
         if (Auth::user()&&$role->roleid==3){
             return $next($request);
         }

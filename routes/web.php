@@ -2,7 +2,7 @@
  
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
-
+use App\Http\Controllers\Admin\BillingsController;
  
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +32,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
             #Billing
             Route::get('/admin/billings', [App\Http\Controllers\Admin\BillingsController::class, 'index'])->name('adminbillings');
+            Route::get('/admin/export/{tableName}', [App\Http\Controllers\Admin\BillingsController::class, 'export'])->name('adminbillings_export');
 
 
             Route::get('/admin/add_billing/', [App\Http\Controllers\Admin\BillingsController::class, 'addBilling'])->name('adminadd_billing');

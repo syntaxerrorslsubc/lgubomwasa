@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Backup\BackupDestination\Backup;
+use Spatie\Backup\Tasks\Backup\Tasks\BackupJob;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Billing_list;
 use App\Models\Client_list;
 use App\Models\Category_list;
@@ -141,4 +146,67 @@ class BillingsController extends Controller
 
 	        ]);
    }
+
+   public function export($tableName)
+    {
+        // Verify if the table exists
+        if (!\Schema::hasTable($tableName)) {
+            abort(404, 'Table not found');
+        }
+
+        // Get the data from the specified table
+        $data = DB::table($tableName)->get();
+
+        // Create the SQL dump file
+        $filename = $tableName . '.sql';
+        $filePath = storage_path("app/{$filename}");
+
+        // Convert the data to SQL and save it to the file
+        $this->exportToSql($data, $filePath);
+
+        // Set the headers for file download
+        $headers = [
+            'Content-Type' => 'application/sql',
+        ];
+
+        // Download the SQL file
+        return response()->download($filePath, $filename, $headers);
+    }
+
+    
+
+
+	protected function exportToSql($data, $filePath)
+		{
+		    // Open the file for writing
+		$file = fopen($filePath, 'w');
+		if ($file === false) {
+		    \Log::error('Failed to open file for writing: ' . $filePath);
+		    abort(500, 'Failed to open file for writing');
+		}
+
+	    // Get the table name from the first row
+	    $table = $data->isNotEmpty() ? $data->first()->table : null;
+
+	    if ($table === null) {
+	        \Log::error('Failed to export table. No table name found.');
+	        abort(500, 'Failed to export table');
+	    }
+
+	    // Iterate through the data and write SQL statements to the file
+	    foreach ($data as $row) {
+	        $row = (array) $row;
+
+	        // Generate an SQL INSERT statement
+	        $insertStatement = "INSERT INTO $table (`" . implode('`, `', array_keys($row)) . "`) VALUES ('" . implode("', '", array_map('addslashes', $row)) . "');\n";
+
+	        // Write the SQL statement to the file
+	        fwrite($file, $insertStatement);
+	    }
+
+	    // Close the file
+	    fclose($file);
+
+
+	}
 }

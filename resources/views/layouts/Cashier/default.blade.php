@@ -76,7 +76,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="http://localhost/wbms/" class="nav-link">BOMWASA Water Billing System - Cashier</a>
+            <a href="{{route('cashierdashboard')}}" class="nav-link">BOMWASA Water Billing System - Cashier</a>
           </li>
         </ul>
         <!-- Right navbar links -->
@@ -106,12 +106,10 @@
           <li class="nav-item">
             <div class="btn-group nav-link">
                   <button type="button" class="btn btn-rounded badge badge-light dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                    <span><img src="" class="img-circle elevation-2 user-img" alt="User Image"></span>
                     <span class="ml-3">Cashier</span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <div class="dropdown-menu" role="menu">
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('signout') }}"><span class="fas fa-sign-out-alt"></span> Logout</a>
                   </div>
               </div>
@@ -130,7 +128,7 @@
 <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand">
         <!-- Brand Logo -->
-        <a href="http://bomwasa.test" class="brand-link bg-gradient-primary text-sm">
+        <a href="{{route('cashierdashboard')}}" class="brand-link bg-gradient-primary text-sm">
         <img src="../images/logo.jpg" alt="Store Logo" class="brand-image img-circle elevation-3 bg-gradient-light" style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
         <span class="brand-text font-weight-light">BOMWASA - WBS</span>
         </a>
@@ -152,7 +150,7 @@
                 <nav class="mt-4">
                    <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
-                      <a href="./" class="nav-link nav-home">
+                      <a href="{{route('cashierdashboard')}}" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                           Dashboard

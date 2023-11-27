@@ -6,8 +6,13 @@
     <div class="card-header">
         <h3 class="card-title">List of Bills</h3>
         <div class="card-tools">
+        <a href="{{ url('/admin/export/billing_lists') }}" class="btn btn-success"><span class="fas fa-plus"></span>Export</a>
+        </div>
+        <div class="card-tools">
             <a href="{{route('adminadd_billing')}}" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>Create New</a>
         </div>
+        <div></div>
+
     </div>
     <div class="card-body">
         <div class="container-fluid">

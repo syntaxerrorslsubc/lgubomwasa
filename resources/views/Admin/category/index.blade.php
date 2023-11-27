@@ -35,9 +35,9 @@
 				<tbody>
 				@if(isset($category_lists))
 					@foreach($category_lists as $categories )
-         	 			<tr class="text-center">
-              				<td class="text-center">{{$categories->id}}</td>
-							<td>{{$categories->created_at}}</td>
+         	 		<tr class="text-center">
+              <td class="text-center">{{$categories->id}}</td>
+							<td>{{ \Carbon\Carbon::parse($categories->created_at)->format('F d, Y') }}</td>
 							<td>{{$categories->name}}</td>
 							<td>{{$categories->rate}}</td>
 							<td>{{$categories->minimum}}</td>

@@ -124,8 +124,6 @@
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <div class="dropdown-menu" role="menu">
-                    <a class="dropdown-item" href=""><span class="fa fa-user"></span> My Account</a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('signout') }}"><span class="fas fa-sign-out-alt"></span> Logout</a>
                   </div>
               </div>

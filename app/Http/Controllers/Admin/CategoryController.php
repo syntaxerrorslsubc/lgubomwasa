@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $cat->minimum = $request->minimum;
                 
         if($cat->save()){
-            return redirect()->back()->with('Success','Category has been created successfully.');
+            return redirect()->route('admincategory')->with('Success','Category has been created successfully.');
         }
              
     }
@@ -55,9 +55,10 @@ class CategoryController extends Controller
                 $storeCategory->minimum = $request->minimum;
                 
                 if($storeCategory->save()){
-                    return redirect()->back()->withErrors('Success','Category has been updated successfully.');
+                    return redirect()->route('admincategory')->with('success', 'Category has been updated successfully.');
+
                 }
-}
+        }
 
      public function view_category($id)
     {

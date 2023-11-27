@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="mx-0 py-5 px-3 mx-ns-4 bg-gradient-primary">
-	<h3><b>@foreach ($billingRecord as $billingRecords)
-     <h3><b>{{$billingRecords->client->meter_serial_number}} - {{$billingRecords->client->lastname}}, {{$billingRecords->client->firstname}}</b></h3>
-    @endforeach</b></h3>
+	@if ($billingRecords->isNotEmpty())
+    <h3><b>{{ $clientDetails['meter_serial_number'] }} - {{ $clientDetails['lastname'] }}, {{ $clientDetails['firstname'] }}</b></h3>
+      @endif
 </div>
 <style>
 	img#cimg{
@@ -24,14 +24,14 @@
                     <table class="table table-hover table-striped table-bordered" id="list">
                         <colgroup>
                             <col width="5%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
-                            <col width="10%">
                             <col width="15%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
                         </colgroup>
                         <thead>
                             <tr>
@@ -47,31 +47,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($billingRecord->isEmpty())
-                            <p>No billing record available.</p>
+                            @if ($billingRecords->isEmpty())
+                            <p>No billing records available.</p>
                             @else  
-                            @if(isset($billingRecord))  
-                            @foreach ($billingRecord as $record)
+                            @if(isset($billingRecords))  
+                            @foreach ($billingRecords as $record)
                                 <tr>
                                     <td class="text-center">{{$record->id}}</td>
-                                    <td>{{$record->reading_date}}</td>
-                                    <td>{{$record->due_date}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($record->reading_date)->format('F d, Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($record->due_date)->format('F d, Y')}}</td>
                                     <td class="text-right">{{$record->reading}}</td>
                                     <td class="text-right">{{$record->previous}}</td>
                                     <td class="text-right">{{$record->id}}</td>
                                     <td class="text-right">{{$record->rate}}</td>
                                     <td class="text-center">
                                         @if($record->status == 0)
-                                            <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
+                                              <span class="badge badge-secondary  bg-gradient-secondary  text-sm px-3 rounded-pill">Pending</span>
                                         @elseif($record->status == 1)
-                                            <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
+                                             <span class="badge badge-success bg-gradient-success text-sm px-3 rounded-pill">Paid</span>
                                         @endif
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/admin/edit_billing/').'/'.$record->id}}"><i class="fa fa-edit"></i> Edit</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             @endif
-                            @endif
+                         @endif
                         </tbody>
                     </table>
 				</div>

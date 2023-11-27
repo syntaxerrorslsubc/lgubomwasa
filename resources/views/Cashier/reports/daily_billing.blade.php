@@ -2,11 +2,30 @@
 
 @section('content')
 <style type="text/css">
-    @media print {
-    .hide-on-print {
-        display: none;
+    body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        .signature-container {
+            text-align: center; /* Center the signature */
+        }
+
+
+        /* Hide on screen */
+        @media screen {
+            .hidden-on-screen {
+                display: none;
+            }
+        }
+
+        @media print {
+        .hide-on-print {
+            display: none;
+        }
     }
-}
+        
+
 </style>
 
 <div class="card card-outline rounded-0 card-navy">
@@ -32,7 +51,7 @@
             <fieldset class="border mb-4 hide-on-print">
                 <legend class="mx-3 w-auto">Filter</legend>
                 <div class="container-fluid py-2 px-3">
-                    <form action="{{route('cashierdaily_billing')}}" method="GET" id="filter-form">
+                    <form action="{{route('admindaily_billing')}}" method="GET" id="filter-form">
                         <div class="row align-items-end">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group m-0">
@@ -110,7 +129,11 @@
                     <p>Total Penalty for the Day: <b>₱{{ $totalPenalty }}</b></p>
                 </div>
             </div>
-
+             <div class="signature-container">
+                <span class="hidden-on-screen">____________________</span>
+                <br>
+                <span class="hidden-on-screen visible-on-print">Head, BOMWASA</span>
+            </div>
         </div>
     </div>
 </div>

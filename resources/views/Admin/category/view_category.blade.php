@@ -25,6 +25,9 @@
 							
 							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Rate per Cubic Meter (m<sup>3</sup>)</div>
 							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$category->rate}}</div>
+
+							<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 py-3 font-weight-bolder border">Minimum</div>
+							<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 py-3 border">{{$category->minimum}}</div>
 						</div>
 					</div>
 				</div>

@@ -43,7 +43,7 @@ class UserlistController extends Controller
         
         if($saveNewUser->save()){
             $saveUser_role = new User_role;
-            $saveUser_role->userid = $saveNewUser->id;
+            $saveUser_role->userid = $saveNewUser->type;
             $saveUser_role->roleid = $request->type;
             if ($request->type==1) {
                 $saveUser_role->role_name = "Admin";
@@ -54,7 +54,7 @@ class UserlistController extends Controller
             }
 
             if($saveUser_role->save()){
-                return redirect()->back()->withErrors('Success','New user has been created successfully.');
+                return redirect()->route('adminuser')->with('success', 'User added successfully');
             }
 
         }
@@ -77,9 +77,10 @@ class UserlistController extends Controller
             $updatedUser->email = $request->email;
             $updatedUser->password = Hash::make($request->password);
             $updatedUser->type = $request->type;
+            $updatedUser->avatar = $request->avatar;
                     
             if($updatedUser->save()){
-                return redirect()->back()->withErrors('Success','Bill has been updated successfully.');
+            return redirect()->route('adminuser')->with('success', 'User updated successfully');
          }
     }
 

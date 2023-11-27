@@ -34,25 +34,24 @@
 					@foreach($users as $users )
          	 			<tr class="text-center">
               				<td class="text-center">{{$users->id}}</td>
-              				<td>{{$users->updated_at}}</td>
+              				<td>{{ \Carbon\Carbon::parse($users->updated_at)->format('F d, Y') }}</td>
               				<td>{{$users->name}}</td>
               				<td>{{$users->email}}</td>
               				<td>{{$users->type}}</td>
-							<td align="center">
+								<td align="center">
 								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item" href="{{ url('/admin/edit_user/').'/'.$users->id}}"=><span class="fa fa-edit text-dark"></span> Edit</a>
+				                    <a class="dropdown-item" href="{{ url('/admin/edit_user/').'/'.$users->id}}"><span class="fa fa-edit text-dark"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item delete_data" data-url="{{url('/admin/delete_user/').'/'.$users->id}}" href=""  data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
-							</td>
+								</td>
 						</tr>
-					
+					@endforeach
 				</tbody>
-				@endforeach
 			</table>
 		</div>
 	</div>
