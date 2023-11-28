@@ -92,6 +92,7 @@
 
 <script>
 	function calc_total(){
+		// Get input values from the form
 		var minimum = $('#minimum').val()
 		var current_reading = $('#reading').val()
 		var previous = $('#previous').val()
@@ -99,16 +100,23 @@
 		var cat = $('#category').val()
 		var rate = $('#rate').val()
 
+		// Ensure non-negative values for current and previous readings
 		current_reading = current_reading > 0 ? current_reading : 0;
 		previous = previous > 0 ? previous : 0;
 
+		// Calculate water consumption
 		var consume = parseFloat(current_reading) - parseFloat(previous);
 
+		// Check if consumption is less than or equal to the minimum threshold
 		if (consume <= minconsume) {
+			// If so, set the total to the minimum charge
 			$('#total').val(minimum);
 		}else{
+			// If consumption exceeds the minimum threshold, calculate the total bill
 			var excessconsume = consume - minconsume;
 			var partialbill = (excessconsume * parseFloat(rate)) + parseFloat(minimum);
+
+			// Set the total to the calculated amount
 			$('#total').val(partialbill);
 		}
 	} 
