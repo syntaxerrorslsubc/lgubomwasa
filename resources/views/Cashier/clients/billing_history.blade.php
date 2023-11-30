@@ -69,7 +69,7 @@
                                     </td>
                                     <td class="text-right">{{$record->total}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/admin/edit_billing/').'/'.$record->id}}"><i class="fa fa-edit"></i> Edit</a>
+                                        <a class="btn btn-primary btn-sm bg-gradient-primary rounded-0" href="{{ url('/cashier/edit_billing/').'/'.$record->id}}"><i class="fa fa-edit"></i> Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
