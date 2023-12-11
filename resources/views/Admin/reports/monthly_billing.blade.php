@@ -9,6 +9,7 @@
 
         .signature-container {
             text-align: center; /* Center the signature */
+            
         }
 
 
@@ -57,7 +58,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group m-0">
                                     <label for="month" class="control-label">Filter Month</label>
-                                    <input type="month" id="month" name="month" value="" class="form-control form-control-sm rounded-0" required>
+                                    <input type="month" id="month" name="selectedMonth" value="" class="form-control form-control-sm rounded-0" required>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
